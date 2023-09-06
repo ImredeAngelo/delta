@@ -1,5 +1,5 @@
 const config = require('./.webpack');
-// const colors = require('./.webpack/accessibility').colors;
+const colors = require('./.webpack/accessibility').colors;
 
 // ===== EXPORT
 module.exports = (env, options) => [ 
@@ -12,6 +12,6 @@ module.exports = (env, options) => [
         template: {
             'title':'Delta Linjeforening'
         },
-        // color: colors[0],
+        color: colors.normal,
     })
 ]
