@@ -1,0 +1,20 @@
+{
+  "name": "@delta/deltahouse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Delta Linjeforening",
+  "license": "MIT",
+  "scripts": {
+    "setup": "yarn plugin import workspace-tools && yarn workspaces focus",
+    "start": "docker compose -f \"docker-compose.yml\" up -d --build & yarn local",
+    "local": "yarn workspaces foreach -pvi run local",
+    "build": "yarn workspaces foreach -pvi run build",
+    "test": "npm run test --workspaces --if-present -p",
+    "test:build": "yarn build && docker compose -f \"docker-compose.prod.yml\" up -d --build",
+    "proxy": "docker compose  -f docker-compose.yml up -d --build proxy --force-recreate"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "yarn@3.2.2"
+}
