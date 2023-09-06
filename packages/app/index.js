@@ -6,7 +6,7 @@ import { createRoot } from 'react-dom/client'
 import { Workbox } from 'workbox-window'
 
 import _ from 'lodash'
-import html from './index.html'
+// import html from './index.ejs'
 
 import App from './src'
 
@@ -43,11 +43,12 @@ if (typeof global.document !== 'undefined' && typeof window !== 'undefined') {
 // Static pre-rendered entrypoint
 // TODO: Define in webpack
 export default (locals) => {
-	const compiled = _.template(html)
-    return compiled({
-		app: renderToString(render(locals.path)),
-		bundle: './bundle.js',
-		stylesheet: './main.css',
-        ...template
-	});
+    return ({})
+	// const compiled = _.template(html)
+    // return compiled({
+	// 	app: renderToString(render(locals.path)),
+	// 	bundle: './bundle.js',
+	// 	stylesheet: './main.css',
+    //     ...template
+	// });
 };

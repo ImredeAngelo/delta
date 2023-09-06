@@ -48,15 +48,15 @@ const dev = (options) => { return {
     plugins: [
         new HtmlWebpackPlugin({
             // filename:'index.html',
-            title: options.template.title,
             favicon: 'public/favicon.ico',
-            // templateParameters: {
-            //     'bundle': '/bundle.js',
-			// 	'stylesheet': '/main.css',
-			// 	'app': '',
-            //     ...options.template
-            // },
-            // template:'index.ejs',
+            template: `index.ejs`,
+            templateParameters: {
+                title: options.template.title,
+                'bundle': '/bundle.js',
+                'stylesheet': '/main.css',
+                'app': '',
+                ...options.template
+            },
         }),
         new ImageminWebpPlugin({
             config:[{
