@@ -6,7 +6,7 @@ module.exports = (env, options) => [
     config({
         ...options,
         entry: '.',
-        dir: './',
+        dir: '../../',
         name: 'deltahouse-app', // TODO: Get from package.json
         paths: ['/'],
         template: {

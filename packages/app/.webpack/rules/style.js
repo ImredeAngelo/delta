@@ -19,14 +19,14 @@ module.exports = (colorblind, loader) => { return {
             options: {
                 postcssOptions: {
                     // syntax: 'postcss-scss',
-                    plugins: [
-                        (colorblind != '') && [ "postcss-colorblind", { method: colorblind }],
-                        [ "postcss-import-ext-glob" ],
-                        [ "postcss-simple-vars", { silent: false } ],
-                        [ "postcss-inline-svg" ],
-                        [ "cssnano", { preset: ['default', { svgo: false }, { discardComments: { removeAll: true }}]}],
-                        [ "postcss-preset-env" ],
-                    ].filter(Boolean)
+                    // plugins: [
+                    //     // (colorblind != '') && [ "postcss-colorblind", { method: colorblind }],
+                    //     // [ "postcss-import-ext-glob" ],
+                    //     // [ "postcss-simple-vars", { silent: false } ],
+                    //     // [ "postcss-inline-svg" ],
+                    //     // [ "cssnano", { preset: ['default', { svgo: false }, { discardComments: { removeAll: true }}]}],
+                    //     // [ "postcss-preset-env" ],
+                    // ].filter(Boolean)
                 }
             }
         }

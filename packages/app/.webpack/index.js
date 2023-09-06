@@ -49,7 +49,7 @@ const dev = (options) => { return {
         new HtmlWebpackPlugin({
             // filename:'index.html',
             favicon: 'public/favicon.ico',
-            template: `index.ejs`,
+            template: 'index.ejs',
             templateParameters: {
                 title: options.template.title,
                 'bundle': '/bundle.js',
@@ -147,7 +147,7 @@ const shared = (options) => { return {
     module: {
         rules: [
             resources(),
-            templates(),
+            templates(options.isDev),
             transpile(options.isDev),
             styles(options.isDev ? options.accessibility.colorblind : '', MiniCssExtractPlugin.loader)
         ]
