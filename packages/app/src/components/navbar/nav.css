@@ -1,0 +1,26 @@
+#menustate {
+	display: none;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.2rem 0.45rem;
+}
+
+.logo {
+	display: inline-block;
+	background: svg-load('delta.svg') no-repeat;
+	background-position: 50% 3px;
+	background-size: 20px;
+	width: 2.2rem;
+	height: 1rem;
+}
+
+.name {
+	display: inline-block;
+}
+
+.active {
+	color: green;
+}

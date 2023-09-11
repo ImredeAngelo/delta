@@ -1,0 +1,27 @@
+/* $size: 										40px;
+$hamburger-size:                            $size; 	// Set both width and height
+$hamburger-width:                           $size; 	// Width (overrides $size, for a non square button)
+$hamburger-thickness:                       2px; 	// Thickness of the bars
+$hamburger-color:                           #fff;
+$hamburger-color-hover:                     $hamburger-color;
+$hamburger-color-active:                    $hamburger-color;
+$hamburger-padding:                         8px; 	// The space between the button border and the actual bars.
+$hamburger-border-radius:                   0; 		// Border-radius of the button.
+$hamburger-bar-border-radius:               0; 		// Border-radius of the bars.
+// $hamburger-bar-spacing:                  round($hamburger-size / 5); // How far the bars are apart from  */
+
+@import "hamburgers.min.css";
+
+.hamburger {
+	position: relative;
+	height: 32px !important;
+	width: 32px !important;
+}
+
+.bar::before {
+	background-color: white !important;
+}
+
+.active {
+
+}

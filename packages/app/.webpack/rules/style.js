@@ -22,6 +22,7 @@ module.exports = (colorblind, loader) => { return {
                     plugins: [
                         (colorblind != '') && require("postcss-colorblind")({ method: colorblind }),
                         require("postcss-import-ext-glob"),
+                        require("postcss-import"),
                         // require("postcss-simple-vars")({ silent: false }),
                         require("postcss-inline-svg"),
                         require("cssnano")({ preset: ['default', { svgo: false }, { discardComments: { removeAll: true }}]}),

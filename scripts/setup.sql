@@ -1,0 +1,12 @@
+-- Active: 1667734353605@@127.0.0.1@3306@db
+CREATE TABLE Events (
+	eid 	INT AUTO_INCREMENT PRIMARY KEY,
+	title 	VARCHAR(32) NOT NULL,
+	color 	INT
+)
+
+INSERT INTO `Events` VALUES (
+	1,
+	"Test Event #1",
+	0xA73121
+)

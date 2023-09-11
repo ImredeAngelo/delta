@@ -1,0 +1,38 @@
+version: '3.9'
+services:
+  nginx:
+    image: nginx:1.23-alpine
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./build:/etc/nginx/data
+      - ./packages/.nginx/dev:/etc/nginx/templates
+      - ./packages/.nginx/ssl:/etc/letsencrypt/live/localhost
+    environment:
+      - NGINX_ENVSUBST_TEMPLATE_SUFFIX=.t
+      - HOST=192.168.1.99             # deltahouse.no
+      - SSL_CERTIFICATE=local.crt     # fullchain.pem 
+      - SSL_PRIVATE_KEY=local.key     # privkey.pem
+  db:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    # Only for setup, expose on production
+    ports:
+      - 3306:3306
+    volumes:
+      - ./packages/database:/var/lib/mysql
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    environment:
+      - ADMINER_DESIGN=nette
+    depends_on:
+      - db

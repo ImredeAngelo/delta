@@ -2848,7 +2848,6 @@ __metadata:
     copy-webpack-plugin: ^11.0.0
     css-loader: ^6.8.1
     cssnano: ^6.0.1
-    delicious-hamburgers: ^1.2.3
     html-webpack-plugin: ^5.5.3
     imagemin-avif-webpack-plugin: ^0.0.4
     imagemin-webp-webpack-plugin: ^3.3.6
@@ -2856,6 +2855,7 @@ __metadata:
     mini-css-extract-plugin: ^2.7.6
     postcss: ^8.4.29
     postcss-colorblind: ^1.0.0
+    postcss-import: ^15.1.0
     postcss-import-ext-glob: ^2.1.1
     postcss-inline-svg: ^6.0.0
     postcss-loader: ^7.3.3
@@ -2865,6 +2865,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-refresh: ^0.14.0
+    react-router: ^6.15.0
     react-router-dom: ^6.15.0
     static-site-generator-webpack-plugin: ^3.4.2
     webpack: ^5.88.2
@@ -4454,13 +4455,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"delicious-hamburgers@npm:^1.2.3":
-  version: 1.2.3
-  resolution: "delicious-hamburgers@npm:1.2.3"
-  checksum: 37b890020b81e97f56d253ec4669fec22aced69be2564daa49d726e669c6f43a68a3e70d62b5a0a159238b9b9234002cea0571e008598ce2545d31ac6febc864
-  languageName: node
-  linkType: hard
-
 "depd@npm:2.0.0":
   version: 2.0.0
   resolution: "depd@npm:2.0.0"
@@ -5073,6 +5067,12 @@ __metadata:
   checksum: f6f487ad2198aa41d878fa31452f1a3c00958f46e9019286ff4787c84aac329332ab45c9cdc8c445928fc6d7ded294b9e005a7fce9426488518017831b272780
   languageName: node
   linkType: hard
+
+"events@workspace:packages/events":
+  version: 0.0.0-use.local
+  resolution: "events@workspace:packages/events"
+  languageName: unknown
+  linkType: soft
 
 "exec-buffer@npm:^3.0.0":
   version: 3.2.0
@@ -8985,6 +8985,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-import@npm:^15.1.0":
+  version: 15.1.0
+  resolution: "postcss-import@npm:15.1.0"
+  dependencies:
+    postcss-value-parser: ^4.0.0
+    read-cache: ^1.0.0
+    resolve: ^1.1.7
+  peerDependencies:
+    postcss: ^8.0.0
+  checksum: 7bd04bd8f0235429009d0022cbf00faebc885de1d017f6d12ccb1b021265882efc9302006ba700af6cab24c46bfa2f3bc590be3f9aee89d064944f171b04e2a3
+  languageName: node
+  linkType: hard
+
 "postcss-initial@npm:^4.0.1":
   version: 4.0.1
   resolution: "postcss-initial@npm:4.0.1"
@@ -9504,7 +9517,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-value-parser@npm:^4.1.0, postcss-value-parser@npm:^4.2.0":
+"postcss-value-parser@npm:^4.0.0, postcss-value-parser@npm:^4.1.0, postcss-value-parser@npm:^4.2.0":
   version: 4.2.0
   resolution: "postcss-value-parser@npm:4.2.0"
   checksum: 819ffab0c9d51cf0acbabf8996dffbfafbafa57afc0e4c98db88b67f2094cb44488758f06e5da95d7036f19556a4a732525e84289a425f4f6fd8e412a9d7442f
@@ -9795,7 +9808,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router@npm:6.15.0":
+"react-router@npm:6.15.0, react-router@npm:^6.15.0":
   version: 6.15.0
   resolution: "react-router@npm:6.15.0"
   dependencies:
@@ -9812,6 +9825,15 @@ __metadata:
   dependencies:
     loose-envify: ^1.1.0
   checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
+  languageName: node
+  linkType: hard
+
+"read-cache@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "read-cache@npm:1.0.0"
+  dependencies:
+    pify: ^2.3.0
+  checksum: cffc728b9ede1e0667399903f9ecaf3789888b041c46ca53382fa3a06303e5132774dc0a96d0c16aa702dbac1ea0833d5a868d414f5ab2af1e1438e19e6657c6
   languageName: node
   linkType: hard
 
@@ -10033,7 +10055,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.14.2, resolve@npm:^1.19.0, resolve@npm:^1.20.0":
+"resolve@npm:^1.1.7, resolve@npm:^1.14.2, resolve@npm:^1.19.0, resolve@npm:^1.20.0":
   version: 1.22.4
   resolution: "resolve@npm:1.22.4"
   dependencies:
@@ -10046,7 +10068,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>":
   version: 1.22.4
   resolution: "resolve@patch:resolve@npm%3A1.22.4#~builtin<compat/resolve>::version=1.22.4&hash=07638b"
   dependencies:
