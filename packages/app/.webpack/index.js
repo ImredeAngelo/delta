@@ -1,4 +1,5 @@
 // Plugins
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin")
@@ -46,6 +47,7 @@ const dev = (options) => { return {
         },
     },
     plugins: [
+        new BundleAnalyzerPlugin(),
         new HtmlWebpackPlugin({
             // filename:'index.html',
             favicon: 'public/favicon.ico',
@@ -90,7 +92,7 @@ const dev = (options) => { return {
 // Production build
 const prod = (options) => { return {
     mode: 'production',
-    // devtool: 'source-map',
+    devtool: 'source-map',
     output: {
         path: path.resolve(options.dir, `./build/${options.name}`)
     },
@@ -139,7 +141,7 @@ const shared = (options) => { return {
     entry: options.entry,
     output: {
         assetModuleFilename: '[name][ext][query]',
-        filename: 'bundle.js',
+        filename: '[name].js',
         libraryTarget: 'umd',
         globalObject: 'this',
         publicPath: '/'
