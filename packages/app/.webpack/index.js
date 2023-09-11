@@ -47,14 +47,14 @@ const dev = (options) => { return {
         },
     },
     plugins: [
-        new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin({ openAnalyzer: false }),
         new HtmlWebpackPlugin({
             // filename:'index.html',
             favicon: 'public/favicon.ico',
             template: 'index.ejs',
             templateParameters: {
                 title: options.template.title,
-                'bundle': '/bundle.js',
+                'bundle': '/main.js',
                 'stylesheet': '/main.css',
                 'app': '',
                 ...options.template
@@ -141,7 +141,7 @@ const shared = (options) => { return {
     entry: options.entry,
     output: {
         assetModuleFilename: '[name][ext][query]',
-        filename: '[name].js',
+        filename: 'bundle.js',
         libraryTarget: 'umd',
         globalObject: 'this',
         publicPath: '/'
@@ -149,7 +149,7 @@ const shared = (options) => { return {
     module: {
         rules: [
             resources(),
-            templates(options.isDev),
+            templates(),
             transpile(options.isDev),
             styles(options.isDev ? options.accessibility.colorblind : '', MiniCssExtractPlugin.loader)
         ]
