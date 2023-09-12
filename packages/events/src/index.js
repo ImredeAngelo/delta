@@ -7,7 +7,10 @@ app.get('/v0/events/get', (req, res) => {
 })
 
 app.post('/v0/events/make', (req, res) => {
-	
+	console.log("Posted!")
+	res.status(200).send({
+		msg: 'ok'
+	})
 });
 
 app.listen(port, () => {

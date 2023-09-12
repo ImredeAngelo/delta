@@ -1,9 +1,9 @@
-export const ENDPOINT_MAKE_EVENT = "/v0/create";
-export const ENDPOINT_GET_EVENTS = "/v0/getAll";
-export const ENDPOINT_GET_EVENT = "/v0/get";
+export const ENDPOINT_MAKE_EVENT = "/v0/events/make";
+export const ENDPOINT_GET_EVENTS = "/v0/events/getAll";
+export const ENDPOINT_GET_EVENT = "/v0/events/get";
 
 // TODO: Use environment variables
-const host = 'http://0.0.0.0'
+const host = 'http://192.168.1.99'
 
 class API {
     constructor() {
@@ -14,8 +14,6 @@ class API {
     }
 
     post(endpoint, data = {}, json = true) {
-        // if(isStatic) { return new Promise((res, rej) => rej("Static Render")); }
-
         return fetch(host + endpoint, {
             method: 'POST',
             headers: this.header,
@@ -25,8 +23,6 @@ class API {
     }
 
     get(endpoint, json = true) {
-        // if(isStatic) { return new Promise((res, rej) => rej("Static Render")); }
-
         return fetch(host + endpoint, {
             method: 'GET',
             headers: this.header
