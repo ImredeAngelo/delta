@@ -54,7 +54,7 @@ const dev = (options) => { return {
             template: 'index.ejs',
             templateParameters: {
                 title: options.template.title,
-                'bundle': '/main.js',
+                'bundle': '/bundle.js',
                 'stylesheet': '/main.css',
                 'app': '',
                 ...options.template

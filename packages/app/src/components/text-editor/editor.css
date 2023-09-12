@@ -1,0 +1,10 @@
+@import-glob "./**/style/*.css";
+
+.textbox {
+	border: 1px solid #383838;
+	border-radius: 4px;
+}
+
+.content {
+	padding: 1rem;
+}

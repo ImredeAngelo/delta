@@ -4,11 +4,13 @@ import s from './event-list.css'
 
 const data = [
 	{
+		id:"AdCB97",
 		title:"Event #1",
 		color:"#952323",
 		shortDate:"man 19.10"
 	},
 	{
+		id:"ADJcNd",
 		title:"Event #69",
 		color:"#ECEE81",
 		shortDate:"ons 21.10"

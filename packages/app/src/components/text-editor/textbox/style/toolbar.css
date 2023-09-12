@@ -1,0 +1,61 @@
+/* ===== Toolbar ===== */
+
+.bar {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.2rem;
+}
+
+.toolbar {
+	display: flex;
+	gap: 0.2rem;
+	padding: 0 0.45rem;
+}
+
+.icon {
+	box-sizing: border-box;
+	width: 2rem;
+	height: 2rem;
+	background-position: 55% 55%;
+	background-size: 1.3rem;
+	background-repeat: no-repeat;
+	border-radius: 6px;
+
+	cursor: pointer;
+
+	&.active {
+		background-color: #383838;
+	}
+
+	&:hover {
+		background-color: #333333;
+	}
+}
+
+.bold { background-image: svg-load('icons/bold.svg', fill=#fff); }
+.italic { background-image: svg-load('icons/italic.svg', fill=#fff); }
+.underl { background-image: svg-load('icons/underline.svg', fill=#fff); }
+.undo { background-image: svg-load('icons/undo.svg', stroke=#6a6c6e); }
+.redo { background-image: svg-load('icons/redo.svg', stroke=#6a6c6e); }
+
+.split { 
+	margin: 0 0.8rem;
+	height: 1.4rem; 
+	width: 2px; 
+	background-color: #333333; 
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 2px;
+}
+
+.sum {
+	position: relative;
+	opacity: 0.33;
+
+	span {
+		position: absolute;
+		bottom: 0.2rem;
+		right: 0.4rem;
+	}
+}
