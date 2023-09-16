@@ -97,6 +97,7 @@ const prod = (options) => { return {
         path: path.resolve(options.dir, `./build/${options.name}`)
     },
     plugins: [
+        new BundleAnalyzerPlugin({ openAnalyzer: false }), // TODO: Check if CI
         new WorkboxPlugin.GenerateSW({
             swDest: 'worker.js',
             navigateFallback: '/',
@@ -125,10 +126,10 @@ const prod = (options) => { return {
             }],
             overrideExtension: false,
         }),
-		new StaticSiteGeneratorPlugin({
-            globals: { window: {}, isStatic: true, template:options.template },
-            paths: options.paths,
-        }),
+		// new StaticSiteGeneratorPlugin({
+        //     globals: { window: {}, isStatic: true, template:options.template },
+        //     paths: options.paths,
+        // }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
         }),
