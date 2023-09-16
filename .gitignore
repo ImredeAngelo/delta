@@ -4,7 +4,6 @@ node_modules
 .env
 .database
 .yarn
-.yarn/.cache
-.yarn/cache
+!.yarn/plugins
 packages/nginx
 packages/database
