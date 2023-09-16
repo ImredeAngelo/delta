@@ -4,10 +4,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ImageminWebpPlugin = require('imagemin-webp-webpack-plugin')
 const ImageminAvifPlugin = require('imagemin-avif-webpack-plugin')
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 
@@ -48,7 +46,7 @@ const dev = (options) => { return {
     },
     plugins: [
         new BundleAnalyzerPlugin({ openAnalyzer: false }),
-        new HtmlWebpackPlugin({
+        new (require('html-webpack-plugin'))({
             // filename:'index.html',
             favicon: 'public/favicon.ico',
             template: 'index.ejs',
@@ -69,7 +67,7 @@ const dev = (options) => { return {
             }],
             overrideExtension: false,
         }),
-        new ReactRefreshWebpackPlugin(),
+        new (require('@pmmmwh/react-refresh-webpack-plugin')()),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
         }),
@@ -97,16 +95,11 @@ const prod = (options) => { return {
         path: path.resolve(options.dir, `./build/${options.name}`)
     },
     plugins: [
-        new BundleAnalyzerPlugin({ openAnalyzer: false }), // TODO: Check if CI
+        // new BundleAnalyzerPlugin({ openAnalyzer: false }), // TODO: Check if CI
         new WorkboxPlugin.GenerateSW({
             swDest: 'worker.js',
             navigateFallback: '/',
             maximumFileSizeToCacheInBytes: 20971520
-        }),
-		new CopyPlugin({
-            patterns: [
-                "public"
-            ],
         }),
         new ImageminWebpPlugin({
             config:[{
@@ -125,6 +118,11 @@ const prod = (options) => { return {
                 }
             }],
             overrideExtension: false,
+        }),
+		new CopyPlugin({
+            patterns: [
+                "public"
+            ],
         }),
 		// new StaticSiteGeneratorPlugin({
         //     globals: { window: {}, isStatic: true, template:options.template },
