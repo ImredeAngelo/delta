@@ -5,7 +5,7 @@
   "author": "Delta Linjeforening",
   "license": "MIT",
   "scripts": {
-    "setup": "yarn plugin import workspace-tools && yarn plugin import interactive-tools && yarn workspaces focus",
+    "setup": "yarn plugin import workspace-tools && yarn plugin import interactive-tools",
     "start": "yarn workspaces foreach -pvi run start",
     "build": "yarn workspaces foreach -pvi run build",
     "test": "npm run test --workspaces --if-present -p",
