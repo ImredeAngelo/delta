@@ -4,6 +4,7 @@ node_modules
 .env
 .database
 .yarn
-.yarn/install-state.gz
+!.yarn/install-state.gz
+!.yarn/releases/yarn-*.cjs
 packages/nginx
 packages/database
