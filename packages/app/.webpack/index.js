@@ -6,7 +6,6 @@ const CopyPlugin = require("copy-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ImageminWebpPlugin = require('imagemin-webp-webpack-plugin')
 const ImageminAvifPlugin = require('imagemin-avif-webpack-plugin')
-const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 
 // Helpers
@@ -124,10 +123,22 @@ const prod = (options) => { return {
                 "public"
             ],
         }),
-		// new StaticSiteGeneratorPlugin({
-        //     globals: { window: {}, isStatic: true, template:options.template },
+		// new (require('static-site-generator-webpack-plugin'))({
+        //     globals: { window: {}, isStatic: true, template:options.template, platform:'' },
         //     paths: options.paths,
         // }),
+        new (require('html-webpack-plugin'))({
+            // filename:'index.html',
+            favicon: 'public/favicon.ico',
+            template: 'index.ejs',
+            templateParameters: {
+                title: options.template.title,
+                'bundle': '/bundle.js',
+                'stylesheet': '/main.css',
+                'app': '',
+                ...options.template
+            },
+        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
         }),
