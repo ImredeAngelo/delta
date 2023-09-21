@@ -3,7 +3,7 @@ export const ENDPOINT_GET_EVENTS = "/v0/events/getAll";
 export const ENDPOINT_GET_EVENT = "/v0/events/get";
 
 // TODO: Use environment variables
-const host = 'http://192.168.1.99'
+const host = 'http://172.20.10.2'
 
 class API {
     constructor() {

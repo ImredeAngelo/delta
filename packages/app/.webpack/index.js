@@ -20,71 +20,76 @@ const templates = require('./rules/source');
 const styles = require('./rules/style');
 
 // Development build
-const dev = (options) => { return {
-    mode: 'development',
-    devtool: 'inline-source-map',
-    output: {
-        path: path.resolve(options.dir, `./dist/${options.name}`)
-    },
-    devServer: {
-        static: path.resolve('./', './public'),
-        hot: true,
-        server: options.server,
-        allowedHosts: 'all',
-        host: options.host,
-        port: options.port,
-        historyApiFallback: true,
-        client: {
-            webSocketURL: {
-                hostname: options.host,
-                pathname: '/ws',
-                port: options.port,
-                protocol: 'ws'
+const dev = (options) => { 
+    const HtmlWebpackPlugin = require('html-webpack-plugin');
+    const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+    
+    return {
+        mode: 'development',
+        devtool: 'inline-source-map',
+        output: {
+            path: path.resolve(options.dir, `./dist/${options.name}`)
+        },
+        devServer: {
+            static: path.resolve('./', './public'),
+            hot: true,
+            server: options.server,
+            allowedHosts: 'all',
+            host: options.host,
+            port: options.port,
+            historyApiFallback: true,
+            client: {
+                webSocketURL: {
+                    hostname: options.host,
+                    pathname: '/ws',
+                    port: options.port,
+                    protocol: 'ws'
+                },
             },
         },
-    },
-    plugins: [
-        new BundleAnalyzerPlugin({ openAnalyzer: false }),
-        new (require('html-webpack-plugin'))({
-            // filename:'index.html',
-            favicon: 'public/favicon.ico',
-            template: 'index.ejs',
-            templateParameters: {
-                title: options.template.title,
-                'bundle': '/bundle.js',
-                'stylesheet': '/main.css',
-                'app': '',
-                ...options.template
-            },
-        }),
-        new ImageminWebpPlugin({
-            config:[{
-                test: /\.(jpe?g|png)$/i,
-                options: {
-                    quality:  75
-                }
-            }],
-            overrideExtension: false,
-        }),
-        new (require('@pmmmwh/react-refresh-webpack-plugin')()),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
-        }),
-    ],
-    // Ignore workbox warnings and files generated
-    stats: {
-        warningsFilter: [
-            '--watch',
-            'maximumFileSizeToCacheInBytes'
+        plugins: [
+            new BundleAnalyzerPlugin({ openAnalyzer: false }),
+            new HtmlWebpackPlugin({
+                // filename:'index.html',
+                favicon: 'public/favicon.ico',
+                template: 'index.ejs',
+                templateParameters: {
+                    title: options.template.title,
+                    'bundle': '/bundle.js',
+                    'stylesheet': '/main.css',
+                    'app': '',
+                    ...options.template
+                },
+            }),
+            new ImageminWebpPlugin({
+                config:[{
+                    test: /\.(jpe?g|png)$/i,
+                    options: {
+                        quality:  75
+                    }
+                }],
+                overrideExtension: false,
+            }),
+            new ReactRefreshPlugin(),
+            new webpack.DefinePlugin({
+                'process.env.NODE_ENV': JSON.stringify('development')
+            }),
         ],
-        // assets: false,
-        // chunks: false,
-        // hash: false,
-        // modules: false,
-        // version: false,
-        // timings: true
+        // Ignore workbox warnings and files generated
+        stats: {
+            warningsFilter: [
+                '--watch',
+                'maximumFileSizeToCacheInBytes'
+            ],
+            // assets: false,
+            // chunks: false,
+            // hash: false,
+            // modules: false,
+            // version: false,
+            // timings: true
+        }
     }
-}}
+}
 
 // Production build
 const prod = (options) => { return {

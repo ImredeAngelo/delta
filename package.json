@@ -5,19 +5,17 @@
   "author": "Delta Linjeforening",
   "license": "MIT",
   "scripts": {
-    "setup": "yarn plugin import workspace-tools && yarn plugin import interactive-tools && yarn workspaces focus --all --production",
+    "setup": "setup:yarn && setup:py",
+    "setup:yarn": "yarn plugin import workspace-tools && yarn plugin import interactive-tools && yarn workspaces focus --all --production",
+    "setup:py": "py ./scripts/init.py",
     "start": "yarn workspaces foreach -pvi run start",
     "build": "yarn workspaces foreach -pvi run build",
     "test": "npm run test --workspaces --if-present -p",
-    "test:build": "yarn build && docker compose -f \"docker-compose.prod.yml\" up -d --build",
-    "docker": "docker compose -f \"docker-compose.yml\" up -d --build & yarn local",
-    "proxy": "docker compose  -f docker-compose.yml up -d --build proxy --force-recreate"
+    "docker:start": "docker compose -f \"docker-compose.yml\" up -d --build & yarn start",
+    "docker:proxy": "docker compose -f \"docker-compose.yml\" up -d --build nginx --force-recreate"
   },
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "yarn@3.6.3",
-  "dependencies": {
-    "html-webpack-plugin": "^5.5.3"
-  }
+  "packageManager": "yarn@3.6.3"
 }
