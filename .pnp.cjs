@@ -38,7 +38,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["html-webpack-plugin", "virtual:5728de9ecee49125f220443bfcc391882b8742a6efa416fe261ce1dac6c7f70352ba68392bf4ae2b67c3fc3a9827fe629bc36a9923434c96b18c06be7eb6d073#npm:5.5.3"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -3289,8 +3288,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["@delta/deltahouse", "workspace:."],\
-            ["html-webpack-plugin", "virtual:5728de9ecee49125f220443bfcc391882b8742a6efa416fe261ce1dac6c7f70352ba68392bf4ae2b67c3fc3a9827fe629bc36a9923434c96b18c06be7eb6d073#npm:5.5.3"]\
+            ["@delta/deltahouse", "workspace:."]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -5944,6 +5942,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["cors", [\
+        ["npm:2.8.5", {\
+          "packageLocation": "./.yarn/cache/cors-npm-2.8.5-c9935a2d12-ced838404c.zip/node_modules/cors/",\
+          "packageDependencies": [\
+            ["cors", "npm:2.8.5"],\
+            ["object-assign", "npm:4.1.1"],\
+            ["vary", "npm:1.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["cosmiconfig", [\
         ["npm:8.3.6", {\
           "packageLocation": "./.yarn/cache/cosmiconfig-npm-8.3.6-a5566e2779-dc339ebea4.zip/node_modules/cosmiconfig/",\
@@ -7311,6 +7320,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/events/",\
           "packageDependencies": [\
             ["events", "workspace:packages/events"],\
+            ["cors", "npm:2.8.5"],\
             ["express", "npm:4.18.2"],\
             ["nodemon", "npm:3.0.1"]\
           ],\
@@ -8533,24 +8543,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["html-webpack-plugin", "npm:5.5.3"]\
           ],\
           "linkType": "SOFT"\
-        }],\
-        ["virtual:5728de9ecee49125f220443bfcc391882b8742a6efa416fe261ce1dac6c7f70352ba68392bf4ae2b67c3fc3a9827fe629bc36a9923434c96b18c06be7eb6d073#npm:5.5.3", {\
-          "packageLocation": "./.yarn/__virtual__/html-webpack-plugin-virtual-da51ec807f/0/cache/html-webpack-plugin-npm-5.5.3-b4f14786eb-ccf6851957.zip/node_modules/html-webpack-plugin/",\
-          "packageDependencies": [\
-            ["html-webpack-plugin", "virtual:5728de9ecee49125f220443bfcc391882b8742a6efa416fe261ce1dac6c7f70352ba68392bf4ae2b67c3fc3a9827fe629bc36a9923434c96b18c06be7eb6d073#npm:5.5.3"],\
-            ["@types/html-minifier-terser", "npm:6.1.0"],\
-            ["@types/webpack", null],\
-            ["html-minifier-terser", "npm:6.1.0"],\
-            ["lodash", "npm:4.17.21"],\
-            ["pretty-error", "npm:4.0.0"],\
-            ["tapable", "npm:2.2.1"],\
-            ["webpack", null]\
-          ],\
-          "packagePeers": [\
-            "@types/webpack",\
-            "webpack"\
-          ],\
-          "linkType": "HARD"\
         }],\
         ["virtual:f87a972e7ee54256c6d8f979d7f3914b32522893226eba595e4efe4ecc641a239c6d88e01eccc6f32db30829d6ac493bfc98cb406a9b0d6059ee4112c0843da9#npm:5.5.3", {\
           "packageLocation": "./.yarn/__virtual__/html-webpack-plugin-virtual-e1b76331de/0/cache/html-webpack-plugin-npm-5.5.3-b4f14786eb-ccf6851957.zip/node_modules/html-webpack-plugin/",\

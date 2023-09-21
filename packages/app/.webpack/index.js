@@ -46,6 +46,9 @@ const dev = (options) => {
                     protocol: 'ws'
                 },
             },
+            // proxy: { // TODO: Point to development server with DNS address
+            //     '/v0': 'http://0.0.0.0/v0',
+            // },
         },
         plugins: [
             new BundleAnalyzerPlugin({ openAnalyzer: false }),

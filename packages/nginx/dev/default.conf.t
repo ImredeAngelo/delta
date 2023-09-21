@@ -1,5 +1,5 @@
 # Cache
-proxy_cache_path /etc/nginx/scache levels=1:2 keys_zone=cache:10m max_size=10g inactive=60m use_temp_path=off;
+# proxy_cache_path /etc/nginx/scache levels=1:2 keys_zone=cache:10m max_size=10g inactive=60m use_temp_path=off;
 
 # WebP
 map $http_accept $webp_suffix {
