@@ -1,22 +1,23 @@
 const express = require('express')
+const cookies = require('cookie-parser')
 const cors = require('cors')
+const { event } = require('./event')
 
-const app = express()
-const port = 3000
+const server = express()
 
-app.use(cors())
+server.use(express.urlencoded())
+server.use(express.json())
+server.use(cookies())
 
-app.get('/v0/events/get', (req, res) => {
+// if(process.env.MODE == "development")
+	server.use(cors())
+
+server.get('/v0/events/get', (req, res) => {
   	res.send('Hello World!')
 })
 
-app.post('/v0/events/make', (req, res) => {
-	console.log("Posted!")
-	res.status(200).send({
-		msg: 'ok'
-	})
-});
+server.post('/v0/events/make', event.create);
 
-app.listen(port, () => {
-  	console.log(`Example app listening on port ${port}`)
+server.listen(process.env.PORT, () => {
+  	console.log(`Example app listening on port ${process.env.PORT}`)
 })

@@ -5,6 +5,7 @@
     "docker:restart": "docker compose -f ../../docker-compose.yml up -d --build events --force-recreate"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.2"
   },
   "devDependencies": {
