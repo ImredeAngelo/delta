@@ -1,5 +1,9 @@
 /* ===== Toolbar ===== */
 
+.textbox {
+	padding: 0 !important;
+}
+
 .bar {
 	display: flex;
 	justify-content: space-between;

@@ -1,8 +1,18 @@
 @import-glob "./**/style/*.css";
 
-.textbox {
+.wrapper {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.field {
 	border: 1px solid #383838;
 	border-radius: 4px;
+
+	background-color: transparent;
+	padding: 0.45rem;
+	font-size: 1.1rem;
+	color: white;
 }
 
 .content {

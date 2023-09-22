@@ -1,5 +1,4 @@
 const database = require("../database");
-const { uuid } = require("../uuid");
 
 /**
  * Get event from ID
