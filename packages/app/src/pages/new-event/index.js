@@ -4,7 +4,7 @@ import Textbox from '~components/text-editor/textbox'
 import Text from '~components/text-editor/text'
 import s from './new.css'
 import Dropdown from '~components/text-editor/dropdown'
-import Button from '~components/text-editor/button'
+import Submit from '~components/text-editor/submit'
 
 export default function NewEvent(props) {
 	return (
@@ -27,13 +27,15 @@ export default function NewEvent(props) {
 						]}
 					/>
 				</div>
-				<Button setData={(values) => {
+				<Submit setData={(values) => {
 					const desc = JSON.parse(localStorage.getItem('editor-content'));
 					return {
 						...values,
 						description: JSON.stringify(desc)
 					}
-				}}/>
+				}}>
+					Lag Arrangement
+				</Submit>
 			</TextEditor>
 		</div>
 	)
