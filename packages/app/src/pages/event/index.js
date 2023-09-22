@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import BK from './bk.jpeg'
 import MapBK from './map.png'
 import s from './event-page.css'
 import { combine } from '~style'
+import api from '~api'
 
 export default function EventPage(props) {
 	const { id } = useParams();
@@ -18,6 +19,13 @@ export default function EventPage(props) {
 	});
 
 	const link = data.location.replace(' ', '+');
+
+	useEffect(() => {
+		api.get(`/v0/events/get?id=${id}`)
+			.then(r => {
+				console.log("Response: ", r)
+			});
+	}, [])
 
 	return (
 		<div className={s.wrapper}>

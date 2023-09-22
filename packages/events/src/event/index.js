@@ -1,3 +1,4 @@
 exports.event = {
-	create: require('./create')
+	create: require('./create'),
+	get: require('./get'),
 }
