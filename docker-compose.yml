@@ -38,3 +38,8 @@ services:
     build: ./packages/events
     expose:
       - 3000:3000
+    env_file:
+      - .env
+    volumes: # Hot Reload
+      - ./packages/events/src:/usr/src/app
+    command: npm run docker:hmr
