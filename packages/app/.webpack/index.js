@@ -3,6 +3,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin")
+const Million = require('million/compiler')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ImageminWebpPlugin = require('imagemin-webp-webpack-plugin')
 const ImageminAvifPlugin = require('imagemin-avif-webpack-plugin')
@@ -173,6 +174,7 @@ const shared = (options) => { return {
         ]
     },
     plugins: [
+        Million.webpack({ auto: true }), // IDK if this is set up correctly
         new MiniCssExtractPlugin(),
         new CompressionPlugin({
             test: /\.(js|css|html)?$/i,

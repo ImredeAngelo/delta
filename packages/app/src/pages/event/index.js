@@ -6,9 +6,9 @@ import s from './event-page.css'
 import { combine } from '~style'
 import api from '~api'
 
+// million-ignore
 export default function EventPage(props) {
 	const { id } = useParams();
-
     const [ data, setData ] = useState({
 		date: "Mandag 9. sep",
 		start: "19:00",
@@ -23,6 +23,11 @@ export default function EventPage(props) {
 	useEffect(() => {
 		api.get(`/v0/events/get?id=${id}`)
 			.then(r => {
+				setData({
+					...data,
+					...r.data
+				});
+
 				console.log("Response: ", r)
 			});
 	}, [])
@@ -31,7 +36,7 @@ export default function EventPage(props) {
 		<div className={s.wrapper}>
 			<header className={s.header}>
 				<img src={BK} className={s.bk}/>
-				<h2 className={s.title}>{data.title} {id}</h2>
+				<h2 className={s.title}>{data.title}</h2>
 			</header>
 			<div className={s.description}>
 				{ data.description }

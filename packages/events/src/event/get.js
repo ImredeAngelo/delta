@@ -12,7 +12,7 @@ module.exports = (req, res) => {
 	database.execute("SELECT * FROM `Events` WHERE eid = ?", id)
 	.then((results) => {
 		// TODO: Check if user has permission to view this event 
-		const event = results[0];
+		const event = results[0][0];
 
 		res.status(200).send({
 			status: 'success',
