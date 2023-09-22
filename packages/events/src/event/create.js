@@ -11,12 +11,12 @@ module.exports = (req, res, next) => {
 	const { title, description } = req.body;
 	const id = uuid();
 	
-	database.execute("INSERT INTO `Events` (eid, title, color) VALUES (?,?,?)", id, "Test Event #" + id, 0xA73121)
+	database.execute("INSERT INTO `Events` (eid, title, color) VALUES (?,?,?)", id, title, 0xA73121)
 	.then(() => {
 		res.status(200).send({
 			id: id,
 			data: {
-				title: 'Test Event',
+				title: title,
 				color: 0xA73121,
 				description: description
 			},

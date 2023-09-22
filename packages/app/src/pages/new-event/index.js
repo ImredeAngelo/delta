@@ -1,21 +1,10 @@
 import React from 'react'
-import api, { ENDPOINT_MAKE_EVENT } from '~api'
 import TextEditor from '~components/text-editor'
 import Textbox from '~components/text-editor/textbox'
 import Text from '~components/text-editor/text'
 import s from './new.css'
 import Dropdown from '~components/text-editor/dropdown'
-
-const Submit = (props) => {
-	return (
-		<button onClick={() => {
-			const data = props.setData({});
-			api.post(ENDPOINT_MAKE_EVENT, data).then(r => console.log("Response:", r));
-		}}>
-			Lag Arrangement
-		</button>
-	)
-}
+import Button from '~components/text-editor/button'
 
 export default function NewEvent(props) {
 	return (
@@ -38,11 +27,11 @@ export default function NewEvent(props) {
 						]}
 					/>
 				</div>
-				<Submit setData={(values) => {
-					const desc = localStorage.getItem('editor-content');
+				<Button setData={(values) => {
+					const desc = JSON.parse(localStorage.getItem('editor-content'));
 					return {
-						...values
-						// description: desc
+						...values,
+						description: JSON.stringify(desc)
 					}
 				}}/>
 			</TextEditor>

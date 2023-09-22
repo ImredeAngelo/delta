@@ -10,6 +10,7 @@ import api from '~api'
 export default function EventPage(props) {
 	const { id } = useParams();
     const [ data, setData ] = useState({
+		...props.data,
 		date: "Mandag 9. sep",
 		start: "19:00",
 		end: "23:00",
@@ -25,7 +26,7 @@ export default function EventPage(props) {
 			.then(r => {
 				setData({
 					...data,
-					...r.data
+					...r.event
 				});
 
 				console.log("Response: ", r)

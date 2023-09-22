@@ -1,7 +1,7 @@
 const database = require("../database");
 
 function getByID(id, req, res) {
-	return database.execute("SELECT (title, color) FROM `Events` WHERE eid = ?", id)
+	return database.execute("SELECT * FROM `Events` WHERE eid = ?", id)
 	.then((results) => {
 		// TODO: Check if user has permission to view this event 
 		const event = results[0][0];

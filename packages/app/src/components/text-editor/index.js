@@ -23,7 +23,7 @@ export default function TextEditor(props) {
 			},
 			get: () => { 
 				var vals = values;
-				vals[description] = localStorage.getItem('editor-content');
+				vals.description = localStorage.getItem('editor-content');
 				return vals;
 			}
 		}}>
