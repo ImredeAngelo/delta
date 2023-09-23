@@ -1,0 +1,35 @@
+.drop {
+	height: 10rem;
+	margin-bottom: 0.45rem;
+	overflow: hidden;
+	padding: 0 !important;
+	position: relative;
+}
+
+.src {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+}
+
+.file {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+}
+
+.row {
+	display: flex;
+	gap: 0.45rem;
+
+	span {
+		line-height: 1.9rem;
+	}
+}
+
+.btn {
+	font-size: .9rem !important;
+	background-color: gray !important;
+}

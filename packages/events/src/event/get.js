@@ -11,14 +11,16 @@ function getByID(id, req, res) {
 			event: {
 				id: id,
 				title: event.title,
-				color: event.color
+				description: event.description,
+				type: event.type,
+				color: 0xA73121,
 			}
 		})
 	})
 }
 
 function getAll(req, res) {
-	return database.execute("SELECT * FROM `Events`")
+	return database.execute("SELECT * FROM `Events` LIMIT 10")
 	.then((results) => {
 		// TODO: Only show events user is permitted to view 
 		const events = results[0];
@@ -26,7 +28,9 @@ function getAll(req, res) {
 			return {
 				id: v.eid,
 				title: v.title,
-				color: v.color
+				description: v.description,
+				type: v.type,
+				color: 0xA73121,
 			}
 		})
 

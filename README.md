@@ -5,8 +5,7 @@ This is the source code for the future [deltahouse.no](https://www.deltahouse.no
 
 ## Setup
 1. Clone repo
-2. Run `yarn install` from root directory
-3. Run `yarn setup` from root directory
+2. Run `yarn setup` from root directory
 
 ## Structure
 Static SPA (CSR with prerendered html).
