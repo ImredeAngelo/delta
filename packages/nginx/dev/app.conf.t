@@ -60,22 +60,22 @@ server {
         # proxy_set_header            x-powered-by    false;
         # proxy_set_header            server          false;
 
-        root /etc/nginx/data;
         # index index.html;
+        root /etc/nginx/data;
         try_files $uri @app;
     }
 
     location @app {
-        # Redirect Unauthorized Users
-        proxy_intercept_errors on;
-        error_page 401 = @login;
+        # # Redirect Unauthorized Users
+        # proxy_intercept_errors on;
+        # error_page 401 = @login;
 
         proxy_pass http://${APP};
     }
 
-    location @login {
-        rewrite ^ /login$1; # Debugging
+    # location @login {
+    #     rewrite ^ /login$1; # Debugging
         
-        root /etc/nginx/data/login;
-    }
+    #     root /etc/nginx/data/login;
+    # }
 }

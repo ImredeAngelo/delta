@@ -5,6 +5,7 @@ import MapBK from './map.png'
 import s from './event-page.css'
 import { combine } from '~style'
 import api from '~api'
+import Map from './map'
 
 // million-ignore
 export default function EventPage(props) {
@@ -30,7 +31,8 @@ export default function EventPage(props) {
 				});
 
 				console.log("Response: ", r)
-			});
+			})
+			.catch(console.error)
 	}, [])
 
 	return (
@@ -58,7 +60,8 @@ export default function EventPage(props) {
 					</a>
 				</li>
 				<li className={combine(s['info-item'], s.map)}>
-					<img src={MapBK} className={s['map-bk']}/>
+					{/* <img src={MapBK} className={s['map-bk']}/> */}
+					<Map/>
 				</li>
 			</ul>
 			<div className={s.actions}>

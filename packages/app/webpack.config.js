@@ -12,6 +12,6 @@ module.exports = (env, options) => [
         template: {
             'title':'Delta Linjeforening'
         },
-        color: colors.normal,
+        color: colors.normal
     })
 ]

@@ -34,6 +34,7 @@ const dev = (options) => {
         devServer: {
             static: path.resolve('./', './public'),
             hot: true,
+            compress: true,
             server: options.server,
             allowedHosts: 'all',
             host: options.host,
