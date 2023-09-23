@@ -44,7 +44,7 @@ const dev = (options) => {
                 webSocketURL: {
                     hostname: options.host,
                     pathname: '/ws',
-                    port: options.port,
+                    port: 443,
                     protocol: 'ws'
                 },
             },
