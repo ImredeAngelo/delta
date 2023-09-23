@@ -89,3 +89,24 @@
 	border: none;
 }
 
+/* ===== Organizers ===== */
+
+.org {
+	display: flex;
+	gap: 0.45rem;
+}
+
+.list {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	gap: 0.45rem;
+}
+
+/* TODO: Consolidate profile pics */
+.profile {
+	background-color: aquamarine;
+	border-radius: 50%;
+	height: 2.64rem;
+	width: 2.64rem;
+}

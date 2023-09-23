@@ -6,6 +6,7 @@ import s from './event-page.css'
 import { combine } from '~style'
 import api from '~api'
 import Map from './map'
+import Organizer from './organizer'
 
 // million-ignore
 export default function EventPage(props) {
@@ -71,6 +72,7 @@ export default function EventPage(props) {
 					Meld deg på
 				</button>
 			</div>
+			<Organizer by={"Delta Linjeforening"}/>
 		</div>
 	)
 }
