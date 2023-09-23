@@ -2,6 +2,10 @@
 	padding: .5rem .45rem;
 	display: grid;
 	gap: 1rem;
+
+	@media (--vw-large) {
+		background-color: red;
+	}
 }
 
 .bk {

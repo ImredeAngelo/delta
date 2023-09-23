@@ -1,0 +1,35 @@
+.footer {
+	background-color: #0F4C10;
+	border-top: 4px solid #054106;
+	margin-top: 2rem;
+}
+
+.content {
+	padding: 0.45rem;
+	color: black;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.info {
+	display: flex;
+	gap: 0.45rem;
+	/* display: grid;
+	grid-template-columns: repeat(2, 1fr); */
+}
+
+.map {
+	width: 5rem;
+	height: 5rem;
+	background-color: gray;
+}
+
+
+.bar {
+	background-color: #054106;
+	padding: 0.45rem;
+	text-align: center;
+	color: #617464;
+	font-size: 0.9rem;
+}

@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import routes from './routes.js'
 import '~style/global.pcss'
 import Navbar from '~components/navbar/index.js'
+import Footer from '~components/footer/index.js'
 
 export default function App() {
 	const routing = routes.map((r) => (
@@ -15,6 +16,7 @@ export default function App() {
 			<Routes>
 				{ routing }
 			</Routes>
+			<Footer/>
 		</div>
 	)
 }
