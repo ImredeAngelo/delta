@@ -6,6 +6,15 @@
 	background-color: #131313;
 }
 
+.bar {
+	max-width: var(--max-width-s);
+	margin: 0 auto;
+
+	@media (--vw-large) {
+		max-width: var(--max-width-l);
+	}
+}
+
 .header {
 	display: flex;
 	justify-content: space-between;

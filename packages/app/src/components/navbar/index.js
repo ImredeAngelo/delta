@@ -17,12 +17,12 @@ export default function Navbar(props) {
             <div className={nav.bar}>
                 <input id={nav.menustate} type="checkbox"/>
                 <div className={nav.header}>
-                    <span>
+                    <a href={'/'}>
                         <div className={nav.logo}>
                             {/* Delta Linjeforening */}
                         </div>
                         <div className={nav.name}>Delta Linjeforening</div>
-                    </span>
+                    </a>
                     <MenuButton onClick={setOpen} open={open}/>
                 </div>
                 <ul className={nav.content}>
