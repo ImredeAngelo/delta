@@ -29,6 +29,7 @@
     "million": "^2.6.0",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.29",
+    "postcss-css-variables": "^0.19.0",
     "postcss-custom-media": "^10.0.1",
     "postcss-import": "^15.1.0",
     "postcss-import-ext-glob": "^2.1.1",

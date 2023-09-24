@@ -3,15 +3,39 @@
 	display: grid;
 	gap: 1rem;
 
+	max-width: 400px;
+	margin: 0 auto;
+
 	@media (--vw-large) {
-		background-color: red;
+		max-width: 1200px;
 	}
 }
+
+.content {
+	display: grid;
+	gap: 0.9rem;
+
+	@media (--vw-large) {
+		grid-template-columns: repeat(2, 1fr);
+		max-width: 1500px;
+	}
+}
+
+.rhs {
+	display: flex;
+	flex-direction: column;
+	gap: 0.9rem;
+}
+
 
 .bk {
 	width: 100%;
 	height: 12rem;
 	border-radius: 0.45rem;
+
+	@media (--vw-large) {
+		height: 20rem;
+	}
 }
 
 .title {

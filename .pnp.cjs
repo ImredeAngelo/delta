@@ -4717,6 +4717,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["mini-css-extract-plugin", "virtual:f87a972e7ee54256c6d8f979d7f3914b32522893226eba595e4efe4ecc641a239c6d88e01eccc6f32db30829d6ac493bfc98cb406a9b0d6059ee4112c0843da9#npm:2.7.6"],\
             ["postcss", "npm:8.4.29"],\
             ["postcss-colorblind", "npm:1.0.0"],\
+            ["postcss-css-variables", "virtual:f87a972e7ee54256c6d8f979d7f3914b32522893226eba595e4efe4ecc641a239c6d88e01eccc6f32db30829d6ac493bfc98cb406a9b0d6059ee4112c0843da9#npm:0.19.0"],\
             ["postcss-custom-media", "virtual:f87a972e7ee54256c6d8f979d7f3914b32522893226eba595e4efe4ecc641a239c6d88e01eccc6f32db30829d6ac493bfc98cb406a9b0d6059ee4112c0843da9#npm:10.0.1"],\
             ["postcss-import", "virtual:f87a972e7ee54256c6d8f979d7f3914b32522893226eba595e4efe4ecc641a239c6d88e01eccc6f32db30829d6ac493bfc98cb406a9b0d6059ee4112c0843da9#npm:15.1.0"],\
             ["postcss-import-ext-glob", "virtual:f87a972e7ee54256c6d8f979d7f3914b32522893226eba595e4efe4ecc641a239c6d88e01eccc6f32db30829d6ac493bfc98cb406a9b0d6059ee4112c0843da9#npm:2.1.1"],\
@@ -11971,6 +11972,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["browserslist", "npm:4.21.10"],\
             ["postcss", "npm:8.4.29"],\
             ["postcss-value-parser", "npm:4.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/postcss",\
+            "postcss"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["postcss-css-variables", [\
+        ["npm:0.19.0", {\
+          "packageLocation": "./.yarn/cache/postcss-css-variables-npm-0.19.0-ffc801824c-c7bb13c43b.zip/node_modules/postcss-css-variables/",\
+          "packageDependencies": [\
+            ["postcss-css-variables", "npm:0.19.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f87a972e7ee54256c6d8f979d7f3914b32522893226eba595e4efe4ecc641a239c6d88e01eccc6f32db30829d6ac493bfc98cb406a9b0d6059ee4112c0843da9#npm:0.19.0", {\
+          "packageLocation": "./.yarn/__virtual__/postcss-css-variables-virtual-e3bc1ba40b/0/cache/postcss-css-variables-npm-0.19.0-ffc801824c-c7bb13c43b.zip/node_modules/postcss-css-variables/",\
+          "packageDependencies": [\
+            ["postcss-css-variables", "virtual:f87a972e7ee54256c6d8f979d7f3914b32522893226eba595e4efe4ecc641a239c6d88e01eccc6f32db30829d6ac493bfc98cb406a9b0d6059ee4112c0843da9#npm:0.19.0"],\
+            ["@types/postcss", null],\
+            ["balanced-match", "npm:1.0.2"],\
+            ["escape-string-regexp", "npm:1.0.5"],\
+            ["extend", "npm:3.0.2"],\
+            ["postcss", "npm:8.4.29"]\
           ],\
           "packagePeers": [\
             "@types/postcss",\

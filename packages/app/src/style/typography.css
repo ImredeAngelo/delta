@@ -4,4 +4,28 @@ h1 {
 	font-family: stratos-lights, sans-serif;
 	font-style: normal;
 	font-weight: 400;
+	font-size: 2rem;
+}
+
+h2 {
+	font-family: stratos-lights, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.4rem;
+}
+
+h3 {
+	font-family: stratos-light, sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 1.4rem;
+}
+
+p {
+	line-height: 1.2rem;
+}
+
+.bold {
+	font-weight: 700;
+	color: var(--color-delta);
 }

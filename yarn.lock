@@ -2901,6 +2901,7 @@ __metadata:
     mini-css-extract-plugin: ^2.7.6
     postcss: ^8.4.29
     postcss-colorblind: ^1.0.0
+    postcss-css-variables: ^0.19.0
     postcss-custom-media: ^10.0.1
     postcss-import: ^15.1.0
     postcss-import-ext-glob: ^2.1.1
@@ -5096,7 +5097,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"escape-string-regexp@npm:^1.0.2, escape-string-regexp@npm:^1.0.5":
+"escape-string-regexp@npm:^1.0.2, escape-string-regexp@npm:^1.0.3, escape-string-regexp@npm:^1.0.5":
   version: 1.0.5
   resolution: "escape-string-regexp@npm:1.0.5"
   checksum: 6092fda75c63b110c706b6a9bfde8a612ad595b628f0bd2147eea1d3406723020810e591effc7db1da91d80a71a737a313567c5abb3813e8d9c71f4aa595b410
@@ -5358,7 +5359,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"extend@npm:~3.0.2":
+"extend@npm:^3.0.1, extend@npm:~3.0.2":
   version: 3.0.2
   resolution: "extend@npm:3.0.2"
   checksum: a50a8309ca65ea5d426382ff09f33586527882cf532931cb08ca786ea3146c0553310bda688710ff61d7668eba9f96b923fe1420cdf56a2c3eaf30fcab87b515
@@ -9075,6 +9076,19 @@ __metadata:
   peerDependencies:
     postcss: ^8.2.15
   checksum: 511ca9358148fc336808d0f58f1e6ad330b73c1a87f32581f3d541ffa66cb61f2a36c8e76d1defb7c54c577c83f11d9bf2eb0d27a83c963c315b8eb149935bd7
+  languageName: node
+  linkType: hard
+
+"postcss-css-variables@npm:^0.19.0":
+  version: 0.19.0
+  resolution: "postcss-css-variables@npm:0.19.0"
+  dependencies:
+    balanced-match: ^1.0.0
+    escape-string-regexp: ^1.0.3
+    extend: ^3.0.1
+  peerDependencies:
+    postcss: ^8.2.6
+  checksum: c7bb13c43bf107ed15800e421c3cee9db38f1efb5849512b9bacab0fa3f4f6a58b4581b813783cd72d8749f20dc04df766c78c650cb4d728f72fc63e80fb7f7a
   languageName: node
   linkType: hard
 

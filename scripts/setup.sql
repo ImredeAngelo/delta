@@ -4,10 +4,13 @@ CREATE TABLE Events (
 	id 				INT AUTO_INCREMENT PRIMARY KEY,
 	eid				VARCHAR(6) NOT NULL,
 	title 			VARCHAR(32) NOT NULL,
-	description		VARCHAR(250) DEFAULT '',
+	description		VARCHAR(4096) DEFAULT '',
 	type 			INT DEFAULT 0,
 	address 		VARCHAR(64) DEFAULT 'TBA',
 	date			DATETIME, -- NOT NULL,
 	header			BLOB,
 	map				BLOB -- NOT NULL
 )
+
+ALTER TABLE Events
+MODIFY COLUMN description VARCHAR(4096);

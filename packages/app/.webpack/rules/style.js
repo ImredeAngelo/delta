@@ -28,6 +28,7 @@ module.exports = (colorblind, loader) => { return {
                                 'src/style/config.pcss'
                             ]
                         }),
+                        require("postcss-css-variables"),
                         require("postcss-custom-media"),
                         require("postcss-inline-svg"),
                         require("cssnano")({ preset: ['default', { svgo: false }, { discardComments: { removeAll: true }}]}),
