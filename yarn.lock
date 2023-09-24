@@ -5198,6 +5198,7 @@ __metadata:
     express: ^4.18.2
     mysql2: ^3.6.1
     nodemon: ^3.0.1
+    webp-converter: ^2.3.3
   languageName: unknown
   linkType: soft
 
@@ -12063,6 +12064,15 @@ __metadata:
   version: 4.0.2
   resolution: "webidl-conversions@npm:4.0.2"
   checksum: c93d8dfe908a0140a4ae9c0ebc87a33805b416a33ee638a605b551523eec94a9632165e54632f6d57a39c5f948c4bab10e0e066525e9a4b87a79f0d04fbca374
+  languageName: node
+  linkType: hard
+
+"webp-converter@npm:^2.3.3":
+  version: 2.3.3
+  resolution: "webp-converter@npm:2.3.3"
+  dependencies:
+    uuid: ^8.3.2
+  checksum: 5fa1bf1059a94bb74e7bd8e95c73d7551637829b2c38b68e93202215e8de978fcff647ea884a76072f6c7503556b20813458382538029e7f8327db31ce623cde
   languageName: node
   linkType: hard
 

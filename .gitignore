@@ -3,6 +3,7 @@
 **node_modules
 **.venv
 **.yarn
+**.tmp
 
 !.yarn/install-state.gz
 !.yarn/releases

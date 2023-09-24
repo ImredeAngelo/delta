@@ -9,7 +9,10 @@ export default function Submit(props) {
 	return (
 		<button onClick={() => {
 			const data = props.setData(editor.get());
-			api.post(ENDPOINT_MAKE_EVENT, data).then(r => redirect(`/events/${r.id}`));
+
+			console.log("Sending data:", data)
+
+			api.post(ENDPOINT_MAKE_EVENT, data).then(r => console.log("Response from server:", r)) //.then(r => redirect(`/events/${r.id}`));
 		}}>
 			{ props.children }
 		</button>

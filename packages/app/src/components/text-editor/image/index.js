@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import s from '../editor.css'
 import { combine } from '~style';
+import useTextEditor from '../useTextEditor';
 
 function onDrop(e) {
 	e.preventDefault();
@@ -27,10 +28,22 @@ function onDrop(e) {
 
 export default function Image(props) {
 	const [ file, setFile ] = useState(null);
+	const editor = useTextEditor();
 	const refFile = useRef();
 
 	const style = file ? { backgroundImage:`url(${URL.createObjectURL(file)})` } : {}
 	const showFileDialog = () => { refFile.current.click() }
+
+	useEffect(() => {
+		if(file == null) return;
+
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+
+		reader.onload = async () => {
+			editor.set('header', reader.result);
+		}
+	}, [file])
 
 	return (
 		<div>

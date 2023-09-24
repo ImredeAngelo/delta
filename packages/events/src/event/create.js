@@ -1,4 +1,5 @@
 const database = require("../database");
+const { images } = require("../images");
 const { uuid } = require("../uuid");
 
 /**
@@ -8,7 +9,7 @@ const { uuid } = require("../uuid");
  * @param {*} next 
  */
 module.exports = (req, res, next) => {
-	const { title, description } = req.body;
+	const { title, description, header } = req.body;
 	const id = uuid();
 	
 	database.execute("INSERT INTO `Events` (eid, title, description, type) VALUES (?,?,?,?)", id, title, description, 0)
@@ -21,10 +22,11 @@ module.exports = (req, res, next) => {
 				type: 0,
 				color: 0xA73121
 			},
-			body: req.body
+			// body: req.body
 		})
 	
 		console.log(`Created event '${title}' with id: ${id}`)
+		images.save(header, id); 
 	})
 	.catch(err => {
 		console.error(err)

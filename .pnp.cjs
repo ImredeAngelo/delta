@@ -7492,7 +7492,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cors", "npm:2.8.5"],\
             ["express", "npm:4.18.2"],\
             ["mysql2", "npm:3.6.1"],\
-            ["nodemon", "npm:3.0.1"]\
+            ["nodemon", "npm:3.0.1"],\
+            ["webp-converter", "npm:2.3.3"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -15957,6 +15958,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/webidl-conversions-npm-4.0.2-1d159e6409-c93d8dfe90.zip/node_modules/webidl-conversions/",\
           "packageDependencies": [\
             ["webidl-conversions", "npm:4.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["webp-converter", [\
+        ["npm:2.3.3", {\
+          "packageLocation": "./.yarn/unplugged/webp-converter-npm-2.3.3-2f1986c4bd/node_modules/webp-converter/",\
+          "packageDependencies": [\
+            ["webp-converter", "npm:2.3.3"],\
+            ["uuid", "npm:8.3.2"]\
           ],\
           "linkType": "HARD"\
         }]\

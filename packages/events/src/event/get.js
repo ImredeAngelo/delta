@@ -9,10 +9,8 @@ function getByID(id, req, res) {
 		res.status(200).send({
 			status: 'success',
 			event: {
+				...event,
 				id: id,
-				title: event.title,
-				description: event.description,
-				type: event.type,
 				color: 0xA73121,
 			}
 		})

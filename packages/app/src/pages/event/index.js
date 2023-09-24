@@ -19,7 +19,9 @@ export default function EventPage(props) {
 		end: "23:00",
 		location: "Realfagskjelleren, Herman Krags veg 12",
 		description: '[{ "type":"paragraph", "children":[{ "text":"Informasjon kommer!" }] }]',
-		title: "Tittel her"
+		title: "Ukjent Arrangement",
+		header: "url(/bk.jpeg)",
+		type: 0
 	});
 
 	const link = data.location.replace(' ', '+');
@@ -28,9 +30,12 @@ export default function EventPage(props) {
 	useEffect(() => {
 		api.get(`/v0/events/get?id=${id}`)
 			.then(r => {
+				const header = `url(/${id}.png)`;
+
 				setData({
 					...data,
-					...r.event
+					...r.event,
+					header: header,
 				});
 
 				console.log("Response: ", r)
@@ -41,7 +46,16 @@ export default function EventPage(props) {
 	return (
 		<div className={s.wrapper}>
 			<header className={s.header}>
-				<img src={BK} className={s.bk}/>
+				<div className={s.bk}>
+					<div style={{
+						height: '100%',
+						width: '100%',
+						backgroundImage: data.header,
+						backgroundPosition: 'center',
+						backgroundSize: 'cover',
+					}}/>
+					{/* <img src={data.header} className={s.bk}/> */}
+				</div>
 				<h2 className={s.title}>{data.title}</h2>
 			</header>
 			<div className={s.content}>

@@ -7,6 +7,7 @@ services:
       - 443:443
     volumes:
       # - ./build:/etc/nginx/data
+      - ./.tmp:/etc/nginx/images
       - ./packages/nginx/dev:/etc/nginx/templates
     environment:
       - NGINX_ENVSUBST_TEMPLATE_SUFFIX=.t
@@ -40,6 +41,7 @@ services:
       - 3000:3000
     env_file:
       - .env
-    volumes: # Hot Reload
-      - ./packages/events/src:/usr/src/app
+    volumes:
+      - ./packages/events/src:/usr/src/app  # Hot Reload
+      - ./.tmp:/usr/src/images               # Header Images -> /etc/nginx/images (in nginx container)
     command: npm run docker:hmr

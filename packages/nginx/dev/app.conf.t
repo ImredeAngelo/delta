@@ -36,6 +36,14 @@ server {
 
     # Transparently serve WebP files
     location ~ \.(png|jpe?g) {
+        # TODO: Files are only served when .webp exists (fix this)
+        # TODO: Transparently serve .webp or .avif if supported, fallback to .png/.jpeg
+
+        root /etc/nginx/images;
+        try_files $uri$webp_suffix $uri @app_webp;
+    }
+
+    location @app_webp {
         proxy_pass http://${APP}$uri$webp_suffix;
     }
     
@@ -57,8 +65,9 @@ server {
         proxy_set_header            X-Forwarded-For $proxy_add_x_forwarded_for;
 
         # proxy_set_header            X-NginX-Proxy   false;
-        # proxy_set_header            x-powered-by    false;
-        # proxy_set_header            server          false;
+        proxy_set_header            X-Powered-By            false;
+        proxy_set_header            X-Content-Type-Options  false;
+        proxy_set_header            Server                  false;
 
         # index index.html;
         root /etc/nginx/data;

@@ -1,16 +1,16 @@
 -- Active: 1667734353605@@127.0.0.1@3306@db
 DROP TABLE `Events`;
 CREATE TABLE Events (
-	id 				INT AUTO_INCREMENT PRIMARY KEY,
-	eid				VARCHAR(6) NOT NULL,
+	id 				INT AUTO_INCREMENT,
+	eid				VARCHAR(6) NOT NULL UNIQUE PRIMARY KEY,
 	title 			VARCHAR(32) NOT NULL,
-	description		VARCHAR(4096) DEFAULT '',
+	description		VARCHAR(4096) DEFAULT ' ',
 	type 			INT DEFAULT 0,
 	address 		VARCHAR(64) DEFAULT 'TBA',
 	date			DATETIME, -- NOT NULL,
-	header			BLOB,
+	header			MEDIUMBLOB,
 	map				BLOB -- NOT NULL
 )
 
 ALTER TABLE Events
-MODIFY COLUMN description VARCHAR(4096);
+MODIFY COLUMN header MEDIUMBLOB;
