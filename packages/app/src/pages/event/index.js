@@ -20,7 +20,7 @@ export default function EventPage(props) {
 		location: "Realfagskjelleren, Herman Krags veg 12",
 		description: '[{ "type":"paragraph", "children":[{ "text":"Informasjon kommer!" }] }]',
 		title: "Ukjent Arrangement",
-		header: "url(/bk.jpeg)",
+		header: "black",
 		type: 0
 	});
 
@@ -47,14 +47,7 @@ export default function EventPage(props) {
 		<div className={s.wrapper}>
 			<header className={s.header}>
 				<div className={s.bk}>
-					<div style={{
-						height: '100%',
-						width: '100%',
-						backgroundImage: data.header,
-						backgroundPosition: 'center',
-						backgroundSize: 'cover',
-					}}/>
-					{/* <img src={data.header} className={s.bk}/> */}
+					<div className={s['bk-img']} style={{ backgroundImage: data.header }}/>
 				</div>
 				<h2 className={s.title}>{data.title}</h2>
 			</header>

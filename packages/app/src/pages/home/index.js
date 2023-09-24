@@ -4,7 +4,7 @@ import Events from '~components/events'
 export default function HomePage() {
 	return (
 		<div>
-			<h3>Arrangementer</h3>
+			<h1>Arrangementer</h1>
 			<Events/>
 		</div>
 	)
