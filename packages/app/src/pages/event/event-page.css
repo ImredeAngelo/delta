@@ -31,7 +31,6 @@
 .bk {
 	width: 100%;
 	height: 12rem;
-	border-radius: 0.45rem;
 
 	@media (--vw-large) {
 		height: 20rem;
@@ -39,8 +38,10 @@
 }
 
 .bk-img {
+	border-radius: 0.45rem;
 	height: 100%;
 	width: 100%;
+	
 	background-position: center;
 	background-size: cover;
 }

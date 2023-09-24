@@ -4,9 +4,6 @@ const { uuid } = require("../uuid");
 
 /**
  * Make a new event
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
  */
 module.exports = (req, res, next) => {
 	const { title, description, header } = req.body;
@@ -22,7 +19,6 @@ module.exports = (req, res, next) => {
 				type: 0,
 				color: 0xA73121
 			},
-			// body: req.body
 		})
 	
 		console.log(`Created event '${title}' with id: ${id}`)

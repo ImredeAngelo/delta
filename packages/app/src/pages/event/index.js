@@ -18,24 +18,25 @@ export default function EventPage(props) {
 		start: "19:00",
 		end: "23:00",
 		location: "Realfagskjelleren, Herman Krags veg 12",
-		description: '[{ "type":"paragraph", "children":[{ "text":"Informasjon kommer!" }] }]',
+		description: [{ type:"paragraph", children:[{ text:"Informasjon kommer!" }] }],
 		title: "Ukjent Arrangement",
 		header: "black",
 		type: 0
 	});
 
 	const link = data.location.replace(' ', '+');
-	const description = JSON.parse(data.description);
 
 	useEffect(() => {
 		api.get(`/v0/events/get?id=${id}`)
 			.then(r => {
 				const header = `url(/${id}.png)`;
+				const description = JSON.parse(r.description);
 
 				setData({
 					...data,
 					...r.event,
 					header: header,
+					description: description,
 				});
 
 				console.log("Response: ", r)
