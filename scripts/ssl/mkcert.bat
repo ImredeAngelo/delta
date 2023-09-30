@@ -2,10 +2,18 @@
 setlocal enabledelayedexpansion
 
 :: Load environment
-if exist ".env" (
-    for /f "tokens=1* delims==" %%A in (.env) do (
-        set "%%A=%%B"
-    )
+@REM if exist ".env" (
+@REM     for /f "tokens=1* delims==" %%A in (.env) do (
+@REM         set "%%A=%%B"
+@REM     )
+@REM )
+
+:: Add local IP address to cert
+set ip_address_string="IPv4 Address"
+set "ip_list=" 
+
+for /f "usebackq tokens=2 delims=:" %%f in (`ipconfig ^| findstr /c:%ip_address_string%`) do (
+    set "ip_list=!ip_list! %%f"
 )
 
 :: Download mkcert binary
@@ -18,6 +26,6 @@ if exist "scripts\ssl\mkcert.exe" (
 
 :: Trust and use mkcert
 scripts\\ssl\\mkcert.exe -install
-scripts\\ssl\\mkcert.exe -cert-file ./packages/nginx/ssl/ssl.crt -key-file ./packages/nginx/ssl/ssl.key localhost 127.0.0.1 deltahouse.no %HOST_IP% %HOST_IP_5G%
+scripts\\ssl\\mkcert.exe -cert-file ./packages/nginx/ssl/ssl.crt -key-file ./packages/nginx/ssl/ssl.key localhost 127.0.0.1 deltahouse.no !ip_list!
 
 endlocal

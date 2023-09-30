@@ -43,5 +43,5 @@ services:
       - .env
     volumes:
       - ./packages/events/src:/usr/src/app  # Hot Reload
-      - ./.tmp:/usr/src/images               # Header Images -> /etc/nginx/images (in nginx container)
+      - ./.tmp:/usr/src/images              # Header Images -> /etc/nginx/images (in nginx container)
     command: npm run docker:hmr
