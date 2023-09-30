@@ -58,3 +58,11 @@ services:
     volumes:
       - ./packages/users/src:/usr/src/app  # Hot Reload
     command: npm run docker:hmr
+  mail:
+    container_name: mail-server
+    build: ./packages/mail
+    expose:
+      - 25:25
+    extra_hosts:
+      - mail.deltahouse.no:${HOST_IP}
+      - deltahouse.no:${HOST_IP}

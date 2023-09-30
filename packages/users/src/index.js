@@ -1,7 +1,7 @@
 const express = require('express')
 const cookies = require('cookie-parser')
 const { token } = require('./token')
-const { login } = require('./user/login')
+const { user } = require('./user')
 
 // ===== Server Config
 
@@ -12,8 +12,8 @@ server.use(cookies())
 
 // ===== Routes
 
-server.post('/v0/users/login', login)
-server.post('/v0/users/register', login)
+server.post('/v0/users/login', user.login)
+server.post('/v0/users/register', user.register)
 
 // ===== Entrypoint
 

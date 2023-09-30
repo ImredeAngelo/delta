@@ -1,7 +1,7 @@
 const { token } = require('../token');
 const { uuid, base33 } = require('../uuid');
 
-exports.login = (req, res) => {
+module.exports = (req, res) => {
     const { user, pass } = req.body;
     const id = uuid(5, base33);
 
