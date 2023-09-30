@@ -1,6 +1,7 @@
 version: '3.9'
 services:
   nginx:
+    container_name: proxy
     build: ./packages/nginx
     ports:
       - 80:80
@@ -14,6 +15,7 @@ services:
       - HOST=${HOST_IP} # deltahouse.no
       - APP=${HOST_IP}:4443
       - EVENTS=events:3000
+      - USERS=users:4000
   db:
     image: mysql:8
     restart: unless-stopped
@@ -36,6 +38,7 @@ services:
     depends_on:
       - db
   events:
+    container_name: events
     build: ./packages/events
     expose:
       - 3000:3000
@@ -44,4 +47,14 @@ services:
     volumes:
       - ./packages/events/src:/usr/src/app  # Hot Reload
       - ./.tmp:/usr/src/images              # Header Images -> /etc/nginx/images (in nginx container)
+    command: npm run docker:hmr
+  users:
+    container_name: users
+    build: ./packages/users
+    expose:
+      - 4000:4000
+    env_file:
+      - .env
+    volumes:
+      - ./packages/users/src:/usr/src/app  # Hot Reload
     command: npm run docker:hmr

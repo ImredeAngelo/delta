@@ -29,14 +29,12 @@ const serialize = (node, count = 0) => {
  */
 export default function Display(props) {
 	const { text } = props;
-	const html = serialize({
-		children: text,
-	});
+	// const html = serialize({ children: text });
 
 	// TODO: Skeleton text while loading
-	return html ? html : (
+	return text ? serialize({ children: text }) : (
 		<div>
-			Nothing here!
+			Info kommer!
 		</div>
 	)
 }

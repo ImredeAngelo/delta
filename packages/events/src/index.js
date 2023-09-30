@@ -8,7 +8,7 @@ const server = express()
 
 // ===== Server Config
 
-server.use(express.urlencoded())
+// server.use(express.urlencoded())
 server.use(express.json({ limit: '10mb' }))
 server.use(cookies())
 server.use(cors()) // if(process.env.MODE == "development")

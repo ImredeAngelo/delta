@@ -1,0 +1,7 @@
+.wrapper {
+    max-width: var(--max-width-l);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

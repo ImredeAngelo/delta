@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import BK from './bk.jpeg'
-import MapBK from './map.png'
 import s from './event-page.css'
 import { combine } from '~style'
 import api from '~api'
 import Map from './map'
 import Organizer from './organizer'
-import Display from '~components/text-editor/display/display'
+import Display from '~components/text-editor/display'
 
 // million-ignore
 export default function EventPage(props) {
@@ -30,7 +28,7 @@ export default function EventPage(props) {
 		api.get(`/v0/events/get?id=${id}`)
 			.then(r => {
 				const header = `url(/${id}.png)`;
-				const description = JSON.parse(r.description);
+				const description = JSON.parse(r.event.description);
 
 				setData({
 					...data,
@@ -39,8 +37,9 @@ export default function EventPage(props) {
 					description: description,
 				});
 
-				console.log("Response: ", r)
+				// return r;
 			})
+			// .then(r => console.log("State", data))
 			.catch(console.error)
 	}, [])
 
@@ -54,7 +53,7 @@ export default function EventPage(props) {
 			</header>
 			<div className={s.content}>
 				<div className={s.description}>
-					<Display text={description}/>
+					<Display text={data.description}/>
 				</div>
 				<div className={s.rhs}>
 					<ul className={s.info}>
