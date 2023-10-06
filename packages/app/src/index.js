@@ -1,9 +1,10 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import routes from './routes.js'
-import Navbar from '~components/navbar/index.js'
-import Footer from '~components/footer/index.js'
+import Navbar from '~components/navbar'
+import Footer from '~components/footer'
 import '~style/global.pcss'
+import User from '~components/user'
 
 export default function App() {
 	const routing = routes.map((r) => (
@@ -11,12 +12,12 @@ export default function App() {
     ))
 
 	return (
-		<div>
+		<User>
 			<Navbar/>
 			<Routes>
 				{ routing }
 			</Routes>
 			<Footer/>
-		</div>
+		</User>
 	)
 }

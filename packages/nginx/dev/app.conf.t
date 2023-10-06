@@ -1,11 +1,11 @@
 server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
+    listen 443 ssl http2 default_server;
+    listen [::]:443 ssl http2 default_server;
     
     ssl_certificate     /etc/letsencrypt/live/delta/ssl.crt;
     ssl_certificate_key /etc/letsencrypt/live/delta/ssl.key;
 
-    server_name ${HOST};
+    server_name deltahouse.no;
     
     # Debugging
     access_log on;
@@ -19,48 +19,15 @@ server {
     gzip_comp_level 6;
     gzip_buffers 16 8k;
     gzip_http_version 1.1;
-    
-    # Set max upload size to 10Mb 
-    client_max_body_size 10M;
-
-    # API
-    location /v0/events {
-        access_log on;
-    
-        proxy_set_header    Host                $host;
-        proxy_set_header    X-Real-IP           $remote_addr;
-        proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
-        proxy_set_header    X-Forwarded-Proto   https;
-        proxy_pass_header   Content-Type;       # no-cors mode requires proxy_set_header Content-Type application/json
-
-        proxy_pass http://${EVENTS};
-        proxy_redirect off;
-    }
-    
-    location /v0/users {
-        access_log on;
-    
-        proxy_set_header    Host                $host;
-        proxy_set_header    X-Real-IP           $remote_addr;
-        proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
-        proxy_set_header    X-Forwarded-Proto   https;
-        proxy_pass_header   Content-Type;       # no-cors mode requires proxy_set_header Content-Type application/json
-
-        proxy_pass http://${USERS};
-        proxy_redirect off;
-    }
 
     # Transparently serve WebP files
     location ~ \.(png|jpe?g) {
-        # TODO: Files are only served when .webp exists (fix this)
-        # TODO: Transparently serve .webp or .avif if supported, fallback to .png/.jpeg
-
         root /etc/nginx/images;
-        try_files $uri$webp_suffix $uri @app_webp;
+        try_files $uri$suffix $uri @app_webp @app;
     }
 
     location @app_webp {
-        proxy_pass http://${APP}$uri$webp_suffix;
+        proxy_pass http://${APP}$uri$suffix;
     }
     
     # Hot reload
@@ -76,14 +43,14 @@ server {
     location / {
         access_log on;
         
-        proxy_set_header            Host            $host;
-        proxy_set_header            X-Real-IP       $remote_addr;
-        proxy_set_header            X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    Host            $host;
+        proxy_set_header    X-Real-IP       $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
 
-        # proxy_set_header            X-NginX-Proxy   false;
-        proxy_set_header            X-Powered-By            false;
-        proxy_set_header            X-Content-Type-Options  false;
-        proxy_set_header            Server                  false;
+        # Hide server
+        add_header          X-Powered-By            "" always;
+        add_header          X-Content-Type-Options  "" always;
+        add_header          Server                  "" always;
 
         # index index.html;
         root /etc/nginx/data;
