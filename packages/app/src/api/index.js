@@ -2,8 +2,18 @@ export const ENDPOINT_MAKE_EVENT = "/v0/events/make";
 export const ENDPOINT_GET_EVENTS = "/v0/events/getAll";
 export const ENDPOINT_GET_EVENT = "/v0/events/get";
 
-// TODO Use environment variables
-const host = '' // 'https://192.168.1.99' // 172.20.10.2
+export const endpoints = {
+    events: {
+        make: "/v0/events/make",
+        getAll: "/v0/events/get",
+        getID: "/v0/events/make",
+    },
+    users: {
+        login: "/v0/users/login",
+    }
+}
+
+const host = process.env.HOST;
 
 class API {
     constructor() {
@@ -20,6 +30,7 @@ class API {
             body: JSON.stringify(data)
         })
         .then(r => json ? r.json() : r.text())
+        .catch(e => console.error("A server error occured: ", e))
     }
 
     get(endpoint, json = true) {
@@ -28,6 +39,7 @@ class API {
             headers: this.header
         })
         .then(r => json ? r.json() : r.text())
+        .catch(e => console.error("A server error occured: ", e))
     }
 }
 

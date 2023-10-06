@@ -10,6 +10,12 @@ server {
     # Debugging
     access_log on;
     
+    # Hide server info
+    proxy_hide_header   X-Powered-By;
+    proxy_hide_header   X-Content-Type-Options;
+    server_tokens off;
+    autoindex off;
+    
     # Compression
     gzip on;
     gzip_static on;
@@ -46,11 +52,6 @@ server {
         proxy_set_header    Host            $host;
         proxy_set_header    X-Real-IP       $remote_addr;
         proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-
-        # Hide server
-        add_header          X-Powered-By            "" always;
-        add_header          X-Content-Type-Options  "" always;
-        add_header          Server                  "" always;
 
         # index index.html;
         root /etc/nginx/data;

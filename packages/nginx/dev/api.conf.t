@@ -5,9 +5,15 @@ server {
     ssl_certificate     /etc/letsencrypt/live/delta/ssl.crt;
     ssl_certificate_key /etc/letsencrypt/live/delta/ssl.key;
 
-    server_name api.deltahouse.no;
+    server_name api.deltahouse.no api.localhost;
 
-    # Set max upload size to 10Mb 
+    # Hide server info
+    proxy_hide_header   X-Powered-By;
+    proxy_hide_header   X-Content-Type-Options;
+    server_tokens off;
+    autoindex off;
+
+    # Set max upload size, required for images
     client_max_body_size 10M;
 
     # API
