@@ -6,7 +6,7 @@
     "docker:hmr": "nodemon -L ./app",
     "reload": "docker compose -f ../../docker-compose.yml up -d --build users --force-recreate",
     "test": "jest --errorOnDeprecated --config='../../jest.config.js'",
-    "test:coverage": "jest --errorOnDeprecated --config='../../jest.config.js'"
+    "test:coverage": "jest --coverage --errorOnDeprecated --config='../../jest.config.js'"
   },
   "dependencies": {
     "argon2": "^0.31.1",

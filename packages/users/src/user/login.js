@@ -5,11 +5,14 @@ const create = require('./create');
 
 module.exports = (req, res) => {
     const { user, pass } = req.body;
-    let status = 403;
+    let status = {
+        code: 200,
+        uid: ''
+    }
 
-    // Check if token exists -> Refresh token
+    // TODO: Check if token exists -> Refresh token
     // Check if user is not registered -> Register
-    // Check if hash matches password -> Reject
+    // Check if hash matches password
     // Generate new JWT token
     
     // TODO: Separate register page
@@ -17,23 +20,18 @@ module.exports = (req, res) => {
         .then(async (u) => {
             if(u) {
                 // User exists -> Check password
-                // argon2.generateSalt().hash(password, { raw:true })
-
-                // const password = await argon2.hash(pass, { raw:false });
-                // console.log(password, u.password);
-
-                if(argon2.verify(`$argon2id$v=19$m=65536,t=3,p=4$${u.password}`, pass)) {
+                if(argon2.verify(`$argon2id$v=19$m=65536,t=3,p=4$${u.password}`, pass))
                     return u.id;
-                }
                 
                 throw "Wrong username or password";
             }
             
-            // Make new user // Status 201
-            status = 201;
+            // Make new user TODO: Do not auto register
+            status.code = 201;
             return create(user, pass);
         })
-        .then(id => token.generate({ user:id }))
+        .then(id => status.uid = id)
+        .then(() => token.generate({ user:status.uid }))
         .then(jwt => {
             res.cookie("user", jwt, {
                 secure: true,
@@ -41,11 +39,11 @@ module.exports = (req, res) => {
                 httpOnly: true,
                 sameSite: 'strict'
             })
-            .status(200)
+            .status(status.code)
             .send({
                 status:"success",
                 user: {
-                    // id:id,
+                    id:status.uid,
                     name:"Default User"
                 }
             })
