@@ -13,7 +13,8 @@ export const endpoints = {
     }
 }
 
-const host = process.env.HOST;
+// Defined in webpack
+const host = process.env.API_HOST;
 
 class API {
     constructor() {

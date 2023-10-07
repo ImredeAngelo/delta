@@ -4,6 +4,7 @@
 **.venv
 **.yarn
 **.tmp
+.vscode
 
 !.yarn/install-state.gz
 !.yarn/releases

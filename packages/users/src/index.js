@@ -1,5 +1,7 @@
 const express = require('express')
 const cookies = require('cookie-parser')
+const cors = require('cors')
+
 const { token } = require('./token')
 const { user } = require('./user')
 
@@ -9,6 +11,7 @@ const server = express()
 
 server.use(express.json())
 server.use(cookies())
+server.use(cors()) 
 
 // ===== Routes
 

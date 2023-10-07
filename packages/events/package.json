@@ -3,7 +3,7 @@
   "scripts": {
     "start:local": "nodemon ./src",
     "docker:hmr": "nodemon -L ./app",
-    "docker:restart": "docker compose -f ../../docker-compose.yml up -d --build events --force-recreate"
+    "reload": "docker compose -f ../../docker-compose.yml up -d --build events --force-recreate"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",

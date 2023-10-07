@@ -1,4 +1,5 @@
 exports.user = {
     login: require('./login'),
-    register: require('./register')
+    register: require('./register'),
+    exists: require('./exists'),
 }

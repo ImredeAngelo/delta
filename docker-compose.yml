@@ -13,7 +13,7 @@ services:
       - ./packages/nginx/dev:/etc/nginx/templates
     environment:
       - NGINX_ENVSUBST_TEMPLATE_SUFFIX=.t
-      - APP=${HOST_IP}:4443
+      - APP=127.0.0.1:4443
       - EVENTS=events:3000
       - USERS=users:4000
     extra_hosts:

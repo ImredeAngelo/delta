@@ -4,14 +4,20 @@
   "scripts": {
     "start:local": "nodemon ./src",
     "docker:hmr": "nodemon -L ./app",
-    "docker:restart": "docker compose -f ../../docker-compose.yml up -d --build events --force-recreate"
+    "reload": "docker compose -f ../../docker-compose.yml up -d --build users --force-recreate",
+    "test": "jest"
   },
   "dependencies": {
+    "argon2": "^0.31.1",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "jose": "^4.14.6"
+    "jose": "^4.14.6",
+    "mysql2": "^3.6.1",
+    "node-gyp": "^9.4.0"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.0.1"
   }
 }
