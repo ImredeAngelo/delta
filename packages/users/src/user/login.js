@@ -5,8 +5,8 @@ const exists = require('./exists');
 const register = require('./register');
 const database = require('../database');
 
-function get(username, ...fields) {
-    database.execute("SELECT * FROM Users WHERE ");
+function get(mail, ...fields) {
+    database.execute("SELECT * FROM Users WHERE mail = ?", mail);
 }
 
 module.exports = (req, res) => {
@@ -16,7 +16,6 @@ module.exports = (req, res) => {
     // Check if user is not registered -> Register
     // Check if hash matches password -> Reject
     // Generate new JWT token
-    
     
     get(user, "cred") // TODO: Separate register page
         .then(u => argon2.verify(u.password, pass), () => register(req, res))
