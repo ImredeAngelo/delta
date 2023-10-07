@@ -1,4 +1,6 @@
-describe('Create User', () => { console.log("Yes") });
+describe('Create User', () => { 
+    
+});
 
 describe('Delete User', () => {
     test('Test', () => {

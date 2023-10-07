@@ -3996,6 +3996,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cors", "npm:2.8.5"],\
             ["express", "npm:4.18.2"],\
             ["jest", "virtual:1e8e096b06e126dfc40add58cb63f5bd53f3d9916ef5e549d3e524b91ca3af213ea5245e7ebfb2670a9f9fc91f1850b9e1edbad896f8a63cbd92c8be82c199b5#npm:29.7.0"],\
+            ["jest-teamcity", "npm:1.11.0"],\
             ["jose", "npm:4.14.6"],\
             ["mysql2", "npm:3.6.1"],\
             ["node-gyp", "npm:9.4.0"],\
@@ -11693,6 +11694,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["natural-compare", "npm:1.4.0"],\
             ["pretty-format", "npm:29.7.0"],\
             ["semver", "npm:7.5.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["jest-teamcity", [\
+        ["npm:1.11.0", {\
+          "packageLocation": "./.yarn/cache/jest-teamcity-npm-1.11.0-7bb0a2a6ec-fa73a22142.zip/node_modules/jest-teamcity/",\
+          "packageDependencies": [\
+            ["jest-teamcity", "npm:1.11.0"]\
           ],\
           "linkType": "HARD"\
         }]\
