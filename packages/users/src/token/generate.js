@@ -2,7 +2,7 @@ const jwt = require('jose')
 const { privateKey, algorithm } = require('./keys')
 
 /**
- * Generate token for user
+ * Generate JWT session token for user
  * @param {*} user 
  * @returns 
  */
@@ -13,7 +13,7 @@ module.exports = (user) => new Promise(async (resolve, reject) => {
     .setProtectedHeader({ alg: algorithm })
     .setExpirationTime('24h')
     .sign(privateKey)
+    .catch(reject)
 
-    if(token) resolve(token)
-    else reject("Failed to make token")
+    resolve(token)
 })

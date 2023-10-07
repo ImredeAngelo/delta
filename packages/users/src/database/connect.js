@@ -1,9 +1,9 @@
 const mysql = require('mysql2/promise');
 
 const connection = {
-    host: process.env.DATABASE_IP,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
+    host: process.env.DATABASE_IP || 'localhost',
+    user: process.env.MYSQL_USER || 'user',
+    password: process.env.MYSQL_PASSWORD || 'passord',
     database: 'db',
     port: '3306',
 }

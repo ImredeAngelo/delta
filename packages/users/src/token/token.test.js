@@ -11,6 +11,8 @@ describe("JWT Tokens", () => {
         expect(jwt).toMatch(/[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+/);
     })
 
+    // TODO: Generate invalid JWT token
+
     test('Verify valid JWT token', async () => {
         const token = await generate(user);
         const verified = await verify(token);

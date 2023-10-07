@@ -1,24 +1,38 @@
 const { token } = require('../token');
-const { uuid, base33 } = require('../uuid');
 const argon2 = require('argon2');
-const exists = require('./exists');
-const register = require('./register');
-const database = require('../database');
-
-function get(mail, ...fields) {
-    database.execute("SELECT * FROM Users WHERE mail = ?", mail);
-}
+const get = require('./get');
+const create = require('./create');
 
 module.exports = (req, res) => {
     const { user, pass } = req.body;
+    let status = 403;
 
     // Check if token exists -> Refresh token
     // Check if user is not registered -> Register
     // Check if hash matches password -> Reject
     // Generate new JWT token
     
-    get(user, "cred") // TODO: Separate register page
-        .then(u => argon2.verify(u.password, pass), () => register(req, res))
+    // TODO: Separate register page
+    return get(user, "mail") 
+        .then(async (u) => {
+            if(u) {
+                // User exists -> Check password
+                // argon2.generateSalt().hash(password, { raw:true })
+
+                // const password = await argon2.hash(pass, { raw:false });
+                // console.log(password, u.password);
+
+                if(argon2.verify(`$argon2id$v=19$m=65536,t=3,p=4$${u.password}`, pass)) {
+                    return u.id;
+                }
+                
+                throw "Wrong username or password";
+            }
+            
+            // Make new user // Status 201
+            status = 201;
+            return create(user, pass);
+        })
         .then(id => token.generate({ user:id }))
         .then(jwt => {
             res.cookie("user", jwt, {
@@ -31,16 +45,16 @@ module.exports = (req, res) => {
             .send({
                 status:"success",
                 user: {
-                    id:id,
+                    // id:id,
                     name:"Default User"
                 }
             })
         })
-        .then(() => {
-            console.log(`User ${id} (${user}) logged in: ${data.hash}`)
-        })
+        // .then(() => {
+        //     console.log(`User ${id} (${user}) logged in: ${data.hash}`)
+        // })
         .catch(e => {
             res.status(403).send();
-            console.error(e);
+            // console.error(e);
         })
 }

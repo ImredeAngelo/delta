@@ -10,6 +10,8 @@ module.exports = (query, ...params) => new Promise(async (res, rej) => {
 
 	connection.execute(query, params)
 		.then((results, fields) => {
+			// console.log(query, params);
+			// console.log("Results: ", results);
 			connection.release();
 			res(results);
 		})

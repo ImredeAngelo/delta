@@ -3993,6 +3993,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/users/",\
           "packageDependencies": [\
             ["@deltahouse/users", "workspace:packages/users"],\
+            ["@jest-mock/express", "npm:2.0.2"],\
             ["argon2", "npm:0.31.1"],\
             ["cookie-parser", "npm:1.4.6"],\
             ["cors", "npm:2.8.5"],\
@@ -4058,6 +4059,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@istanbuljs-schema-npm-0.1.3-466bd3eaaa-5282759d96.zip/node_modules/@istanbuljs/schema/",\
           "packageDependencies": [\
             ["@istanbuljs/schema", "npm:0.1.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@jest-mock/express", [\
+        ["npm:2.0.2", {\
+          "packageLocation": "./.yarn/cache/@jest-mock-express-npm-2.0.2-ae537177fe-558feb47e7.zip/node_modules/@jest-mock/express/",\
+          "packageDependencies": [\
+            ["@jest-mock/express", "npm:2.0.2"],\
+            ["@types/express", "npm:4.17.18"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4864,6 +4875,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-express-npm-4.17.17-46fe8173db-0196dacc27.zip/node_modules/@types/express/",\
           "packageDependencies": [\
             ["@types/express", "npm:4.17.17"],\
+            ["@types/body-parser", "npm:1.19.3"],\
+            ["@types/express-serve-static-core", "npm:4.17.36"],\
+            ["@types/qs", "npm:6.9.8"],\
+            ["@types/serve-static", "npm:1.15.2"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:4.17.18", {\
+          "packageLocation": "./.yarn/cache/@types-express-npm-4.17.18-c095318854-8c178da4f0.zip/node_modules/@types/express/",\
+          "packageDependencies": [\
+            ["@types/express", "npm:4.17.18"],\
             ["@types/body-parser", "npm:1.19.3"],\
             ["@types/express-serve-static-core", "npm:4.17.36"],\
             ["@types/qs", "npm:6.9.8"],\

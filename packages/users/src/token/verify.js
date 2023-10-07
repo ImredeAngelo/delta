@@ -2,7 +2,7 @@ const jose = require('jose');
 const { privateKey, algorithm } = require('./keys');
 
 /**
- * Checks if the token is valid
+ * Checks if the given token is valid, and returns data
  * @param {*} token 
  * @returns 
  */
