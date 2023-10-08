@@ -13,7 +13,7 @@ services:
       - ./packages/nginx/dev:/etc/nginx/templates
     environment:
       - NGINX_ENVSUBST_TEMPLATE_SUFFIX=.t
-      - APP=127.0.0.1:4443
+      - APP=${HOST_IP}:4443
       - EVENTS=events:3000
       - USERS=users:4000
     extra_hosts:
@@ -61,11 +61,11 @@ services:
     volumes:
       - ./packages/users/src:/usr/src/app  # Hot Reload
     command: npm run docker:hmr
-  mail:
-    container_name: mail-server
-    build: ./packages/mail
-    expose:
-      - 25:25
-    extra_hosts:
-      - mail.deltahouse.no:${HOST_IP}
-      - deltahouse.no:${HOST_IP}
+  # mail:
+  #   container_name: mail-server
+  #   build: ./packages/mail
+  #   expose:
+  #     - 25:25
+  #   extra_hosts:
+  #     - mail.deltahouse.no:${HOST_IP}
+  #     - deltahouse.no:${HOST_IP}

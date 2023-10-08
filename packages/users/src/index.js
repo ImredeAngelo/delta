@@ -16,7 +16,8 @@ server.use(cors())
 // ===== Routes
 
 server.post('/v0/users/login', user.login)
-server.post('/v0/users/register', user.register)
+// server.post('/v0/users/register', user.register)
+// server.delete('/v0/users/terminate', user.remove)
 
 // ===== Entrypoint
 

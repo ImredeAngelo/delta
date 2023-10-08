@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     const { user, pass } = req.body;
     let status = {
         code: 200,
-        uid: ''
+        user: null
     }
 
     // TODO: Check if token exists -> Refresh token
@@ -20,18 +20,24 @@ module.exports = (req, res) => {
         .then(async (u) => {
             if(u) {
                 // User exists -> Check password
-                if(argon2.verify(`$argon2id$v=19$m=65536,t=3,p=4$${u.password}`, pass))
-                    return u.id;
+                if(argon2.verify(`$argon2id$v=19$m=65536,t=3,p=4$${u.password}`, pass)) {
+                    return {
+                        id: u.id,
+                        name: `${u.firstname} ${u.lastname}`, 
+                    }
+                }
                 
                 throw "Wrong username or password";
             }
             
-            // Make new user TODO: Do not auto register
-            status.code = 201;
-            return create(user, pass);
+            // Make new user 
+            // TODO: Do not auto register
+            // status.code = 201;
+            // return create(user, pass);
+            throw "User does not exist";
         })
-        .then(id => status.uid = id)
-        .then(() => token.generate({ user:status.uid }))
+        .then(user => status.user = user)
+        .then(() => token.generate(status.user))
         .then(jwt => {
             res.cookie("user", jwt, {
                 secure: true,
@@ -42,15 +48,9 @@ module.exports = (req, res) => {
             .status(status.code)
             .send({
                 status:"success",
-                user: {
-                    id:status.uid,
-                    name:"Default User"
-                }
+                user: status.user
             })
         })
-        // .then(() => {
-        //     console.log(`User ${id} (${user}) logged in: ${data.hash}`)
-        // })
         .catch(e => {
             res.status(403).send();
             // console.error(e);

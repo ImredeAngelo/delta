@@ -7,6 +7,8 @@ server {
 
     server_name api.deltahouse.no api.localhost;
 
+    # add_header Server-Name $server_name always;
+
     # Hide server info
     proxy_hide_header   X-Powered-By;
     proxy_hide_header   X-Content-Type-Options;
@@ -18,6 +20,7 @@ server {
 
     # API
     location /v0/events {
+        # add_header API-Access "Events API" always;
         access_log on;
     
         proxy_set_header    Host                $host;
@@ -31,6 +34,7 @@ server {
     }
     
     location /v0/users {
+        # add_header API-Access "Users API" always;
         access_log on;
     
         proxy_set_header    Host                $host;
