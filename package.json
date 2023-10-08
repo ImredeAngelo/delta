@@ -10,12 +10,15 @@
     "setup:py": "py ./scripts/init.py",
     "start": "yarn workspaces foreach -pvi run start",
     "build": "yarn workspaces foreach -pvi run build",
-    "test": "npm run test --workspaces --if-present -p",
+    "test": "yarn workspaces foreach -pvi run test",
     "docker:start": "docker compose -f \"docker-compose.yml\" up -d --build & yarn start",
     "docker:proxy": "docker compose -f \"docker-compose.yml\" up -d --build nginx --force-recreate"
   },
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "yarn@3.6.3"
+  "packageManager": "yarn@3.6.3",
+  "devDependencies": {
+    "jest-teamcity": "^1.11.0"
+  }
 }

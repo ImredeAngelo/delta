@@ -1,9 +1,11 @@
 **build
+**coverage
 **dist
 **node_modules
 **.venv
 **.yarn
 **.tmp
+.vscode
 
 !.yarn/install-state.gz
 !.yarn/releases

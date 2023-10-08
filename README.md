@@ -4,7 +4,7 @@ This is the source code for the future [deltahouse.no](https://www.deltahouse.no
 ![Delta logo](./Banner.jpg)
 
 ## Setup
-Make sure `yarn` and `python` are installed and set up on your system
+Make sure [yarn](https://yarnpkg.com/getting-started/install) and [python](https://www.python.org/downloads/) are installed and set up on your system
 1. Clone repo
 2. Run `yarn setup` from root directory
 
@@ -22,3 +22,4 @@ Microarchitecture /w Docker
  - Set up local server on local network with permanent IP for pipeline-server and dev/stanging servers
  - Generate root CA on said server (public facing) and make local setup script retrieve and trust the CA
  - Control DNS on local server to match the production environment exactly
+ - Static site generation for frontend

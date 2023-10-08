@@ -48,9 +48,6 @@ const dev = (options) => {
                     protocol: 'ws'
                 },
             },
-            // proxy: { // TODO: Point to development server with DNS address
-            //     '/v0': 'http://0.0.0.0/v0',
-            // },
         },
         plugins: [
             new BundleAnalyzerPlugin({ openAnalyzer: false }),
@@ -77,7 +74,9 @@ const dev = (options) => {
             }),
             new ReactRefreshPlugin(),
             new webpack.DefinePlugin({
-                'process.env.NODE_ENV': JSON.stringify('development')
+                PRODUCTION: false,
+                IGNORE_STRICT_MODE: false,
+                'process.env.NODE_ENV': JSON.stringify('development'),
             }),
         ],
         // Ignore workbox warnings and files generated
@@ -89,7 +88,7 @@ const dev = (options) => {
             // assets: false,
             // chunks: false,
             // hash: false,
-            // modules: false,
+            modules: false,
             // version: false,
             // timings: true
         }
@@ -150,6 +149,7 @@ const prod = (options) => { return {
             },
         }),
         new webpack.DefinePlugin({
+            PRODUCTION: true,
             'process.env.NODE_ENV': JSON.stringify('production'),
         }),
     ],

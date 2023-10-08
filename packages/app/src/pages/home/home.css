@@ -1,0 +1,18 @@
+.wrapper {
+    max-width: var(--max-width-l);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0.9rem 0;
+
+    &::after {
+        content: "";
+        display: table;
+        height: calc(100vh - 37.9rem);
+    }
+}
+
+.span-2 {
+    grid-column: span 2;
+}

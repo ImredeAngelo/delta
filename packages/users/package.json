@@ -1,0 +1,26 @@
+{
+  "name": "@deltahouse/users",
+  "packageManager": "yarn@3.6.3",
+  "scripts": {
+    "start:local": "nodemon ./src",
+    "docker:hmr": "nodemon -L ./app --development",
+    "reload": "docker compose -f ../../docker-compose.yml up -d --build users --force-recreate",
+    "test": "jest --errorOnDeprecated --config='../../jest.config.js'",
+    "test:coverage": "jest --coverage --errorOnDeprecated --config='../../jest.config.js'"
+  },
+  "dependencies": {
+    "argon2": "^0.31.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jose": "^4.14.6",
+    "mysql2": "^3.6.1",
+    "node-gyp": "^9.4.0"
+  },
+  "devDependencies": {
+    "@jest-mock/express": "^2.0.2",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1"
+  }
+}

@@ -19,6 +19,7 @@ COPY ./ssl .
 #     -sha256 -extfile cert.conf -CAcreateserial \
 #     -days 365 -out ssl.crt
 
-# TODO: Serve static data
+# Server static files
 WORKDIR /etc/nginx
 RUN mkdir data
+# COPY ./public data
