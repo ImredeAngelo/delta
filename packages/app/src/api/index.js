@@ -10,11 +10,9 @@ export const endpoints = {
     },
     users: {
         login: "/v0/users/login",
+        loginWithToken: "/v0/users/refresh",
     }
 }
-
-// Defined in webpack
-const host = process.env.API_HOST;
 
 class API {
     constructor() {
@@ -25,8 +23,9 @@ class API {
     }
 
     post(endpoint, data = {}, json = true) {
-        return fetch(host + endpoint, {
+        return fetch(endpoint, {
             method: 'POST',
+            credentials: 'include',
             headers: this.header,
             body: JSON.stringify(data)
         })
@@ -35,8 +34,9 @@ class API {
     }
 
     get(endpoint, json = true) {
-        return fetch(host + endpoint, {
+        return fetch(endpoint, {
             method: 'GET',
+            credentials: 'include',
             headers: this.header
         })
         .then(r => json ? r.json() : r.text())

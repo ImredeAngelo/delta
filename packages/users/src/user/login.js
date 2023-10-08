@@ -21,12 +21,16 @@ module.exports = (req, res) => {
             if(u) {
                 // User exists -> Check password
                 if(argon2.verify(`$argon2id$v=19$m=65536,t=3,p=4$${u.password}`, pass)) {
+                    console.log("Logged in: ", `$argon2id$v=19$m=65536,t=3,p=4$${u.password}`, pass)
                     return {
                         id: u.id,
                         name: `${u.firstname} ${u.lastname}`, 
                     }
                 }
+
+                console.log("Wrong password: ", `$argon2id$v=19$m=65536,t=3,p=4$${u.password}`, pass)
                 
+                status.code = 403;
                 throw "Wrong username or password";
             }
             
@@ -34,16 +38,18 @@ module.exports = (req, res) => {
             // TODO: Do not auto register
             // status.code = 201;
             // return create(user, pass);
+            status.code = 401;
             throw "User does not exist";
         })
         .then(user => status.user = user)
-        .then(() => token.generate(status.user))
+        .then(() => token.generate({ id:status.user.id }))
         .then(jwt => {
-            res.cookie("user", jwt, {
+            res.cookie("token", jwt, {
                 secure: true,
                 maxAge: 2592000000,
                 httpOnly: true,
-                sameSite: 'strict'
+                sameSite: 'strict',
+                signed: true,
             })
             .status(status.code)
             .send({

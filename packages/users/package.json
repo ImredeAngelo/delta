@@ -3,7 +3,7 @@
   "packageManager": "yarn@3.6.3",
   "scripts": {
     "start:local": "nodemon ./src",
-    "docker:hmr": "nodemon -L ./app",
+    "docker:hmr": "nodemon -L ./app --development",
     "reload": "docker compose -f ../../docker-compose.yml up -d --build users --force-recreate",
     "test": "jest --errorOnDeprecated --config='../../jest.config.js'",
     "test:coverage": "jest --coverage --errorOnDeprecated --config='../../jest.config.js'"
