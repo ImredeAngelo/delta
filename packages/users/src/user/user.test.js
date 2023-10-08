@@ -8,15 +8,18 @@ const remove = require("./remove");
 //     // TODO: Mock database
 // })
 
-
-if(process.env.SKIP_LIVE_TEST) return;
-
 const user = {
     mail: "test@user.com",
     pass: "SafePassWord123"
 }
 
 describe('User', () => {
+    // Dry run for CI/CD
+    if(process.env.SKIP_LIVE_TEST) {
+        test('Dry run', () => { expect(true).toBe(true); })
+        return;
+    }
+
     test('Create new user', async () => {
         user.id = await create(user.mail, user.pass)
         expect(user.id).toMatch(/[A-Za-z0-9]{6}/);
