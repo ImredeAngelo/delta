@@ -8,6 +8,9 @@ const remove = require("./remove");
 //     // TODO: Mock database
 // })
 
+
+if(process.env.SKIP_LIVE_TEST) return;
+
 const user = {
     mail: "test@user.com",
     pass: "SafePassWord123"
@@ -35,6 +38,20 @@ describe('User', () => {
         await login(req, res);
 
         expect(res.status).toHaveBeenCalledWith(200);
+    });
+
+    test('Log in user with wrong password', async () => {
+        const { res } = getMockRes();
+        const req = getMockReq({ 
+            body: {
+                user: user.mail,
+                pass: "abcdefgh8080"
+            }
+        });
+
+        await login(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(403);
     });
 
     test('Delete user', async () => {

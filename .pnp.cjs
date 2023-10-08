@@ -3997,6 +3997,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["argon2", "npm:0.31.1"],\
             ["cookie-parser", "npm:1.4.6"],\
             ["cors", "npm:2.8.5"],\
+            ["dotenv", "npm:16.3.1"],\
             ["express", "npm:4.18.2"],\
             ["jest", "virtual:1e8e096b06e126dfc40add58cb63f5bd53f3d9916ef5e549d3e524b91ca3af213ea5245e7ebfb2670a9f9fc91f1850b9e1edbad896f8a63cbd92c8be82c199b5#npm:29.7.0"],\
             ["jose", "npm:4.14.6"],\
@@ -8346,6 +8347,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dot-case", "npm:3.0.4"],\
             ["no-case", "npm:3.0.4"],\
             ["tslib", "npm:2.6.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["dotenv", [\
+        ["npm:16.3.1", {\
+          "packageLocation": "./.yarn/cache/dotenv-npm-16.3.1-e6d380a398-15d75e7279.zip/node_modules/dotenv/",\
+          "packageDependencies": [\
+            ["dotenv", "npm:16.3.1"]\
           ],\
           "linkType": "HARD"\
         }]\

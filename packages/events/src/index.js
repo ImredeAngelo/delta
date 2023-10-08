@@ -8,6 +8,8 @@ const server = express()
 
 // ===== Server Config
 
+require('dotenv').config()
+
 // server.use(express.urlencoded())
 server.use(express.json({ limit: '10mb' }))
 server.use(cookies())

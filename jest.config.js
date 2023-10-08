@@ -1,4 +1,5 @@
 module.exports = {
     verbose: true,
-    reporters: ["default", "jest-teamcity"]
+    reporters: ["default", "jest-teamcity"],
+    // setupFiles: 
 }

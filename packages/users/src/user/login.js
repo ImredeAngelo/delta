@@ -19,16 +19,15 @@ module.exports = (req, res) => {
     return get(user, "mail") 
         .then(async (u) => {
             if(u) {
+                const hash = '$argon2id$v=19$m=65536,t=3,p=4$' + u.password;
+
                 // User exists -> Check password
-                if(argon2.verify(`$argon2id$v=19$m=65536,t=3,p=4$${u.password}`, pass)) {
-                    console.log("Logged in: ", `$argon2id$v=19$m=65536,t=3,p=4$${u.password}`, pass)
+                if(await argon2.verify(hash, pass)) {
                     return {
                         id: u.id,
                         name: `${u.firstname} ${u.lastname}`, 
                     }
                 }
-
-                console.log("Wrong password: ", `$argon2id$v=19$m=65536,t=3,p=4$${u.password}`, pass)
                 
                 status.code = 403;
                 throw "Wrong username or password";
