@@ -3,7 +3,7 @@ FROM nginx:1.23-alpine
 
 RUN apk update
 
-COPY --from=config ./prod /etc/nginx/conf.d
+COPY --from=config prod /etc/nginx/conf.d
 
 # Serve static files
 WORKDIR /srv
