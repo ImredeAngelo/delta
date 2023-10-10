@@ -3,6 +3,8 @@ FROM nginx:1.23-alpine
 
 RUN apk update
 
+COPY ./prod /etc/nginx/conf.d
+
 # Serve static files
 # Use build folder as context!
 WORKDIR /srv
