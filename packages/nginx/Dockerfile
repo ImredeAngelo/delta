@@ -3,9 +3,8 @@ FROM nginx:1.23-alpine
 
 RUN apk update
 
-COPY ./prod /etc/nginx/conf.d
+COPY --from=config ./prod /etc/nginx/conf.d
 
 # Serve static files
-# Use build folder as context!
 WORKDIR /srv
-COPY deltahouse-app deltahouse
+COPY --from=build deltahouse-app deltahouse
