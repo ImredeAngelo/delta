@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:20-bullseye-slim
 
 # Set up packages
 WORKDIR /usr/src

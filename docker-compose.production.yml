@@ -1,0 +1,53 @@
+version: '3.9'
+services:
+  nginx:
+    container_name: proxy
+    image: ${AWS_ECR}/deltahouse:latest
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /srv/images:/etc/nginx/images:ro  # 
+      # - ./packages/nginx/shared/default.conf:/etc/nginx/conf.d/default.conf
+      # - ./packages/nginx/dev:/etc/nginx/templates
+    environment:
+      - NGINX_ENVSUBST_TEMPLATE_SUFFIX=.t
+      - EVENTS=events:3000
+      - USERS=users:4000
+    extra_hosts:
+      - deltahouse.no:${HOST_IP}
+      - api.deltahouse.no:${HOST_IP}
+    restart: unless-stopped
+  db:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+    ports:
+      - 3306:3306
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    environment:
+      - ADMINER_DESIGN=nette
+    depends_on:
+      - db
+  events:
+    image: ${AWS_ECR}/deltahouse/events:latest
+    expose:
+      - 3000:3000
+    volumes:
+      - /srv/images:/srv/images              # Header images served by nginx
+    restart: unless-stopped
+  users:
+    image: ${AWS_ECR}/deltahouse/users:latest
+    expose:
+      - 4000:4000
+    restart: unless-stopped
