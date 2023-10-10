@@ -15,8 +15,8 @@ services:
       - EVENTS=events:3000
       - USERS=users:4000
     extra_hosts:
-      - deltahouse.no:http://16.170.208.44/
-      - api.deltahouse.no:http://16.170.208.44/
+      - deltahouse.no:16.170.208.44
+      - api.deltahouse.no:16.170.208.44
     restart: unless-stopped
   db:
     image: mysql:8
