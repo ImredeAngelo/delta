@@ -8847,6 +8847,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["events", "workspace:packages/events"],\
             ["cookie-parser", "npm:1.4.6"],\
             ["cors", "npm:2.8.5"],\
+            ["dotenv", "npm:16.3.1"],\
             ["express", "npm:4.18.2"],\
             ["mysql2", "npm:3.6.1"],\
             ["nodemon", "npm:3.0.1"],\
