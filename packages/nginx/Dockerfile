@@ -1,4 +1,4 @@
-# Docker container for hot-reloading apps that are pre-rendered in production
+# syntax=docker/dockerfile:1
 FROM nginx:1.23-alpine
 
 RUN apk update
