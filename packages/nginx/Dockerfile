@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM nginx:1.23-alpine
+FROM nginx:alpine
 
 RUN apk update
 
