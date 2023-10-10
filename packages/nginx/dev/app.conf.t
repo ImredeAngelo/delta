@@ -7,9 +7,6 @@ server {
 
     server_name .deltahouse.no;
     
-    # Debugging
-    access_log on;
-    
     # Hide server info
     proxy_hide_header   X-Powered-By;
     proxy_hide_header   X-Content-Type-Options;

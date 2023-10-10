@@ -35,13 +35,13 @@ server.get('/v0/users/refresh', (req, res) => {
 			})
 			.catch(e => {
 				// next();
-				res.status(403).send({ status:"failed" })
+				res.status(401).send({ status:"failed" })
 			})
 
 		return;
 	}
 
-	res.status(403).send({ status:"failed", reason:"No credentials" })
+	res.status(200).send({ status:"failed", reason:"No credentials" })
 })
 
 server.post('/v0/users/login', user.login)
