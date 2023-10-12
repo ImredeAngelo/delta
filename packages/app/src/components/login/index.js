@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import s from './login.css'
-import api from '~api';
 import useUser from '~components/user/useUser';
 import { combine } from '~style';
 import submit from './submit';

@@ -1,3 +1,4 @@
+import api from "~api";
 import validate from "./validate";
 
 export default function submit(e, user, setError) {
