@@ -1,0 +1,34 @@
+@import "../../../style/typography.css";
+
+.section {
+    position: relative;
+}
+
+/* TODO: Unify styles */
+.input {
+    border-radius: 0.225rem;
+    box-sizing: border-box;
+    background-color: var(--color-delta);
+    border: 1px solid var(--highlight-main);
+    padding: 0.5rem 1.3rem;
+    /* width: 100%; */
+    color: white;
+    
+    cursor: pointer;
+    &:hover {
+        background-color: var(--highlight-main);
+        color: #b6b6b6;
+    }
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding: 0.45rem 1rem;
+
+    @media (--vw-medium) {
+        padding: 0.9rem 4rem;
+    }
+}

@@ -57,13 +57,13 @@ export default function Login() {
                     <li>
                         <h3>Logg inn</h3>
                     </li>
-                    <li>
+                    <li className={s.l}>
                         <a className={s.link} href="/iforgor">Glemt passord</a>
                     </li>
-                    <li>
+                    <li className={s.l}>
                         -
                     </li>
-                    <li>
+                    <li className={s.l}>
                         <a className={s.link} href="/register">Jeg er ny!</a>
                     </li>
                 </ul>
@@ -82,11 +82,11 @@ export default function Login() {
             </div>
             <div className={s['list-item']}>
                 <div className={s.row}>
-                    <button className={combine(s.input, s.fb)} onClick={(e) => { e.preventDefault(); console.log("TODO: Log in with FB") }}>
+                    <button className={combine(s.input, s.fb)} onClick={(e) => { e.preventDefault(); alert("Facebook (Not Implemented)") }}>
                         Logg på med FaceBook
                     </button>
-                    <button className={combine(s.input, s.more)} onClick={(e) => { e.preventDefault(); console.log("Log in with other") }}>
-                        
+                    <button className={combine(s.input, s.more)} onClick={(e) => { e.preventDefault(); alert("Andre (Vipps/Apple/Etc.)") }}>
+                        v
                     </button> 
                 </div>
             </div>

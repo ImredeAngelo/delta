@@ -3,17 +3,30 @@
     
     /* TODO: Unify style */
     border-radius: 0.45rem;
-    padding: 2rem;
+    padding: 0.9rem 1rem;
+
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .list {
     display: flex;
     flex-direction: row;
     gap: 0.45rem;
+    position: relative;
+}
+
+.l {
+    position: relative;
+    top: 3.6px;
 }
 
 .list-item {
     margin-bottom: 0.9rem;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
 }
 
 .input {
@@ -26,6 +39,12 @@
     color: white;
 
     cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-delta);
+        border-color: var(--color-delta);
+        color: #b6b6b6;
+    }
 }
 
 .line {
@@ -56,6 +75,12 @@
 
 .fb {
     background-color: #2f71af;
+    
+    &:hover {
+        background-color: #154e83;
+        border-color: #154e83;
+        color: #d6d6d6;
+    }
 }
 
 .more {

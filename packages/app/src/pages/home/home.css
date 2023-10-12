@@ -2,17 +2,24 @@
     max-width: var(--max-width-l);
     margin: 0 auto;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0.9rem 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0.9rem 1rem;
+    gap: 2rem;
 
     &::after {
         content: "";
         display: table;
         height: calc(100vh - 37.9rem);
     }
-}
 
-.span-2 {
-    grid-column: span 2;
+    @media (--vw-medium) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0.9rem 1.2rem;
+    }
+
+    @media (--vw-large) {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
