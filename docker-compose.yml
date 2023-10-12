@@ -2,7 +2,7 @@ version: '3.9'
 services:
   nginx:
     container_name: proxy
-    build: ./packages/nginx/Dockerfile.dev
+    build: ./packages/nginx/dev
     ports:
       - 80:80
       - 443:443
