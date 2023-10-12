@@ -3,46 +3,13 @@ import s from './login.css'
 import api from '~api';
 import useUser from '~components/user/useUser';
 import { combine } from '~style';
-
-const validate = (e) => {
-    const { mail, pass } = e.target;
-
-    const mailMatchesPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(mail.value);
-    if(!mailMatchesPattern) {
-        console.error("Invalid e-mail address. TODO: Global overlay for errors.")
-        return false;
-    }
-
-    return true;
-}
+import submit from './submit';
 
 export default function Login() {
     const [ errorMsg, setError ] = useState(false);
     const user = useUser();
 
-    const submit = (e) => {
-        e.preventDefault();
-        
-        if(!validate(e)) return;
-        
-        const { mail, pass } = e.target;
-        
-        api.post('/v0/users/login', {
-            user:mail.value,
-            pass:pass.value
-        })
-        .then(r => {
-            if(r.status == "success") {
-                user.set(r.user);
-                return;
-            }
-
-            setError("Feil brukernavn eller passord")
-        })
-        .catch(e => {
-            console.error("TODO: Have global overlay for errors", e)
-        })
-    }
+    const sub = (e) => submit(e, user, setError);
 
     const error = errorMsg ? (<div>{errorMsg}</div>) : (""); 
 
@@ -51,7 +18,7 @@ export default function Login() {
             Logged in as {user.name}
         </div>
     ) : (
-        <form onSubmit={submit} className={s.box}>
+        <form onSubmit={sub} className={s.box}>
             <div className={s['list-item']}>
                 <ul className={s.list}>
                     <li>
