@@ -17,6 +17,11 @@ server.use(cors()) // if(process.env.MODE == "development")
 
 // ===== Routes
 
+server.get('*', (req, res, next) => {
+	console.log("Request: ", req.baseUrl)
+	next();
+})
+
 server.get('/v0/events/get', event.get)
 server.post('/v0/events/make', event.create);
 

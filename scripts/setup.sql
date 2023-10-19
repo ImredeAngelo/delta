@@ -1,15 +1,14 @@
 -- DROP TABLE `Events`;
--- CREATE TABLE Events (
--- 	id 				INT AUTO_INCREMENT,
--- 	eid				VARCHAR(6) NOT NULL UNIQUE PRIMARY KEY,
--- 	title 			VARCHAR(32) NOT NULL,
--- 	description		VARCHAR(4096) DEFAULT ' ',
--- 	type 			INT DEFAULT 0,
--- 	address 		VARCHAR(64) DEFAULT 'TBA',
--- 	date			DATETIME, -- NOT NULL,
--- 	header			MEDIUMBLOB,
--- 	map				BLOB -- NOT NULL
--- );
+CREATE TABLE Events (
+	id				VARCHAR(6) NOT NULL UNIQUE PRIMARY KEY,
+	title 			VARCHAR(32) NOT NULL,
+	description		VARCHAR(4096) DEFAULT ' ',
+	type 			INT DEFAULT 0,
+	address 		VARCHAR(64) DEFAULT 'TBA',
+	date			DATETIME, -- NOT NULL,
+	header			MEDIUMBLOB,
+	map				BLOB -- NOT NULL
+);
 
 -- ALTER TABLE Events
 -- MODIFY COLUMN header MEDIUMBLOB;

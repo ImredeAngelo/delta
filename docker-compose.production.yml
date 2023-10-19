@@ -18,7 +18,7 @@ services:
       - /srv/images:/srv/images               # Header images served by nginx
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${RDS_ENDPOINT}
+      DATABASE_ENDPOINT: ${RDS_ENDPOINT}
       MYSQL_USER: ${RDS_USERNAME}
       MYSQL_PASSWORD: ${RDS_PASSWORD}
   users:
@@ -28,6 +28,19 @@ services:
       - 4000/tcp
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${RDS_ENDPOINT}
+      DATABASE_ENDPOINT: ${RDS_ENDPOINT}
       MYSQL_USER: ${RDS_USERNAME}
       MYSQL_PASSWORD: ${RDS_PASSWORD}
+  db:
+    container_name: database
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: ${RDS_USERNAME}
+      MYSQL_PASSWORD: ${RDS_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${RDS_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - /var/lib/mysql
