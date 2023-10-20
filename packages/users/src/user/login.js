@@ -33,10 +33,6 @@ module.exports = (req, res) => {
                 throw "Wrong username or password";
             }
             
-            // Make new user 
-            // TODO: Do not auto register
-            // status.code = 201;
-            // return create(user, pass);
             status.code = 401;
             throw "User does not exist";
         })
@@ -57,7 +53,9 @@ module.exports = (req, res) => {
             })
         })
         .catch(e => {
-            res.status(403).send();
+            res.status(403).send({
+                msg: e
+            });
             // console.error(e);
         })
 }
