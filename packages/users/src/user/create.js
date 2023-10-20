@@ -22,7 +22,7 @@ module.exports = function(mail, password, name='') {
                 }
             })
             .then(() => argon2.hash(password, { raw:false })) // TODO: Store raw in DB
-            .then(hash => hash.replace('$argon2id$v=19$m=65536,t=3,p=4$', ''))
+            // .then(hash => hash.replace('$argon2id$v=19$m=65536,t=3,p=4$', ''))
             .then(hash => database.execute('INSERT INTO Users (id, mail, firstname, password) VALUES (?, ?, ?, ?)', userID, mail, name, hash))
             .then(() => res(userID))
             .catch(rej)
