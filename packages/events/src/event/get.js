@@ -1,7 +1,7 @@
 const database = require("../database");
 
 function getByID(id, req, res) {
-	return database.execute("SELECT * FROM `Events` WHERE eid = ?", id)
+	return database.execute("SELECT * FROM `Events` WHERE id = ?", id)
 	.then((results) => {
 		// TODO: Check if user has permission to view this event 
 		const event = results[0][0];
@@ -24,7 +24,7 @@ function getAll(req, res) {
 		const events = results[0];
 		const data = events.map((v) => {
 			return {
-				id: v.eid,
+				id: v.id,
 				title: v.title,
 				description: v.description,
 				type: v.type,
