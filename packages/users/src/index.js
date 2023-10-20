@@ -17,35 +17,10 @@ server.use(cors({ origin:true, credentials:true }))
 // ===== Routes
 
 // me
-server.get('/v0/users/refresh', (req, res) => {
-	const jwt = req.cookies.token;
-
-	if(jwt) {
-		token.verify(jwt)
-			.then(r => {
-				const { id } = r.payload;
-
-				res.status(200)
-				.send({
-					status:"success",
-					user:{
-						id:id
-					}
-				})
-			})
-			.catch(e => {
-				// next();
-				res.status(401).send({ status:"failed" })
-			})
-
-		return;
-	}
-
-	res.status(200).send({ status:"failed", reason:"No credentials" })
-})
+server.get('/v0/users/refresh', token.refresh)
 
 server.post('/v0/users/login', user.login)
-// server.post('/v0/users/register', user.register)
+server.post('/v0/users/register', user.register)
 // server.delete('/v0/users/terminate', user.remove)
 
 // ===== Entrypoint

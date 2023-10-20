@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
 	const { title, description, header } = req.body;
 	const id = uuid();
 	
-	database.execute("INSERT INTO `Events` (eid, title, description, type) VALUES (?,?,?,?)", id, title, description, 0)
+	database.execute("INSERT INTO `Events` (id, title, description, type) VALUES (?,?,?,?)", id, title, description, 0)
 	.then(() => {
 		res.status(200).send({
 			id: id,

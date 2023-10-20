@@ -4,7 +4,11 @@ import Verification from './verification'
 export default function RegisterPage() {
     return (
         <div>
-            <Verification/>
+            <h1>Lag ny bruker</h1>
+            <form>
+                
+            </form>
+            {/* <Verification/> */}
         </div>
     )
 }
