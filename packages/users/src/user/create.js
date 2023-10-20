@@ -9,7 +9,7 @@ const get = require("./get");
  * @param {*} match 
  * @returns User ID
  */
-module.exports = function(mail, password) {
+module.exports = function(mail, password, name='') {
     const userID = uuid(6, base33);
     
     // TODO: Handle existing e-mail
@@ -23,7 +23,7 @@ module.exports = function(mail, password) {
             })
             .then(() => argon2.hash(password, { raw:false })) // TODO: Store raw in DB
             .then(hash => hash.replace('$argon2id$v=19$m=65536,t=3,p=4$', ''))
-            .then(hash => database.execute('INSERT INTO Users (id, mail, password) VALUES (?, ?, ?)', userID, mail, hash))
+            .then(hash => database.execute('INSERT INTO Users (id, mail, firstname, password) VALUES (?, ?, ?, ?)', userID, mail, name, hash))
             .then(() => res(userID))
             .catch(rej)
     })

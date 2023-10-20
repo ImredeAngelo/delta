@@ -13,7 +13,7 @@ export default function Text(props) {
 		<input 
 			name={props.name} 
 			className={combine(s.field, s.text)} 
-			placeholder='Navn på Arrangement' 
+			placeholder={props.placeholder || 'Navn på Arrangement'} 
 			onChange={(e) => editor.set(props.name, e.target.value)}
 		/>
 	)

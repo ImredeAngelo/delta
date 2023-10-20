@@ -5,15 +5,12 @@ import s from './verify.css'
 
 export default function Verification() {
     return (
-        <div>
-            <h3>Hei</h3>
-            <div className={s.box}>
-                <Lottie animationData={Animation} loop={true}
-                    className={s.anim}
-                />
-                <div>
-                    Vi har send deg en mail!
-                </div>
+        <div className={s.box}>
+            <Lottie animationData={Animation} loop={true}
+                className={s.anim}
+            />
+            <div>
+                Vi har sendt deg en mail!
             </div>
         </div>
     )
