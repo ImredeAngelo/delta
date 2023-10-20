@@ -21,6 +21,9 @@ module.exports = (req, res) => {
             if(u) {
                 const hash = u.password; //= '$argon2id$v=19$m=65536,t=3,p=4$' + u.password;
 
+                const cmp = await argon2.hash(password, { raw:false });
+                console.log(hash, cmp)
+
                 // User exists -> Check password
                 if(await argon2.verify(hash, pass)) {
                     return {
@@ -28,8 +31,6 @@ module.exports = (req, res) => {
                         name: `${u.firstname} ${u.lastname}`, 
                     }
                 }
-
-                console.log(`[ERROR] ${hash} did not match ${await argon2.hash(password, { raw:false })}`)
                 
                 status.code = 403;
                 throw "Wrong username or password";
