@@ -20,21 +20,24 @@ module.exports = (req, res) => {
     // TODO: Separate register page
     return get(user, "mail") 
         .then(async (u) => {
-            console.log("Found user: ", u);
-            const hash = await argon2.hash(pass);
-            console.log("Password: ", hash);
+            const hsh = await argon2.hash(pass);
+            console.log("Password: ", hsh);
             
             if(u) {
                 const hash = u.password; //= '$argon2id$v=19$m=65536,t=3,p=4$' + u.password;
+                console.log("Hash: ", hash);
 
                 // User exists -> Check password
                 if(await argon2.verify(hash, pass)) {
+                    console.log("Correct password")
                     return {
                         id: u.id,
                         name: `${u.firstname} ${u.lastname}`, 
                     }
                 }
                 
+                console.log("Wrong password")
+
                 status.code = 403;
                 throw "Wrong username or password";
             }
