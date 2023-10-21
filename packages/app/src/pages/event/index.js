@@ -47,6 +47,7 @@ export default function EventPage(props) {
 	return (
 		<div className={s.wrapper}>
 			<Helmet>
+				<title>{`Delta Linjeforening | ${data.title}`}</title>
 				<meta property='og:title' content={`Delta | ${data.title}`}/>
 				<meta property='og:description' content={data.description[0].children[0].text}/>
 				<meta property='og:image' content={`https://${process.env.HOST}/${id}.png`}/>
