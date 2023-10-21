@@ -1,14 +1,16 @@
-import React, { StrictMode } from 'react'
+import React, { StrictMode, lazy } from 'react'
 import { BrowserRouter } from "react-router-dom"
 import { StaticRouter } from "react-router-dom/server"
 import { renderToString } from 'react-dom/server'
 import { createRoot } from 'react-dom/client'
 import { Workbox } from 'workbox-window'
 
-import _ from 'lodash'
+// import _ from 'lodash'
 import html from '!!raw-loader!./index.ejs'
 
 import App from './src'
+
+const _ = lazy(() => import("lodash"))
 
 // Register service worker
 function useServiceWorker() {

@@ -14,10 +14,13 @@ module.exports = (req, res) => {
     // Check if user is not registered -> Register
     // Check if hash matches password
     // Generate new JWT token
+
+    console.log("Attempting login: ", user, pass)
     
     // TODO: Separate register page
     return get(user, "mail") 
         .then(async (u) => {
+            console.log("Found user: ", u);
             if(u) {
                 const hash = u.password; //= '$argon2id$v=19$m=65536,t=3,p=4$' + u.password;
 
