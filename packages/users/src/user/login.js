@@ -21,9 +21,8 @@ module.exports = (req, res) => {
     return get(user, "mail") 
         .then(async (u) => {
             console.log("Found user: ", u);
-            argon2.hash(password, { raw:false }).then(hash => {
-                console.log(hash, u.password);
-            });
+            const hash = await argon2.hash(pass);
+            console.log("Password: ", hash);
             
             if(u) {
                 const hash = u.password; //= '$argon2id$v=19$m=65536,t=3,p=4$' + u.password;
