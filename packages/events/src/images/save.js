@@ -2,8 +2,9 @@ const webp = require('webp-converter');
 const fs = require('fs/promises');
 
 module.exports = (file, name, path = "/srv/images") => {
-	const extension = file.match(/^data:image\/([^;]+);base64,/)[1];
-	const base64Data = file.replace(/^data:image\/\w+;base64,/, '');
+	const regex = /^data:image\/([^;]+);base64,/
+	const extension = file.match(regex)[1];
+	const base64Data = file.replace(regex, '');
 	const buffer = Buffer.from(base64Data, 'base64');
 	
 	// This could be non-png type!
