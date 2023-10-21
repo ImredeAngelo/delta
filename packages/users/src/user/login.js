@@ -15,17 +15,13 @@ module.exports = (req, res) => {
     // Check if hash matches password
     // Generate new JWT token
 
-    console.log("Attempting login: ", user, pass)
+    console.log("Attempting login:", user)
     
     // TODO: Separate register page
     return get(user, "mail") 
         .then(async (u) => {
-            const hsh = await argon2.hash(pass);
-            console.log("Password: ", hsh);
-            
             if(u) {
                 const hash = u.password; //= '$argon2id$v=19$m=65536,t=3,p=4$' + u.password;
-                console.log("Hash: ", hash);
 
                 // User exists -> Check password
                 if(await argon2.verify(hash, pass)) {
@@ -45,9 +41,13 @@ module.exports = (req, res) => {
             status.code = 401;
             throw "User does not exist";
         })
-        .then(user => status.user = user)
+        .then(user => { 
+            console.log("Set user: ", user);
+            status.user = user
+        })
         .then(() => token.generate({ id:status.user.id }))
         .then(jwt => {
+            console.log("Token: ", jwt);
             res.cookie("token", jwt, {
                 secure: true,
                 maxAge: 2592000000,
