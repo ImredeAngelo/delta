@@ -4,8 +4,8 @@
 # Maps .avif or .webp to $suffix if supported by browser
 map $http_accept $suffix {
     default "";
-    "~*avif" ".avif";
     "~*webp" ".webp";
+    "~*avif" ".avif";
 }
 
 # Reverse Proxy HTTP to HTTPS
