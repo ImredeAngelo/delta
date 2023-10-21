@@ -22,7 +22,7 @@ module.exports = (req, res, next) => {
 		})
 	
 		console.log(`Created event '${title}' with id: ${id}`)
-		images.save(header, id); 
+		return images.save(header, id); 
 	})
 	.catch(err => {
 		console.error(err)
