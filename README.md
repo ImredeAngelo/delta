@@ -1,7 +1,7 @@
 # Deltahouse
 This is the source code for the future [deltahouse.no](https://www.deltahouse.no).
 
-![Delta logo](./Banner.jpg)
+![Delta logo](./packages/app/public/banner.jpg)
 
 ## Setup
 Make sure [yarn](https://yarnpkg.com/getting-started/install) and [python](https://www.python.org/downloads/) are installed and set up on your system
