@@ -22,7 +22,10 @@
     "jest-teamcity": "^1.11.0"
   },
   "resolutions": {
+    "@babel/traverse": "^7.23.2",
     "jimp": "^0.22.10",
-    "minimist": "^1.2.8"
+    "minimist": "^1.2.8",
+    "postcss": "^8.4.31",
+    "nth-check": "^2.0.1"
   }
 }
