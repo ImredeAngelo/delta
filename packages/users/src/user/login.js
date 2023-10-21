@@ -1,23 +1,23 @@
 const { token } = require('../token');
 const argon2 = require('argon2');
 const get = require('./get');
-const create = require('./create');
 
+/**
+ * Log in user with password:
+ *  - Check if user is not registered -> Register
+ *  - Check if hash matches password
+ *  - Generate new JWT token 
+ * @param {*} req Express request object
+ * @param {*} res Express response object
+ * @returns {Promise<any>}
+ */
 module.exports = (req, res) => {
     const { user, pass } = req.body;
     let status = {
         code: 200,
         user: null
     }
-
-    // TODO: Check if token exists -> Refresh token
-    // Check if user is not registered -> Register
-    // Check if hash matches password
-    // Generate new JWT token
-
-    console.log("Attempting login:", user)
     
-    // TODO: Separate register page
     return get(user, "mail") 
         .then(async (u) => {
             if(u) {
@@ -25,14 +25,11 @@ module.exports = (req, res) => {
 
                 // User exists -> Check password
                 if(await argon2.verify(hash, pass)) {
-                    console.log("Correct password")
                     return {
                         id: u.id,
                         name: `${u.firstname} ${u.lastname}`, 
                     }
                 }
-                
-                console.log("Wrong password")
 
                 status.code = 403;
                 throw "Wrong username or password";
@@ -42,34 +39,29 @@ module.exports = (req, res) => {
             throw "User does not exist";
         })
         .then(user => { 
-            console.log("Set user: ", user);
             status.user = user;
             return user.id;
         })
         .then(id => token.generate({ id:id }))
         .then(jwt => {
-            console.log("Token: ", jwt);
-            console.log("Status: ", status);
-
             res.cookie("token", jwt, {
                 secure: true,
                 maxAge: 2592000000,
                 httpOnly: true,
                 sameSite: 'strict',
                 signed: true,
+                secret: 'secret' // TODO: Secret secrets
             })
             .status(status.code)
             .send({
                 status:"success",
                 user: status.user
             })
-
-            console.log("Login success!")
         })
         .catch(e => {
-            console.error("Login failed!", e);
+            console.error("[ERROR] Login.js - ", e);
             res.status(403).send({
-                msg: e
+                status: "failed"
             });
         })
 }
