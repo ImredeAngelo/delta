@@ -24,7 +24,7 @@ server {
     gzip_http_version 1.1;
 
     # Transparently serve WebP files
-    location ~ \.(png|jpe?g) {
+    location ~* \.(png|jpe?g) {
         add_header X-WebP-Recieved "yes" always;
         add_header X-WebP-Type $suffix always;
         
