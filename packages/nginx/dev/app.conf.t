@@ -25,12 +25,16 @@ server {
 
     # Transparently serve WebP files
     location ~ \.(png|jpe?g) {
-        root /etc/nginx/images;
-        try_files $uri$suffix $uri @app_webp @app;
-    }
+        add_header X-WebP-Recieved "yes" always;
+        add_header X-WebP-Type $suffix always;
+        
+        proxy_set_header    Host            $host;
+        proxy_set_header    X-Real-IP       $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
 
-    location @app_webp {
-        proxy_pass http://${APP}$uri$suffix;
+        root /srv/images;
+
+        try_files $uri$suffix $uri @app;
     }
     
     # Hot reload
@@ -62,12 +66,6 @@ server {
 
         proxy_pass http://${APP};
     }
-
-    # location @login {
-    #     rewrite ^ /login$1; # Debugging
-        
-    #     root /etc/nginx/data/login;
-    # }
 
     # API
     location /v0/events {
