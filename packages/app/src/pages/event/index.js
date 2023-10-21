@@ -76,6 +76,7 @@ export default function EventPage(props) {
 						<li className={s['info-item']}>
 							<span className={combine(s.icon, s['pin-icon'])}/>
 							<a 
+								rel="noopener noreferrer"
 								href={`https://maps.apple.com/?q=${link}`} 
 								className={s.location}
 								target='_blank'
