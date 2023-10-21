@@ -77,6 +77,7 @@ const dev = (options) => {
                 PRODUCTION: false,
                 IGNORE_STRICT_MODE: false,
                 'process.env.NODE_ENV': JSON.stringify('development'),
+                'process.env.HOST': JSON.stringify('localhost'),
             }),
         ],
         // Ignore workbox warnings and files generated
@@ -151,6 +152,7 @@ const prod = (options) => { return {
         new webpack.DefinePlugin({
             PRODUCTION: true,
             'process.env.NODE_ENV': JSON.stringify('production'),
+            'process.env.HOST': JSON.stringify('www.deltaepsilon.no'),
         }),
     ],
 }}
