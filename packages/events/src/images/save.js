@@ -1,7 +1,7 @@
 const webp = require('webp-converter');
 const fs = require('fs/promises');
 
-module.exports = (file, name, path = "./images") => {
+module.exports = (file, name, path = "/srv/images") => {
 	const base64Data = file.replace(/^data:image\/\w+;base64,/, '');
 	const buffer = Buffer.from(base64Data, 'base64');
 	

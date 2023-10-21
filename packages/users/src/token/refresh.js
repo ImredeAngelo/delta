@@ -1,5 +1,6 @@
 module.exports = function(req, res) {
 	const jwt = req.cookies.token;
+	console.log("Refresh cookies: ", req.cookies)
 
 	if(jwt) {
 		token.verify(jwt)
