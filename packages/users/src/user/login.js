@@ -43,11 +43,14 @@ module.exports = (req, res) => {
         })
         .then(user => { 
             console.log("Set user: ", user);
-            status.user = user
+            status.user = user;
+            return user.id;
         })
-        .then(() => token.generate({ id:status.user.id }))
+        .then(id => token.generate({ id:id }))
         .then(jwt => {
             console.log("Token: ", jwt);
+            console.log("Status: ", status);
+
             res.cookie("token", jwt, {
                 secure: true,
                 maxAge: 2592000000,
@@ -60,11 +63,13 @@ module.exports = (req, res) => {
                 status:"success",
                 user: status.user
             })
+
+            console.log("Login success!")
         })
         .catch(e => {
+            console.error("Login failed!", e);
             res.status(403).send({
                 msg: e
             });
-            // console.error(e);
         })
 }
