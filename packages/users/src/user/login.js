@@ -49,8 +49,8 @@ module.exports = (req, res) => {
                 maxAge: 2592000000,
                 httpOnly: true,
                 sameSite: 'strict',
-                signed: true,
-                secret: 'secret' // TODO: Secret secrets
+                // signed: true,
+                // secret: 'secret' // TODO: Signed cookies
             })
             .status(status.code)
             .send({

@@ -4,14 +4,14 @@ const cors = require('cors')
 
 const { token } = require('./token')
 const { user } = require('./user')
-const { privateKey } = require('./token/keys')
+// const { privateKey } = require('./token/keys')
 
 // ===== Server Config
 
 const server = express()
 
 server.use(express.json())
-server.use(cookies(privateKey)) // TODO: Secret keys
+server.use(cookies()) // TODO: Secret keys
 server.use(cors({ origin:true, credentials:true })) 
 
 // ===== Routes
