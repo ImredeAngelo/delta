@@ -6,7 +6,7 @@ import { createRoot } from 'react-dom/client'
 import { Workbox } from 'workbox-window'
 
 // import _ from 'lodash'
-import html from '!!raw-loader!./index.ejs'
+import html from './index.ejs'
 
 import App from './src'
 
@@ -21,7 +21,7 @@ function useServiceWorker() {
 }
 
 // Render development build in strict mode
-function render(path = "") {
+export function render(path = "") {
     const app = (path == "") ? <BrowserRouter><App/></BrowserRouter> : <StaticRouter location={path}><App/></StaticRouter>; 
     return (PRODUCTION || IGNORE_STRICT_MODE) ? app : <StrictMode>{app}</StrictMode>;
 }

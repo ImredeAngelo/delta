@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import routes from './routes.js'
 import Navbar from '~components/navbar'
 import Footer from '~components/footer'
-import '~style/global.pcss'
+import './style/global.pcss'
 import User from '~components/user'
 
 export default function App() {
