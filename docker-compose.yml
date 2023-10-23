@@ -41,7 +41,9 @@ services:
       - db
   events:
     container_name: events
-    build: ./packages/events
+    build:
+      context: ./packages/events
+      dockerfile: Dockerfile.dev
     expose:
       - 3000:3000
     env_file:

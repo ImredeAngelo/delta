@@ -1,9 +1,10 @@
 {
   "name": "events",
   "scripts": {
+    "build": "esbuild src/index.js --bundle --platform=node --outfile=build/server.js",
     "start:local": "nodemon ./src",
     "docker:hmr": "nodemon -L ./app",
-    "reload": "docker compose -f ../../docker-compose.yml up -d --build events --force-recreate"
+    "docker:reload": "docker compose -f ../../docker-compose.yml up -d --build events --force-recreate"
   },
   "dependencies": {
     "@deltahouse/app": "file:../app",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "cors": "^2.8.5",
+    "esbuild": "^0.19.5",
     "nodemon": "^3.0.1"
   }
 }

@@ -2,7 +2,10 @@ FROM node:20-alpine
 
 # Set up packages
 WORKDIR /usr/src
-COPY build ./app
+COPY src ./app
+COPY package*.json .
+
+RUN npm install
 
 # TODO: Get from .env
 ENV DATABASE_IP db
