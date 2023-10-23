@@ -1,16 +1,16 @@
 // import app from "@deltahouse/app";
 // import ReactDOMServer from "react-dom/server";
+import htmlTemplate from "./template.ejs";
+import template from "lodash/template";
 
-/**
- * 
- * TODO:
- *  - Short description when creating events
- */
 // TODO: When event is created -> Generate static page for 
 module.exports = (req, res) => {
-    const html = "<h1>Hello world!</h1>";
-
-    console.log("Result: ", html)
+    const html = template(htmlTemplate)({
+        title: "Hello World",
+        short_description: "yes",
+        banner: "/banner.jpg",
+        app: "Hello World!"
+    });
 
     res.status(200).send(html);
 }
