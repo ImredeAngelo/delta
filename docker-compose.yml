@@ -49,9 +49,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./packages/events/src:/usr/src/app  # Hot Reload
-      - ./.tmp:/srv/images                  # Header Images -> /etc/nginx/images (in nginx container)
-    command: npm run docker:hmr
+      - ./packages/events/build:/usr/src/app  # Hot Reload
+      - ./.tmp:/srv/images                    # Header Images -> /etc/nginx/images (in nginx container)
   users:
     container_name: users
     build: ./packages/users

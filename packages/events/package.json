@@ -2,6 +2,7 @@
   "name": "events",
   "scripts": {
     "build": "esbuild src/index.js --bundle --platform=node --outfile=build/server.js",
+    "start": "esbuild src/index.js --bundle --platform=node --outfile=build/index.js --watch",
     "start:local": "nodemon ./src",
     "docker:hmr": "nodemon -L ./app",
     "docker:reload": "docker compose -f ../../docker-compose.yml up -d --build events --force-recreate"

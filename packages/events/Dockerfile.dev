@@ -2,10 +2,10 @@ FROM node:20-alpine
 
 # Set up packages
 WORKDIR /usr/src
-COPY src ./app
+# COPY src ./src
 COPY package*.json .
 
-RUN npm install
+RUN npm install nodemon
 
 # TODO: Get from .env
 ENV DATABASE_IP db
@@ -25,4 +25,4 @@ EXPOSE 3000
 RUN mkdir /srv/images
 
 # Start
-CMD node ./app
+CMD npm run docker:hmr
