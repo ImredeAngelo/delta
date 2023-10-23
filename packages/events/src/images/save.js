@@ -11,7 +11,6 @@ module.exports = (file, name, path = "/srv/images") => {
 	const filename = name + "." + ext;
 	const fullPath = path + "/" + filename;
 	
-	// This could be non-png type!
 	return fs.writeFile(fullPath, buffer)
 		.then(() => console.log(`Saved image ${filename} to ${path}`))
 		.then(() => webp.cwebp(fullPath, fullPath + ".webp", "-q 80", logging="-v"))
