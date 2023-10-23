@@ -18,12 +18,15 @@ server.use(cors()) // if(process.env.MODE == "development")
 // ===== Routes
 
 server.get('*', (req, res, next) => {
-	console.log("Request: ", req.baseUrl)
+	console.log("Request: ", req)
 	next();
 })
 
 server.get('/v0/events/get', event.get)
 server.post('/v0/events/make', event.create);
+
+// Testing:
+server.get('/v0/events/test', event.render);
 
 // ===== Entrypoint
 
