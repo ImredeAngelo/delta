@@ -7,5 +7,7 @@
 	"title": "Ukjent Arrangement",
 	"header": "black",
 	"type": "Fest",
-	"cost": "0"
+	"cost": "0",
+	"max": "30",
+	"waitlist": "0"
 }

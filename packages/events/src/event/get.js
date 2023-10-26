@@ -1,7 +1,16 @@
 const database = require("../database");
 
 function getByID(id, req, res) {
-	return database.execute("SELECT * FROM `Events` WHERE id = ?", id)
+	return database.execute(`
+		SELECT Events.*, T.count
+		FROM Events
+		LEFT JOIN (
+			SELECT eventID, COUNT(DISTINCT userID) AS count
+			FROM Tickets
+			GROUP BY eventID
+		) AS T ON Events.id = T.eventID
+		WHERE Events.id = ?`, id)
+		// SELECT * FROM `Events` WHERE id = ?"
 	.then((results) => {
 		// TODO: Check if user has permission to view this event 
 		const event = results[0][0];

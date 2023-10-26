@@ -76,7 +76,7 @@ export default function EventPage(props) {
 						</li>
 					</ul>
 					<div className={s.actions}>
-						<JoinEventBtn event={{ id:id, count: 0, max: 20, waitlist: 0 }}/>
+						<JoinEventBtn data={data} setData={setData}/>
 					</div>
 					<Organizer by={"Delta Linjeforening"}/>
 				</div>

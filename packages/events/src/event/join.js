@@ -1,4 +1,5 @@
 const database = require("../database");
+const count = require("./count");
 
 /**
  * Let users register for an event, given that the event requires registration.
@@ -17,11 +18,7 @@ module.exports = (req, res) => {
     // TODO: Transactions
 
     return database.execute("INSERT INTO `Tickets` (userID, eventID) VALUES (?,?)", user, event)
-        .then(_ => database.execute("SELECT COUNT(DISTINCT userID) AS count FROM `Tickets` WHERE eventID = ?", event))
-        .then(r => {
-            const { count } = r[0][0];
-            return count;
-        })
+        .then(_ => count(event))
         // .then(() => { database.commit() })
         .then(count => {
             res.status(200).send({
