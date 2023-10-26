@@ -1,4 +1,5 @@
 const express = require('express')
+const limiter = require('express-rate-limit');
 const cookies = require('cookie-parser')
 const cors = require('cors')
 
@@ -12,6 +13,10 @@ const server = express()
 server.use(express.json())
 server.use(cookies()) // TODO: Secret keys
 server.use(cors({ origin:true, credentials:true })) 
+server.use(limiter({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 16, // max requests per windowMs
+}));
 
 // ===== Routes
 
