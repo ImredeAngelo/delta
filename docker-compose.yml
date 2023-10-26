@@ -2,13 +2,13 @@ version: '3.9'
 services:
   nginx:
     container_name: proxy
-    build: ./packages/nginx
+    build: ./packages/nginx/dev
     ports:
       - 80:80
       - 443:443
     volumes:
       # - ./build:/etc/nginx/data
-      - ./.tmp:/etc/nginx/images
+      - ./.tmp:/srv/images
       - ./packages/nginx/dev:/etc/nginx/templates
     environment:
       - NGINX_ENVSUBST_TEMPLATE_SUFFIX=.t
@@ -48,7 +48,7 @@ services:
       - .env
     volumes:
       - ./packages/events/src:/usr/src/app  # Hot Reload
-      - ./.tmp:/usr/src/images              # Header Images -> /etc/nginx/images (in nginx container)
+      - ./.tmp:/srv/images                  # Header Images -> /etc/nginx/images (in nginx container)
     command: npm run docker:hmr
   users:
     container_name: users

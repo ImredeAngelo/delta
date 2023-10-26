@@ -1,4 +1,4 @@
-FROM node:20-bullseye-slim
+FROM node:20-alpine
 
 # Set up packages
 WORKDIR /usr/src
@@ -9,6 +9,8 @@ RUN npm install
 
 # TODO: Get from .env
 ENV DATABASE_IP db
+ENV MYSQL_USER user
+ENV MYSQL_PASSWORD passord
 
 # Set local port
 ENV PORT 4000

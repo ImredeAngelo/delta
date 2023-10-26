@@ -1,48 +1,14 @@
 import React, { useState } from 'react'
 import s from './login.css'
-import api from '~api';
 import useUser from '~components/user/useUser';
 import { combine } from '~style';
-
-const validate = (e) => {
-    const { mail, pass } = e.target;
-
-    const mailMatchesPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(mail.value);
-    if(!mailMatchesPattern) {
-        console.error("Invalid e-mail address. TODO: Global overlay for errors.")
-        return false;
-    }
-
-    return true;
-}
+import submit from './submit';
 
 export default function Login() {
     const [ errorMsg, setError ] = useState(false);
     const user = useUser();
 
-    const submit = (e) => {
-        e.preventDefault();
-        
-        if(!validate(e)) return;
-        
-        const { mail, pass } = e.target;
-        
-        api.post('/v0/users/login', {
-            user:mail.value,
-            pass:pass.value
-        })
-        .then(r => {
-            if(r.status == "success") {
-                user.set(r.user);
-                return;
-            }
-
-            setError("Feil brukernavn eller passord")
-        })
-        .catch(e => {
-            console.error("TODO: Have global overlay for errors", e)
-        })
-    }
+    const sub = (e) => submit(e, user, setError);
 
     const error = errorMsg ? (<div>{errorMsg}</div>) : (""); 
 
@@ -51,19 +17,19 @@ export default function Login() {
             Logged in as {user.name}
         </div>
     ) : (
-        <form onSubmit={submit} className={s.box}>
+        <form onSubmit={sub} className={s.box}>
             <div className={s['list-item']}>
                 <ul className={s.list}>
                     <li>
                         <h3>Logg inn</h3>
                     </li>
-                    <li>
+                    <li className={s.l}>
                         <a className={s.link} href="/iforgor">Glemt passord</a>
                     </li>
-                    <li>
+                    <li className={s.l}>
                         -
                     </li>
-                    <li>
+                    <li className={s.l}>
                         <a className={s.link} href="/register">Jeg er ny!</a>
                     </li>
                 </ul>
@@ -82,11 +48,11 @@ export default function Login() {
             </div>
             <div className={s['list-item']}>
                 <div className={s.row}>
-                    <button className={combine(s.input, s.fb)} onClick={(e) => { e.preventDefault(); console.log("TODO: Log in with FB") }}>
+                    <button className={combine(s.input, s.fb)} onClick={(e) => { e.preventDefault(); alert("Facebook (Not Implemented)") }}>
                         Logg på med FaceBook
                     </button>
-                    <button className={combine(s.input, s.more)} onClick={(e) => { e.preventDefault(); console.log("Log in with other") }}>
-                        
+                    <button className={combine(s.input, s.more)} onClick={(e) => { e.preventDefault(); alert("Andre (Vipps/Apple/Etc.)") }}>
+                        v
                     </button> 
                 </div>
             </div>

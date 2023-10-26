@@ -11,6 +11,7 @@ export const endpoints = {
     users: {
         login: "/v0/users/login",
         loginWithToken: "/v0/users/refresh",
+        register: "/v0/users/register",
     }
 }
 

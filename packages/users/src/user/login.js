@@ -1,25 +1,27 @@
 const { token } = require('../token');
 const argon2 = require('argon2');
 const get = require('./get');
-const create = require('./create');
 
+/**
+ * Log in user with password:
+ *  - Check if user is not registered -> Register
+ *  - Check if hash matches password
+ *  - Generate new JWT token 
+ * @param {*} req Express request object
+ * @param {*} res Express response object
+ * @returns {Promise<any>}
+ */
 module.exports = (req, res) => {
     const { user, pass } = req.body;
     let status = {
         code: 200,
         user: null
     }
-
-    // TODO: Check if token exists -> Refresh token
-    // Check if user is not registered -> Register
-    // Check if hash matches password
-    // Generate new JWT token
     
-    // TODO: Separate register page
     return get(user, "mail") 
         .then(async (u) => {
             if(u) {
-                const hash = '$argon2id$v=19$m=65536,t=3,p=4$' + u.password;
+                const hash = u.password; //= '$argon2id$v=19$m=65536,t=3,p=4$' + u.password;
 
                 // User exists -> Check password
                 if(await argon2.verify(hash, pass)) {
@@ -28,27 +30,27 @@ module.exports = (req, res) => {
                         name: `${u.firstname} ${u.lastname}`, 
                     }
                 }
-                
+
                 status.code = 403;
                 throw "Wrong username or password";
             }
             
-            // Make new user 
-            // TODO: Do not auto register
-            // status.code = 201;
-            // return create(user, pass);
             status.code = 401;
             throw "User does not exist";
         })
-        .then(user => status.user = user)
-        .then(() => token.generate({ id:status.user.id }))
+        .then(user => { 
+            status.user = user;
+            return user.id;
+        })
+        .then(id => token.generate({ id:id }))
         .then(jwt => {
             res.cookie("token", jwt, {
                 secure: true,
                 maxAge: 2592000000,
                 httpOnly: true,
                 sameSite: 'strict',
-                signed: true,
+                // signed: true,
+                // secret: 'secret' // TODO: Signed cookies
             })
             .status(status.code)
             .send({
@@ -57,7 +59,9 @@ module.exports = (req, res) => {
             })
         })
         .catch(e => {
-            res.status(403).send();
-            // console.error(e);
+            console.error("[ERROR] Login.js - ", e);
+            res.status(403).send({
+                status: "failed"
+            });
         })
 }

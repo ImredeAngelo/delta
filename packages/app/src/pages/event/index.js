@@ -6,6 +6,7 @@ import api from '~api'
 import Map from './map'
 import Organizer from './organizer'
 import Display from '~components/text-editor/display'
+import { Helmet } from 'react-helmet'
 
 // million-ignore
 export default function EventPage(props) {
@@ -45,6 +46,17 @@ export default function EventPage(props) {
 
 	return (
 		<div className={s.wrapper}>
+			<Helmet>
+				<title>{`Delta Linjeforening | ${data.title}`}</title>
+				<meta property='og:title' content={`Delta | ${data.title}`}/>
+				<meta property='og:description' content={data.description[0].children[0].text}/>
+				<meta property='og:image' content={`https://${process.env.HOST}/${id}.png`}/>
+				<meta property='og:url' content={`https://${process.env.HOST}/event/${id}`}/>
+				<meta property='og:site_name' content='Delta Linjeforening'/>
+				<meta name='twitter:card' content='summary_large_image'/>
+				<meta name='twitter:title' content={`Delta | ${data.title}`}/>
+				<meta name='twitter:description' content={data.description[0].children[0].text}/>
+			</Helmet>
 			<header className={s.header}>
 				<div className={s.bk}>
 					<div className={s['bk-img']} style={{ backgroundImage: data.header }}/>
@@ -64,6 +76,7 @@ export default function EventPage(props) {
 						<li className={s['info-item']}>
 							<span className={combine(s.icon, s['pin-icon'])}/>
 							<a 
+								rel="noopener noreferrer"
 								href={`https://maps.apple.com/?q=${link}`} 
 								className={s.location}
 								target='_blank'

@@ -1,16 +1,19 @@
 import React from 'react'
-import s from '../home.css'
+import s from './ws.css'
+import { combine } from '~style'
 
 export default function WelcomeSection() {
     return (
-        <div className={s['span-2']}>
+        <div className={combine(s.section, s['span-2'])}>
             <h1>Velkommen til Delta</h1>
-            <p>
-                Abakus er linjeforeningen for studentene ved Datateknologi ogKommunikasjonsteknologi og digital sikkerhet på NTNU, og drives av studenter ved disse studiene.
-            </p>
-            <p>
-                Abakus' formål er å gi disse studentene veiledning i studiesituasjonen, arrangere kurs som utfyller fagtilbudet ved NTNU, fremme kontakten med næringslivet og bidra med sosiale aktiviteter.
-            </p>
+            <p>Delta er linjeforeningen for studentene ved Matematiske fag og Fysikk på NTNU, og drives av studenter ved disse studiene.</p>
+            <br/>
+            <p>Linjeforeningen organiserer arrangementer på stor og liten skala, har et eget identitetsareal, tilbyr faglige ressurser, skaper kontakt med arbeidslivet, og tilbyr et bredt utvalg aktiviteter i komiteene sine.</p>
+            <div className={s.row}>
+                <button className={s.input} onClick={() => alert("Not implemented")}>
+                    Les mer om oss
+                </button>
+            </div>
         </div>
     )
 }

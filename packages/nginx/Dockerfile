@@ -1,9 +1,10 @@
-# Docker container for hot-reloading apps that are pre-rendered in production
+# syntax=docker/dockerfile:1
 FROM nginx:alpine
 
 RUN apk update
 
+COPY --from=config prod /etc/nginx/conf.d
+
 # Serve static files
-# Use build folder as context!
 WORKDIR /srv
-COPY . .
+COPY --from=build deltahouse-app deltahouse

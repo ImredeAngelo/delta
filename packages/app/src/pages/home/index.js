@@ -8,9 +8,7 @@ export default function HomePage() {
 	return (
 		<div className={s.wrapper}>
 			<WelcomeSection/>
-			<div>
-				<Login/>
-			</div>
+			<Login/>
 			<div className={s['span-2']}>
 				<h1>Arrangementer</h1>
 				<Events/>

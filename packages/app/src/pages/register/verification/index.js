@@ -1,19 +1,19 @@
-import React from 'react'
-import Lottie from 'lottie-react'
+import React, { Suspense, lazy } from 'react'
 import Animation from './mail.json'
 import s from './verify.css'
 
+const Lottie = lazy(() => import("lottie-react"))
+
 export default function Verification() {
     return (
-        <div>
-            <h3>Hei</h3>
-            <div className={s.box}>
+        <div className={s.box}>
+            <Suspense fallback={<h2>Laster...</h2>}>
                 <Lottie animationData={Animation} loop={true}
                     className={s.anim}
                 />
-                <div>
-                    Vi har send deg en mail!
-                </div>
+            </Suspense>
+            <div>
+                Vi har sendt deg en mail!
             </div>
         </div>
     )

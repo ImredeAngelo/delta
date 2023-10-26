@@ -1,12 +1,12 @@
 # Docker container for hot-reloading apps that are pre-rendered in production
-FROM nginx:1.23-alpine
+FROM nginx:alpine
 
 RUN apk update
 RUN apk add openssl
 
 # Copy SSL cert from setup process
 WORKDIR /etc/letsencrypt/live/delta
-COPY ./dev/ssl .
+COPY ./ssl .
 
 # Generate Self-Signed SSL Certificate
 # RUN openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -extensions v3_ca \
