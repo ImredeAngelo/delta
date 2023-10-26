@@ -1862,59 +1862,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deltahouse/app@file:../app::locator=%40deltahouse%2Fevents%40workspace%3Apackages%2Fevents":
-  version: 1.1.0
-  resolution: "@deltahouse/app@file:../app#../app::hash=e27695&locator=%40deltahouse%2Fevents%40workspace%3Apackages%2Fevents"
-  dependencies:
-    "@babel/cli": ^7.23.0
-    "@babel/core": ^7.23.2
-    "@babel/plugin-proposal-class-properties": ^7.18.6
-    "@babel/preset-env": ^7.23.2
-    "@babel/preset-react": ^7.22.15
-    "@csstools/postcss-global-data": ^2.1.0
-    babel-loader: ^9.1.3
-    babel-plugin-root-import: ^6.6.0
-    caniuse-lite: ^1.0.0
-    clean-webpack-plugin: ^4.0.0
-    compression-webpack-plugin: ^10.0.0
-    copy-webpack-plugin: ^11.0.0
-    css-loader: ^6.8.1
-    cssnano: ^6.0.1
-    html-webpack-plugin: ^5.5.3
-    imagemin-avif-webpack-plugin: ^0.0.4
-    imagemin-webp-webpack-plugin: ^3.3.6
-    lodash: ^4.17.21
-    lottie-react: ^2.4.0
-    million: ^2.6.0
-    mini-css-extract-plugin: ^2.7.6
-    postcss: ^8.4.31
-    postcss-css-variables: ^0.19.0
-    postcss-custom-media: ^10.0.1
-    postcss-import: ^15.1.0
-    postcss-import-ext-glob: ^2.1.1
-    postcss-inline-svg: ^6.0.0
-    postcss-loader: ^7.3.3
-    postcss-preset-env: ^9.1.3
-    postcss-simple-vars: ^7.0.1
-    raw-loader: ^4.0.2
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    react-helmet: ^6.1.0
-    react-router: ^6.15.0
-    react-router-dom: ^6.15.0
-    slate: ^0.100.0
-    slate-react: ^0.100.0
-    static-site-generator-webpack-plugin: ^3.4.2
-    webpack: ^5.88.2
-    webpack-bundle-analyzer: ^4.9.1
-    webpack-cli: ^5.1.4
-    webpack-merge: ^5.9.0
-    workbox-webpack-plugin: ^7.0.0
-    workbox-window: ^7.0.0
-  checksum: df9f8cd51db16119b17814ed018a20124ccb46e0f936d4fb0f75d68f1a3b556f3e28a046e517d4ebab4146f5b05ef3fef9d49430a3f2a827cc7db2816af558af
-  languageName: node
-  linkType: hard
-
 "@deltahouse/app@workspace:packages/app":
   version: 0.0.0-use.local
   resolution: "@deltahouse/app@workspace:packages/app"
@@ -1975,7 +1922,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@deltahouse/events@workspace:packages/events"
   dependencies:
-    "@deltahouse/app": "file:../app"
     cookie-parser: ^1.4.6
     cors: ^2.8.5
     dotenv: ^16.3.1
