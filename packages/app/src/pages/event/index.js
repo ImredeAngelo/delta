@@ -68,7 +68,6 @@ export default function EventPage(props) {
 						</li>
 					</ul>
 					<div className={s.actions}>
-						<h2>Påmelding</h2>
 						<JoinEventBtn/>
 					</div>
 					<Organizer by={"Delta Linjeforening"}/>

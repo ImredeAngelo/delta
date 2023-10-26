@@ -26,7 +26,6 @@ server.post('/v0/users/register', user.register)
 
 // This could be cleaner as a GET
 server.post('/verify', (req, res) => {
-	console.log("Getting user from token: ", req.body.token)
 	token.verify(req.body.token)
 		// .then(user => { console.log(user); return user; })
 		.then(user => res.status(200).send(JSON.stringify(user.payload)))
