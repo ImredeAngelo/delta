@@ -1,5 +1,5 @@
 {
-  "name": "events",
+  "name": "@deltahouse/events",
   "scripts": {
     "start:local": "nodemon ./src",
     "docker:hmr": "nodemon -L ./app",

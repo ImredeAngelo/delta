@@ -1862,9 +1862,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deltahouse/app@file:../app::locator=events%40workspace%3Apackages%2Fevents":
+"@deltahouse/app@file:../app::locator=%40deltahouse%2Fevents%40workspace%3Apackages%2Fevents":
   version: 1.0.0
-  resolution: "@deltahouse/app@file:../app#../app::hash=a34365&locator=events%40workspace%3Apackages%2Fevents"
+  resolution: "@deltahouse/app@file:../app#../app::hash=a34365&locator=%40deltahouse%2Fevents%40workspace%3Apackages%2Fevents"
   dependencies:
     "@babel/cli": ^7.23.0
     "@babel/core": ^7.23.2
@@ -1968,6 +1968,21 @@ __metadata:
     webpack-merge: ^5.9.0
     workbox-webpack-plugin: ^7.0.0
     workbox-window: ^7.0.0
+  languageName: unknown
+  linkType: soft
+
+"@deltahouse/events@workspace:packages/events":
+  version: 0.0.0-use.local
+  resolution: "@deltahouse/events@workspace:packages/events"
+  dependencies:
+    "@deltahouse/app": "file:../app"
+    cookie-parser: ^1.4.6
+    cors: ^2.8.5
+    dotenv: ^16.3.1
+    express: ^4.18.2
+    mysql2: ^3.6.2
+    nodemon: ^3.0.1
+    webp-converter: ^2.3.3
   languageName: unknown
   linkType: soft
 
@@ -6214,21 +6229,6 @@ __metadata:
   checksum: f6f487ad2198aa41d878fa31452f1a3c00958f46e9019286ff4787c84aac329332ab45c9cdc8c445928fc6d7ded294b9e005a7fce9426488518017831b272780
   languageName: node
   linkType: hard
-
-"events@workspace:packages/events":
-  version: 0.0.0-use.local
-  resolution: "events@workspace:packages/events"
-  dependencies:
-    "@deltahouse/app": "file:../app"
-    cookie-parser: ^1.4.6
-    cors: ^2.8.5
-    dotenv: ^16.3.1
-    express: ^4.18.2
-    mysql2: ^3.6.2
-    nodemon: ^3.0.1
-    webp-converter: ^2.3.3
-  languageName: unknown
-  linkType: soft
 
 "exec-buffer@npm:^3.0.0":
   version: 3.2.0
