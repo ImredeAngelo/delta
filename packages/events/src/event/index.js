@@ -1,5 +1,6 @@
 exports.event = {
 	create: require('./create'),
 	get: require('./get'),
-	render: require('./render')
+	join: require('./join'),
+	// render: require('./render')
 }

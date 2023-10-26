@@ -3,6 +3,7 @@ const cookies = require('cookie-parser')
 const cors = require('cors')
 
 const { event } = require('./event')
+const { bridge } = require('./bridge')
 
 const server = express()
 
@@ -18,15 +19,37 @@ server.use(cors()) // if(process.env.MODE == "development")
 // ===== Routes
 
 server.get('*', (req, res, next) => {
-	console.log("Request: ", req)
-	next();
+	const token = req.cookies.token;
+
+	if(!token) {
+		req.authLevel = 0;
+		next();
+		return;
+	}
+	
+	bridge.getUser(req.cookies.token)
+		.then(u => u.json())
+		.then(u => {
+			req.authLevel = 1;
+			req.user = u.id
+		})
+		.then(() => next())
+		.catch(console.error)
 })
 
-server.get('/v0/events/get', event.get)
+server.get('/v0/events/get', event.get);
+server.get('/v0/events/join', event.join);
 server.post('/v0/events/make', event.create);
 
-// Testing:
-server.get('/v0/events/test', event.render);
+// ===== Testing:
+// server.get('/v0/events/test', event.render);
+server.all('/v0/events/test', (req, res) => {
+	bridge.getUser(req.cookies.token)
+		.then(u => u.json())
+		.then(u => { console.log(u); return u; })
+		.then(u => res.status(200).send(u))
+		.catch(console.error)
+})
 
 // ===== Entrypoint
 

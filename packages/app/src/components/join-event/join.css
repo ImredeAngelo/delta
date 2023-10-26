@@ -1,0 +1,39 @@
+/* TODO: Move to component to enforce style cohesion */
+.btn {
+    cursor: pointer;
+	width: 100%;
+	padding: .8rem .45rem;
+	font-size: 1.2rem;
+	border-radius: 4px;
+	border: none;
+}
+
+.register {
+    background-color: var(--color-delta);
+}
+
+
+/* ===== Social ===== */
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 0.9rem;
+    column-gap: 0.45rem;
+}
+
+.box {
+    border-radius: 0.2rem;
+    background-color: var(--highlight-bk);
+    padding: 0.67rem;
+}
+
+.main {
+    grid-column: span 2;
+}
+
+.text {
+    opacity: 0.7;
+    margin: 0 auto;
+    text-align: center;
+}

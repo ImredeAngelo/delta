@@ -1,7 +1,16 @@
 const database = require("../database");
 
 function getByID(id, req, res) {
-	return database.execute("SELECT * FROM `Events` WHERE id = ?", id)
+	return database.execute(`
+		SELECT Events.*, T.count
+		FROM Events
+		LEFT JOIN (
+			SELECT eventID, COUNT(DISTINCT userID) AS count
+			FROM Tickets
+			GROUP BY eventID
+		) AS T ON Events.id = T.eventID
+		WHERE Events.id = ?`, id)
+		// SELECT * FROM `Events` WHERE id = ?"
 	.then((results) => {
 		// TODO: Check if user has permission to view this event 
 		const event = results[0][0];
@@ -20,7 +29,7 @@ function getByID(id, req, res) {
 function getAll(req, res) {
 	return database.execute("SELECT * FROM `Events` LIMIT 10")
 	.then((results) => {
-		// TODO: Only show events user is permitted to view 
+		// TODO: Only show events user is permitted to view -> Strip all where 'group' has been set and 'req.user' is not a member of any group
 		const events = results[0];
 		const data = events.map((v) => {
 			return {

@@ -1,10 +1,12 @@
 {
-  "name": "@delta/deltahouse",
+  "name": "deltahouse",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Delta Linjeforening",
   "license": "MIT",
   "scripts": {
+    "app": "yarn workspace @deltahouse/app",
+    "users": "yarn workspace @deltahouse/users",
     "setup": "yarn && yarn setup:yarn && yarn setup:py",
     "setup:yarn": "yarn plugin import workspace-tools && yarn plugin import interactive-tools && yarn workspaces focus --all --production",
     "setup:py": "py ./scripts/init.py",

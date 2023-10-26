@@ -1,4 +1,4 @@
-const { token } = require(".");
+const verify = require("./verify.js");
 
 module.exports = function(req, res) {
 	const jwt = req.cookies.token;
@@ -8,7 +8,7 @@ module.exports = function(req, res) {
 		return;
 	}
 
-	token.verify(jwt)
+	verify(jwt)
 		.then(r => {
 			const { id } = r.payload;
 
