@@ -1863,8 +1863,8 @@ __metadata:
   linkType: hard
 
 "@deltahouse/app@file:../app::locator=%40deltahouse%2Fevents%40workspace%3Apackages%2Fevents":
-  version: 1.0.0
-  resolution: "@deltahouse/app@file:../app#../app::hash=a34365&locator=%40deltahouse%2Fevents%40workspace%3Apackages%2Fevents"
+  version: 1.1.0
+  resolution: "@deltahouse/app@file:../app#../app::hash=e27695&locator=%40deltahouse%2Fevents%40workspace%3Apackages%2Fevents"
   dependencies:
     "@babel/cli": ^7.23.0
     "@babel/core": ^7.23.2
@@ -1911,7 +1911,7 @@ __metadata:
     webpack-merge: ^5.9.0
     workbox-webpack-plugin: ^7.0.0
     workbox-window: ^7.0.0
-  checksum: 908c8f5e4ab3a1dca546ee8ad3d36e98469d17686e144b34dd5a0c7fff1681a9c0175d26eba8d8fe763797bdcbf394b3bbd58f4c163d8c09adce6b3821705217
+  checksum: df9f8cd51db16119b17814ed018a20124ccb46e0f936d4fb0f75d68f1a3b556f3e28a046e517d4ebab4146f5b05ef3fef9d49430a3f2a827cc7db2816af558af
   languageName: node
   linkType: hard
 
