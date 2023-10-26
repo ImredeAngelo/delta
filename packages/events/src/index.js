@@ -22,22 +22,23 @@ server.get('*', (req, res, next) => {
 	const token = req.cookies.token;
 
 	if(!token) {
-		next({
-			authlevel: 0
-		});
+		req.authLevel = 0;
+		next();
 		return;
 	}
 	
+	console.log(token);
 	bridge.getUser(req.cookies.token)
 		.then(u => u.json())
-		.then(u => next({
-			authlevel: 1,
-			user: u.id
-		}))
+		.then(u => {
+			req.authLevel = 1;
+			req.user = u.id
+		})
+		.then(() => next())
 		.catch(console.error)
 })
 
-server.get('/v0/events/get', event.get)
+server.get('/v0/events/get', event.get);
 server.post('/v0/events/make', event.create);
 
 // ===== Testing:
