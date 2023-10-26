@@ -1,5 +1,5 @@
 const express = require('express')
-const limiter = require('express-rate-limit');
+const limiter = require('express-rate-limit')
 const cookies = require('cookie-parser')
 const cors = require('cors')
 
@@ -11,12 +11,12 @@ const { user } = require('./user')
 const server = express()
 
 server.use(express.json())
-server.use(cookies()) // TODO: Secret keys
+server.use(cookies()) // TODO: Secret/signed cookies
 server.use(cors({ origin:true, credentials:true })) 
-server.use(limiter({
+server.use(limiter({ // TODO: Rate limit in Nginx
 	windowMs: 15 * 60 * 1000, // 15 minutes
 	max: 16, // max requests per windowMs
-}));
+}))
 
 // ===== Routes
 

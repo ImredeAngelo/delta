@@ -39,8 +39,8 @@ server.get('*', (req, res, next) => {
 })
 
 server.get('/v0/events/get', event.get);
+server.get('/v0/events/join', event.join);
 server.post('/v0/events/make', event.create);
-server.post('/v0/events/join', event.join);
 
 // ===== Testing:
 // server.get('/v0/events/test', event.render);

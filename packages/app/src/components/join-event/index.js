@@ -6,7 +6,7 @@ import unregister from './unregister';
 import s from './join.css'
 
 export default function JoinEvent(props) {
-    const event = props.event || { count: 0, max: 20, waitlist: 0 };
+    const event = props.event || { id:'8PIpAY', count: 0, max: 20, waitlist: 0 };
     const user = useUser();
     const [ isRegistered, setRegistered ] = useState(user.name != null);
     const text = isRegistered ? "Meld deg av" : (user ? "Meld deg på" : "Logg inn for å melde deg på");
@@ -33,7 +33,7 @@ export default function JoinEvent(props) {
                 <h2>Påmelding</h2>
                 <button className={combine(s.register, s.btn)} onClick={() => {
                     // TODO: Set loading icon on click
-                    isRegistered ? unregister() : register();
+                    isRegistered ? unregister() : register(event.id);
                     setRegistered(!isRegistered);
                 }}>
                     {text}

@@ -6,8 +6,7 @@ CREATE TABLE Events (
         description             VARCHAR(4096) DEFAULT '',
         type                    INT DEFAULT 0,
         address                 VARCHAR(64) DEFAULT 'TBA',
-        date                    DATETIME,
-        header                  MEDIUMBLOB,
+        date                    DATETIME DEFAULT NOW,
         map                     BLOB
 );
 
@@ -18,3 +17,11 @@ CREATE TABLE Users (
         firstname               VARCHAR(32),
         lastname                VARCHAR(32)
 );
+
+CREATE TABLE Tickets (
+        id              INT AUTO_INCREMENT PRIMARY KEY,
+        eventID         VARCHAR(6),
+        userID          VARCHAR(6),
+        FOREIGN KEY (eventID) REFERENCES Events(id),
+        FOREIGN KEY (userID) REFERENCES Users(id)
+)

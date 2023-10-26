@@ -11,7 +11,7 @@ export default function User(props) {
             .then(r => {
                 if(r.status === "success") {
                     setUser({
-                        name:"User #" + r.user.id,
+                        name:r.user.name + " (" + r.user.id + ")",
                         ...r.user
                     });
                 }
