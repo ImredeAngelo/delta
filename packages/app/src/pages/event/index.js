@@ -42,8 +42,10 @@ export default function EventPage(props) {
 				<h2 className={s.title}>{data.title}</h2>
 			</header>
 			<div className={s.content}>
-				<div className={s.description}>
-					<Display text={data.description}/>
+				<div className={s.lhs}>
+					<div className={s.description}>
+						<Display text={data.description}/>
+					</div>
 				</div>
 				<div className={s.rhs}>
 					<ul className={s.info}>
