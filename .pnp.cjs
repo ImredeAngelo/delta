@@ -20,6 +20,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:packages/app"\
       },\
       {\
+        "name": "@deltahouse/app-esbuild",\
+        "reference": "workspace:packages/app-esbuild"\
+      },\
+      {\
         "name": "@deltahouse/events",\
         "reference": "workspace:packages/events"\
       },\
@@ -33,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "fallbackExclusionList": [\
       ["@delta/deltahouse", ["workspace:."]],\
       ["@deltahouse/app", ["workspace:packages/app"]],\
+      ["@deltahouse/app-esbuild", ["workspace:packages/app-esbuild"]],\
       ["@deltahouse/events", ["workspace:packages/events"]],\
       ["@deltahouse/users", ["workspace:packages/users"]]\
     ],\
@@ -5407,6 +5412,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["webpack-merge", "npm:5.9.0"],\
             ["workbox-webpack-plugin", "virtual:55463cc31cd98e836d75af48534113cb5af8ac77045b74345b23a7a38884fd57dfeb070632beb6b07c97a7432a9b5c859b05f77a9b8a75922d1215c49f6ec994#npm:7.0.0"],\
             ["workbox-window", "npm:7.0.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@deltahouse/app-esbuild", [\
+        ["workspace:packages/app-esbuild", {\
+          "packageLocation": "./packages/app-esbuild/",\
+          "packageDependencies": [\
+            ["@deltahouse/app-esbuild", "workspace:packages/app-esbuild"],\
+            ["esbuild", "npm:0.19.5"],\
+            ["lodash", "npm:4.17.21"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:55463cc31cd98e836d75af48534113cb5af8ac77045b74345b23a7a38884fd57dfeb070632beb6b07c97a7432a9b5c859b05f77a9b8a75922d1215c49f6ec994#npm:18.2.0"]\
           ],\
           "linkType": "SOFT"\
         }]\

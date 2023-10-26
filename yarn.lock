@@ -2249,6 +2249,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@deltahouse/app-esbuild@workspace:packages/app-esbuild":
+  version: 0.0.0-use.local
+  resolution: "@deltahouse/app-esbuild@workspace:packages/app-esbuild"
+  dependencies:
+    esbuild: ^0.19.5
+    lodash: ^4.17.21
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  languageName: unknown
+  linkType: soft
+
 "@deltahouse/app@file:../app::locator=%40deltahouse%2Fevents%40workspace%3Apackages%2Fevents":
   version: 1.0.0
   resolution: "@deltahouse/app@file:../app#../app::hash=9cc4bc&locator=%40deltahouse%2Fevents%40workspace%3Apackages%2Fevents"
