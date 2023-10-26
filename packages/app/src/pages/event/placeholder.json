@@ -6,5 +6,6 @@
 	"description": [{ "type":"paragraph", "children":[{ "text":"Informasjon kommer!" }] }],
 	"title": "Ukjent Arrangement",
 	"header": "black",
-	"type": "Fest"
+	"type": "Fest",
+	"cost": "0"
 }

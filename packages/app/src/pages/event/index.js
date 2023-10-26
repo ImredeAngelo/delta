@@ -22,6 +22,8 @@ export default function EventPage(props) {
 
 	useEffect(() => onStart(id, data, setData), [])
 
+	console.log(data)
+
 	return (
 		<div className={s.wrapper}>
 			<Helmet>
