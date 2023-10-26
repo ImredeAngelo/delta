@@ -1,6 +1,7 @@
 const webp = require('webp-converter');
 const fs = require('fs/promises');
 
+// TODO: Find and fix bug that causes crash for some JPEG images
 module.exports = (file, name, path = "/srv/images") => {
 	const regex = /^data:image\/([^;]+);base64,/
 	const extension = file.match(regex)[1];
