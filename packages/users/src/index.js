@@ -4,7 +4,6 @@ const cors = require('cors')
 
 const { token } = require('./token')
 const { user } = require('./user')
-// const { privateKey } = require('./token/keys')
 
 // ===== Server Config
 
@@ -16,12 +15,23 @@ server.use(cors({ origin:true, credentials:true }))
 
 // ===== Routes
 
-// me
+// TODO: rename refresh -> me?
 server.get('/v0/users/refresh', token.refresh)
 
 server.post('/v0/users/login', user.login)
 server.post('/v0/users/register', user.register)
 // server.delete('/v0/users/terminate', user.remove)
+
+// ===== Internal Routes
+
+// This could be cleaner as a GET
+server.post('/verify', (req, res) => {
+	console.log("Getting user from token: ", req.body.token)
+	token.verify(req.body.token)
+		// .then(user => { console.log(user); return user; })
+		.then(user => res.status(200).send(JSON.stringify(user.payload)))
+		.catch(console.error)
+})
 
 // ===== Entrypoint
 

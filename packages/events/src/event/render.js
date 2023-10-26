@@ -1,14 +1,14 @@
-import app from "@deltahouse/app";
-import ReactDOMServer from "react-dom/server";
+// import app from "@deltahouse/app";
+// import ReactDOMServer from "react-dom/server";
 
-/**
- * 
- * TODO:
- *  - Short description when creating events
- */
-// TODO: When event is created -> Generate static page for 
-module.exports = (page) => {
-    const html = "";
+// /**
+//  * 
+//  * TODO:
+//  *  - Short description when creating events
+//  */
+// // TODO: When event is created -> Generate static page for 
+// module.exports = (page) => {
+//     const html = "";
 
-    console.log("Result: ", html)
-}
+//     console.log("Result: ", html)
+// }

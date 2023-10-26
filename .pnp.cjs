@@ -12,7 +12,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     ],\
     "dependencyTreeRoots": [\
       {\
-        "name": "@delta/deltahouse",\
+        "name": "deltahouse",\
         "reference": "workspace:."\
       },\
       {\
@@ -31,9 +31,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
-      ["@delta/deltahouse", ["workspace:."]],\
       ["@deltahouse/app", ["workspace:packages/app"]],\
       ["@deltahouse/users", ["workspace:packages/users"]],\
+      ["deltahouse", ["workspace:."]],\
       ["events", ["workspace:packages/events"]]\
     ],\
     "fallbackPool": [\
@@ -5291,16 +5291,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@delta/deltahouse", [\
-        ["workspace:.", {\
-          "packageLocation": "./",\
-          "packageDependencies": [\
-            ["@delta/deltahouse", "workspace:."],\
-            ["jest-teamcity", "npm:1.11.0"]\
-          ],\
-          "linkType": "SOFT"\
-        }]\
-      ]],\
       ["@deltahouse/app", [\
         ["file:../app#../app::hash=9d6e36&locator=events%40workspace%3Apackages%2Fevents", {\
           "packageLocation": "./.yarn/cache/@deltahouse-app-file-746f4a0a34-f6f2c97ea4.zip/node_modules/@deltahouse/app/",\
@@ -10449,6 +10439,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["deltahouse", [\
+        ["workspace:.", {\
+          "packageLocation": "./",\
+          "packageDependencies": [\
+            ["deltahouse", "workspace:."],\
+            ["jest-teamcity", "npm:1.11.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
       ["denque", [\
         ["npm:2.1.0", {\
           "packageLocation": "./.yarn/cache/denque-npm-2.1.0-578d0b6297-1d4ae1d05e.zip/node_modules/denque/",\
@@ -11188,8 +11188,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["express", "npm:4.18.2"],\
             ["mysql2", "npm:3.6.2"],\
             ["nodemon", "npm:3.0.1"],\
-            ["react", "npm:18.2.0"],\
-            ["react-dom", "virtual:55463cc31cd98e836d75af48534113cb5af8ac77045b74345b23a7a38884fd57dfeb070632beb6b07c97a7432a9b5c859b05f77a9b8a75922d1215c49f6ec994#npm:18.2.0"],\
             ["webp-converter", "npm:2.3.3"]\
           ],\
           "linkType": "SOFT"\
