@@ -1,10 +1,11 @@
 module.exports = {
     connect: require('./connect'),
 	execute: require('./execute'),
+    // TODO:
     transaction: async (name) => {
         const transaction = await this.connect();
         transaction.beginTransaction();
     },
-    commit: () => execute("COMMIT"),
-    rollback: () => execute("ROLLBACK"),
+    commit: () => this.execute("COMMIT"),
+    rollback: () => this.execute("ROLLBACK"),
 }

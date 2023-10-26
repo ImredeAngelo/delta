@@ -27,7 +27,6 @@ server.get('*', (req, res, next) => {
 		return;
 	}
 	
-	console.log(token);
 	bridge.getUser(req.cookies.token)
 		.then(u => u.json())
 		.then(u => {

@@ -18,10 +18,11 @@ CREATE TABLE Users (
         lastname                VARCHAR(32)
 );
 
+-- TODO: Use unique event/user as primary key
 CREATE TABLE Tickets (
         id              INT AUTO_INCREMENT PRIMARY KEY,
         eventID         VARCHAR(6),
         userID          VARCHAR(6),
         FOREIGN KEY (eventID) REFERENCES Events(id),
         FOREIGN KEY (userID) REFERENCES Users(id)
-)
+);

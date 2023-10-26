@@ -10,12 +10,15 @@ const { user } = require('./user')
 
 const server = express()
 
+// WARN: This might be unsafe/configured incorrectly
+server.set('trust proxy', '127.0.0.1')
+
 server.use(express.json())
 server.use(cookies()) // TODO: Secret/signed cookies
 server.use(cors({ origin:true, credentials:true })) 
 server.use(limiter({ // TODO: Rate limit in Nginx
 	windowMs: 15 * 60 * 1000, // 15 minutes
-	max: 16, // max requests per windowMs
+	max: 16, // max 16 requests per windowMs (TODO: infinite in dev mode)
 }))
 
 // ===== Routes

@@ -6,9 +6,10 @@ import unregister from './unregister';
 import s from './join.css'
 
 export default function JoinEvent(props) {
-    const event = props.event || { id:'8PIpAY', count: 0, max: 20, waitlist: 0 };
     const user = useUser();
+    
     const [ isRegistered, setRegistered ] = useState(user.name != null);
+    const [ event, setEvent ] = useState(props.event);
     const text = isRegistered ? "Meld deg av" : (user ? "Meld deg på" : "Logg inn for å melde deg på");
 
     // TODO: Registered events should already be stored in 'user' -> No need to query server
@@ -33,8 +34,8 @@ export default function JoinEvent(props) {
                 <h2>Påmelding</h2>
                 <button className={combine(s.register, s.btn)} onClick={() => {
                     // TODO: Set loading icon on click
-                    isRegistered ? unregister() : register(event.id);
-                    setRegistered(!isRegistered);
+                    const next = isRegistered ? unregister() : register(event, setEvent);
+                    setRegistered(next ? !isRegistered : isRegistered);
                 }}>
                     {text}
                 </button>

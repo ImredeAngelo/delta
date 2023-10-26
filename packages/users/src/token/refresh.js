@@ -2,7 +2,6 @@ const verify = require("./verify.js");
 
 module.exports = function(req, res) {
 	const jwt = req.cookies.token;
-	console.log("Token: ", jwt)
 
 	if(!jwt) {
 		res.status(200).send({ status:"failed", reason:"No credentials" })
