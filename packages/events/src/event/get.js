@@ -45,7 +45,6 @@ function getAll(req, res) {
  * @param {*} res Server response
  */
 module.exports = (req, res) => {
-	console.log("[GET] User:", req.user);
 	const { id } = req.query;
 	const r = (id) ? getByID(id, req, res) : getAll(req, res);
 	r.catch(err => {

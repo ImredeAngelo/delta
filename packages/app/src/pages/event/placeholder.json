@@ -1,0 +1,10 @@
+{
+	"date": "Mandag 9. sep",
+	"start": "19:00",
+	"end": "23:00",
+	"location": "Realfagskjelleren, Herman Krags veg 12",
+	"description": [{ "type":"paragraph", "children":[{ "text":"Informasjon kommer!" }] }],
+	"title": "Ukjent Arrangement",
+	"header": "black",
+	"type": "Fest"
+}

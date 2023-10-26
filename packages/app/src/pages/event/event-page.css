@@ -92,8 +92,8 @@
 	background-repeat: no-repeat;
 }
 
-.date-icon { background-image: svg-load('clock.svg', stroke=#fff, stroke-width=1.5); }
-.pin-icon { background-image: svg-load('pin.svg', stroke=#fff, stroke-width=1.5); }
+.date-icon { background-image: svg-load('style/clock.svg', stroke=#fff, stroke-width=1.5); }
+.pin-icon { background-image: svg-load('style/pin.svg', stroke=#fff, stroke-width=1.5); }
 
 .location {
 	color: white;
@@ -114,15 +114,6 @@
 
 .map-bk {
 	max-width: 100%;
-}
-
-/* TODO: Move to component to enforce style cohesion */
-.btn {
-	width: 100%;
-	padding: .8rem .45rem;
-	font-size: 1.2rem;
-	border-radius: 4px;
-	border: none;
 }
 
 /* ===== Organizers ===== */

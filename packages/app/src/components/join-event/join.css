@@ -1,0 +1,13 @@
+/* TODO: Move to component to enforce style cohesion */
+.btn {
+    cursor: pointer;
+	width: 100%;
+	padding: .8rem .45rem;
+	font-size: 1.2rem;
+	border-radius: 4px;
+	border: none;
+}
+
+.register {
+    background-color: var(--color-delta);
+}

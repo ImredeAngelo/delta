@@ -45,7 +45,6 @@ server.post('/v0/events/join', event.join);
 // ===== Testing:
 // server.get('/v0/events/test', event.render);
 server.all('/v0/events/test', (req, res) => {
-	console.log("Token: ", req.cookies.token);
 	bridge.getUser(req.cookies.token)
 		.then(u => u.json())
 		.then(u => { console.log(u); return u; })
