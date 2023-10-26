@@ -22,8 +22,6 @@ export default function EventPage(props) {
 
 	useEffect(() => onStart(id, data, setData), [])
 
-	console.log(data)
-
 	return (
 		<div className={s.wrapper}>
 			<Helmet>
@@ -51,19 +49,25 @@ export default function EventPage(props) {
 					<ul className={s.info}>
 						<li className={s['info-item']}>
 							<span className={combine(s.icon, s['date-icon'])}/>
-							<span>{ data.date }, { data.start } - { data.end }</span>
+							<span className={s['icon-text']}>{ data.date }, { data.start } - { data.end }</span>
 						</li>
 						<li className={s['info-item']}>
 							<span className={combine(s.icon, s['pin-icon'])}/>
 							<a 
 								rel="noopener noreferrer"
 								href={`https://maps.apple.com/?q=${link}`} 
-								className={s.location}
+								className={combine(s['icon-text'], s.location)}
 								target='_blank'
 							>
 								{ data.location }
 							</a>
 						</li>
+						{ data.cost > 0 ? 
+							(<li className={s['info-item']}>
+								<span className={combine(s.icon, s['price-icon'])}/>
+								<span className={s['icon-text']}>{ data.cost }</span>
+							</li>) : '' 
+						}
 						<li className={combine(s['info-item'], s.map)}>
 							{/* <img src={MapBK} className={s['map-bk']}/> */}
 							<Map/>

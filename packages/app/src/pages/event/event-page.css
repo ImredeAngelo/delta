@@ -80,20 +80,25 @@
 }
 
 .icon {
-	width: 1.2rem;
-	height: 1.2rem;
+	width: 1.5rem;
+	height: 1.5rem;
 
 	/* position: relative; */
 	/* display: inline-block; */
 	display: block;
 
 	background-position: center;
-	background-size: 1rem;
 	background-repeat: no-repeat;
+	background-size: 1.4rem;
 }
 
+.price-icon { background-image: svg-load('style/price.svg', stroke=#fff, stroke-width=1.5); background-position-y: 1.3px !important; } 
 .date-icon { background-image: svg-load('style/clock.svg', stroke=#fff, stroke-width=1.5); }
 .pin-icon { background-image: svg-load('style/pin.svg', stroke=#fff, stroke-width=1.5); }
+
+.icon-text {
+	line-height: 1.5rem;
+}
 
 .location {
 	color: white;
