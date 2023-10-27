@@ -1,6 +1,6 @@
-const webp = require('webp-converter');
+// const webp = require('webp-converter');
 const fs = require('fs/promises');
-const jimp = require('jimp');
+// const jimp = require('jimp');
 
 /**
  * Save an image from Base64 and create a PNG and a WebP copy of the image
@@ -21,15 +21,19 @@ module.exports = (file, name, path = "/srv/images") => {
 	const noExtPath = path + "/" + name; 
 	
 	// .png has been chosen arbitrarily and might not be the right choice -> TODO: support any image type 
-	return fs.writeFile(fullPath, buffer)
-		.then(() => console.log(`Saved image ${filename} to ${path}`))
-		// .then(() => jimp.read(fullPath))
-		// .then(img => { 
-		// 	console.log("JIMP read file!"); 
-		// 	// return (ext != "png") ? img.write(noExtPath + ".png") : 0
-		// })
-		// .then(() => console.log(`Converted ${name}.${ext} image to ${name}.png`))
-		// .then(() => webp.cwebp(fullPath, noExtPath + ".png.webp", "-q 80")) //, logging="-v"
-		// .then(() => console.log(`Converted image ${name}.${ext} to WebP format: ${name}.png.webp`))
-		.catch(console.error);
+	// return fs.writeFile(fullPath, buffer)
+	// 	.then(() => console.log(`Saved image ${filename} to ${path}`))
+	// 	// .then(() => jimp.read(fullPath))
+	// 	// .then(img => { 
+	// 	// 	console.log("JIMP read file!"); 
+	// 	// 	// return (ext != "png") ? img.write(noExtPath + ".png") : 0
+	// 	// })
+	// 	// .then(() => console.log(`Converted ${name}.${ext} image to ${name}.png`))
+	// 	// .then(() => webp.cwebp(fullPath, noExtPath + ".png.webp", "-q 80")) //, logging="-v"
+	// 	// .then(() => console.log(`Converted image ${name}.${ext} to WebP format: ${name}.png.webp`))
+	//	.then(() => console.log("Complete"))
+	// 	.catch(console.error);
+	console.log("TODO: Save image!")
+
+	return "";
 }
