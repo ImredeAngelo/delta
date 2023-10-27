@@ -9,10 +9,10 @@ export default function User(props) {
         // TODO: Load user from local store + cookie
         api.get(endpoints.users.loginWithToken)
             .then(r => {
-                if(r.status === "success") {
+                if(r.status && r.status === "success") {
                     setUser({
-                        name:r.user.name + " (" + r.user.id + ")",
-                        ...r.user
+                        ...r.user,
+                        name:`${r.user.name} #${r.user.id}`,
                     });
                 }
             })

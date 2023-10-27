@@ -11,12 +11,14 @@ module.exports = function(req, res) {
 	verify(jwt)
 		.then(r => {
 			const { id } = r.payload;
+			const name = "Temporary Name"
 
 			res.status(200)
 			.send({
 				status:"success",
 				user:{
-					id:id
+					id:id,
+					name:name
 				}
 			})
 		})

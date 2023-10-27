@@ -6,7 +6,7 @@ CREATE TABLE Events (
         description             VARCHAR(4096) DEFAULT '',
         type                    INT DEFAULT 0,
         address                 VARCHAR(64) DEFAULT 'TBA',
-        date                    DATETIME DEFAULT NOW,
+        date                    DATETIME DEFAULT NOW(),
         map                     BLOB
 );
 
