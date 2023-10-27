@@ -26,7 +26,7 @@ module.exports = (file, name, path = "/srv/images") => {
 		.then(() => jimp.read(fullPath))
 		.then(img => (ext != "png") ? img.write(noExtPath + ".png") : 0)
 		.then(() => console.log("Converted image to .png"))
-		.then(() => webp.cwebp(fullPath, noExtPath + ".png.webp", "-q 80", logging="-v"))
+		.then(() => webp.cwebp(noExtPath + ".png", noExtPath + ".png.webp", "-q 80")) //, logging="-v"
 		.then(() => console.log(`Converted image ${name}.${ext} to WebP format: ${name}.png.webp`))
 		.catch(console.error);
 }
