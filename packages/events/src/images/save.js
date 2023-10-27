@@ -29,7 +29,7 @@ module.exports = (file, name, path = "/srv/images") => {
 		// 	// return (ext != "png") ? img.write(noExtPath + ".png") : 0
 		// })
 		// .then(() => console.log(`Converted ${name}.${ext} image to ${name}.png`))
-		.then(() => webp.cwebp(fullPath, noExtPath + ".png.webp", "-q 80")) //, logging="-v"
-		.then(() => console.log(`Converted image ${name}.${ext} to WebP format: ${name}.png.webp`))
+		// .then(() => webp.cwebp(fullPath, noExtPath + ".png.webp", "-q 80")) //, logging="-v"
+		// .then(() => console.log(`Converted image ${name}.${ext} to WebP format: ${name}.png.webp`))
 		.catch(console.error);
 }
