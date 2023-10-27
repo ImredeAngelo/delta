@@ -1,5 +1,5 @@
-const webp = require('webp-converter');
-const jimp = require('jimp');
+// const webp = require('webp-converter');
+// const jimp = require('jimp');
 const fs = require('fs/promises');
 
 /**
@@ -23,14 +23,14 @@ module.exports = (file, name, path = "/srv/images") => {
 	// .png has been chosen arbitrarily and might not be the right choice -> TODO: support any image type 
 	return fs.writeFile(fullPath, buffer)
 		.then(() => console.log(`Saved image ${filename} to ${path}`))
-		.then(() => jimp.read(fullPath))
-		.then(img => { 
-			console.log("Converting file..."); 
-			return (ext != "png") ? img.write(noExtPath + ".png") : 0
-		})
-		.then(() => console.log(`Converted ${name}.${ext} image to ${name}.png`))
-		.then(() => webp.cwebp(noExtPath + ".png", noExtPath + ".png.webp", "-q 80")) //, logging="-v"
-		.then(() => console.log(`Converted image ${name}.${ext} to WebP format: ${name}.png.webp`))
+		// .then(() => jimp.read(fullPath))
+		// .then(img => { 
+		// 	console.log("Converting file..."); 
+		// 	return (ext != "png") ? img.write(noExtPath + ".png") : 0
+		// })
+		// .then(() => console.log(`Converted ${name}.${ext} image to ${name}.png`))
+		// .then(() => webp.cwebp(noExtPath + ".png", noExtPath + ".png.webp", "-q 80")) //, logging="-v"
+		// .then(() => console.log(`Converted image ${name}.${ext} to WebP format: ${name}.png.webp`))
 		.then(() => console.log("Complete"))
 		.catch(console.error);
 }
