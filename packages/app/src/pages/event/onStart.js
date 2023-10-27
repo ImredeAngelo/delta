@@ -8,7 +8,7 @@ export default (id, data, setData) => {
         .then(r => {
             const header = `url(/${id}.png)`;
             const description = JSON.parse(r.event.description);
-            const date = new Date(r.event.date);
+            const date = new Date(r.event.date ? r.event.date : Date.now()); // TODO: Missing date should never happen now that DB has default NOW()
 
             setData({
                 ...data,
