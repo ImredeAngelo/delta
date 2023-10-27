@@ -1,7 +1,14 @@
 const webp = require('webp-converter');
 const fs = require('fs/promises');
+const jimp = require('jimp');
 
-// TODO: Find and fix bug that causes crash for some JPEG images
+/**
+ * Save an image from Base64 and create a PNG and a WebP copy of the image
+ * @param {String} file Base64 encoding of the image
+ * @param {String} name Name of the image (not including extension)
+ * @param {String} path Path to directory where image should be saved 
+ * @returns 
+ */
 module.exports = (file, name, path = "/srv/images") => {
 	const regex = /^data:image\/([^;]+);base64,/
 	const extension = file.match(regex)[1];
@@ -11,10 +18,15 @@ module.exports = (file, name, path = "/srv/images") => {
 	const ext = (extension == "jpeg") ? "jpg" : extension;
 	const filename = name + "." + ext;
 	const fullPath = path + "/" + filename;
+	const noExtPath = path + "/" + name; 
 	
+	// .png has been chosen arbitrarily and might not be the right choice -> TODO: support any image type 
 	return fs.writeFile(fullPath, buffer)
 		.then(() => console.log(`Saved image ${filename} to ${path}`))
-		.then(() => webp.cwebp(fullPath, fullPath + ".webp", "-q 80", logging="-v"))
-		.then(() => console.log(`Converted image ${name}.${extension} to WebP format: ${name}.${ext}.webp`))
+		.then(() => jimp.read(fullPath))
+		.then(img => (ext != "png") ? img.write(noExtPath + ".png") : 0)
+		.then(() => console.log("Converted image to .png"))
+		.then(() => webp.cwebp(fullPath, noExtPath + ".png.webp", "-q 80", logging="-v"))
+		.then(() => console.log(`Converted image ${name}.${ext} to WebP format: ${name}.png.webp`))
 		.catch(console.error);
 }

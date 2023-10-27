@@ -3649,6 +3649,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cors", "npm:2.8.5"],\
             ["dotenv", "npm:16.3.1"],\
             ["express", "npm:4.18.2"],\
+            ["jimp", "npm:0.22.10"],\
             ["mysql2", "npm:3.6.2"],\
             ["nodemon", "npm:3.0.1"],\
             ["webp-converter", "npm:2.3.3"]\
